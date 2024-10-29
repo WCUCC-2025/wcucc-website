@@ -1,0 +1,49 @@
+---
+import SectionIconTitle from '../elements/SectionIconTitle.astro';
+import SpeakerTile from '../elements/SpeakerTile.astro';
+---
+
+<section class="p-10">
+	<SectionIconTitle
+		title="Speakers"
+		icon="ri-mic-fill"
+		color="bg-[#3D348B]"
+		textColor="black"
+	/>
+	<section class="flex flex-row items-center justify-center w-full">
+	<section class="grid grid-cols-3 gap-x-10 gap-y-32 justify-center py-32">
+		<SpeakerTile
+			image={'/tempPicA.svg'}
+			name={'Dr. Anya Petrovich'}
+			title={'Professor'}
+			university={'McGill University, The Metabolomics Innovation Centre (TMIC)'}
+			talkTitle={'Unlocking Enzyme Potential: Biocatalysts for a Sustainable Future'}
+			learnMore="#"
+		/>
+		<SpeakerTile
+			image={'/tempPicB.svg'}
+			name={'Dr. Ben Stephens'}
+			title={'Associate Professor'}
+			university={'Univesity of British Columbia'}
+			talkTitle={"Nature's Pharmacy: Uncovering Novel Drug Candidates from the Rainforest"}
+			learnMore="#"
+		/>
+		<SpeakerTile
+			image={'/tempPicA.svg'}
+			name={'Dr. Anya Petrovich'}
+			title={'Professor'}
+			university={'McGill University, The Metabolomics Innovation Centre (TMIC)'}
+			talkTitle={'Unlocking Enzyme Potential: Biocatalysts for a Sustainable Future'}
+			learnMore="#"
+		/>
+				<SpeakerTile
+			image={'/tempPicB.svg'}
+			name={'Dr. Ben Stephens'}
+			title={'Associate Professor'}
+			university={'Univesity of British Columbia'}
+			talkTitle={"Nature's Pharmacy: Uncovering Novel Drug Candidates from the Rainforest"}
+			learnMore="#"
+		/>
+	</section>
+	</section>
+</section>

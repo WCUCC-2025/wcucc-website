@@ -1,0 +1,37 @@
+---
+import SectionIconTitle from '../elements/SectionIconTitle.astro';
+---
+
+<section class="bg-[#111B21] p-10 h-[30rem] overflow-hidden">
+	<SectionIconTitle
+		title="Important Deadlines"
+		icon="ri-hourglass-fill"
+		color="bg-wcucc-sky"
+		textColor="white"
+	/>
+	<div class="flex flex-row items-center justify-evenly">
+		<div class="relative">
+			<h4 class="text-white text-lg font-light">ABSTRACT SUBMISSION</h4>
+			<h1 class="text-white text-6xl font-bold">April 14th,<br> 2025</h1>
+			<button>Learn More</button>
+			<img
+				class="absolute bottom-2 top-10"
+				src="/AbstractDeadlineIcon.svg"
+				alt="Abstraction Submission Icon"
+			/>
+		</div>
+		<div class="relative">
+			<h4 class="text-white text-lg font-light">REGISTRATION</h4>
+			<h1 class="text-white text-6xl font-bold">
+				May 1st,<br> 2025<h1>
+					<button>Register Now</button>
+					<img
+						class="absolute bottom-2 top-10"
+						src="/RegistrationClock.svg"
+						alt="Registration Icon"
+					/>
+				</h1>
+			</h1>
+		</div>
+	</div>
+</section>

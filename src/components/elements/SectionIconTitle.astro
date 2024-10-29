@@ -1,0 +1,13 @@
+---
+import 'remixicon/fonts/remixicon.css';
+const { title, icon, color, textColor = 'white' } = Astro.props;
+---
+
+<div class="flex flex-row items-center justify-start overflow-hidden">
+	<span class={`fade-in-left flex h-full w-fit flex-col items-center justify-center p-2 ${color}`}><i class={`${icon} text-white text-xl`}></i></span>
+	<h3
+			class={`fade-in-left ${color} bg-opacity-5 py-2 px-4 text-xl text-${textColor}`}
+	>
+		{title}
+	</h3>
+</div>

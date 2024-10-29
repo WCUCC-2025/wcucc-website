@@ -1,0 +1,16 @@
+---
+const { image, name, title, university, talkTitle, learnMore } = Astro.props;
+---
+
+<div
+	class="border-[#000] relative flex max-w-[18rem] flex-col items-center justify-between rounded-lg border-2 p-6 pt-20 shadow shadow-black"
+>
+	<section class="flex flex-col items-center justify-center">
+		<img class="absolute -top-20 z-0" src={image} alt={name} />
+		<p class="m-0 p-0 text-lg font-bold">{name}</p>
+		<p class="m-0 p-0 font-normal text-lg">{title}</p>
+		<p class="m-0 p-0 text-center font-light">{university}</p>
+		<p class="m-0 p-0 py-10 text-center italic font-light">"{talkTitle}"</p>
+	</section>
+	<button>Learn More</button>
+</div>

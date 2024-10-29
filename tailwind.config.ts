@@ -33,6 +33,7 @@ const config: Config = {
                     bg: '#fee6a9',
                 },
                 'wcucc-pine': '#077364',
+				'wcucc-sky': '#1B98F2'
             },
         },
     },
@@ -46,7 +47,7 @@ const config: Config = {
         ringColor: false,
         ringOffsetWidth: false,
         ringOffsetColor: false,
-        boxShadow: false,
+        boxShadow: true,
         transform: false,
         touchAction: false,
         scrollSnapType: false,
