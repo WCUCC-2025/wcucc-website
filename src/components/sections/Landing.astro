@@ -1,0 +1,64 @@
+---
+import CountDownTimer from '../elements/CountDownTimer.astro';
+---
+
+<section
+	class="flex h-screen w-screen flex-col items-start justify-center bg-[url('/home-hero-bg-d.svg')] p-20"
+>
+	<div>
+		<div class="pb-4">
+			<div class="my-4 flex flex-row items-center justify-start gap-4">
+				<p class="mb-0 text-2xl font-normal text-white">
+					May 7 - 12, 2025
+				</p>
+				<a
+					><button
+						class="rounded-lg border-0 bg-purple-600 p-2 text-white transition-all duration-300 hover:cursor-not-allowed hover:bg-purple-700"
+						>Add to Calendar <i class="ri-external-link-fill"
+						></i></button
+					></a
+				>
+			</div>
+			<p class="mb-0 text-2xl font-light text-white">
+				Western Canada Undergraduate Chemistry Conference
+			</p>
+		</div>
+		<div class="">
+			<h1 class="text-8xl text-white">WCUCC 2025</h1>
+			<h1 class="mb-0 text-4xl text-white">
+				Discover how we <span
+					id="typer"
+					class="mb-0 text-wcucc-coral-400"></span>
+			</h1>
+			<div class="my-4 flex flex-row items-center justify-start gap-4">
+				<h4 class="my-0 text-2xl font-normal text-white">
+					@ The University of British Columbia, Okanagan
+				</h4>
+				<a
+					href="https://www.google.ca/maps/place/The+University+of+British+Columbia+-+Okanagan+Campus/@49.9398234,-119.3989527,17z/data=!3m1!4b1!4m5!3m4!1s0x537ded7da291f011:0x7ca879b9058df1a4!8m2!3d49.93982!4d-119.396764"
+					><button
+						class="rounded-lg border-0 bg-blue-600 p-2 text-white transition-all duration-300 hover:cursor-pointer hover:bg-blue-700"
+						>Open in Maps <i class="ri-external-link-fill"
+						></i></button
+					></a
+				>
+			</div>
+		</div>
+	</div>
+	<CountDownTimer />
+</section>
+<script>
+	import Typed from 'typed.js';
+	new Typed('#typer', {
+		strings:
+			'innovate, create, design, synthesize, pipette, analyze, experiment, teach, learn'.split(
+				', '
+			),
+		typeSpeed: 100,
+		backSpeed: 50,
+		backDelay: 1000,
+		smartBackspace: true,
+		loop: true,
+		shuffle: true,
+	});
+</script>
