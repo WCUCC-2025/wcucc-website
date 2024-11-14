@@ -4,10 +4,10 @@ import RegisterButton from "./elements/RegisterButton.astro";
 
 
 ---
-<div class="absolute w-screen">
-	<nav class="bg-white mx-4 mt-4 px-2 py-2 pr-4 rounded-lg flex flex-row justify-between border border-solid border-red-100 items-center h-16">
+<div class="fixed w-screen z-50">
+	<nav class="top-0 left-0 right-0 bg-white mx-4 mt-4 px-2 py-2 pr-4 rounded-lg flex flex-row justify-between items-center h-16 shadow-2xl">
 		<div id="logo" class="aspect- flex items-center justify-center h-full w-16">
-			<a href="/" class="font-bold w-14 h-14 bg-wcucc-coral-300 pl-1 pt-1 text-white text-base/tight rounded-full">WCU<br>CC</a>
+			<a href="/" class="font-bold w-12 h-12 bg-lime-200 border-2 pl-1 pt-1 text-white text-base/tight rounded-full" style="border: 0.1rem #000000 solid;"></a>
 		</div>
 		<div id="links" class="flex flex-row">
 			<NavLink href="/meet-the-team">WCUCC</NavLink>	

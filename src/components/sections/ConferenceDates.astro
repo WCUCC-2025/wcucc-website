@@ -8,16 +8,10 @@ import SectionIconTitle from '@src/components/elements/SectionIconTitle.astro';
 	class="flex h-screen flex-col items-start justify-center bg-gradient-to-b from-[#14232d] to-[#111B21]"
 >
 	<div class="ml-auto flex w-4/5 flex-col items-start justify-center">
-		<SectionIconTitle
-			title="Conference Dates | May 7 - 12, 2024"
-			icon="ri-calendar-event-fill"
-			color="bg-wcucc-coral-400"
-			text="white"
-		/>
+		<SectionIconTitle title="Conference Dates | May 7 - 12, 2024" icon="ri-calendar-event-fill" color="bg-wcucc-coral-400" text="white" />
 		<div class="flex w-4/5 flex-row items-center justify-between">
 			<div class="flex flex-row items-center justify-center">
-				<h1
-					id="countdown"
+				<h1 id="countdow"
 					class="fade-in-left mr-5 text-[12rem] font-bold text-white sm:text-[24cqi]"
 				>
 				</h1>
@@ -40,11 +34,11 @@ import SectionIconTitle from '@src/components/elements/SectionIconTitle.astro';
 
 		const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
 
-		document.getElementById('countdown').innerHTML = days;
+		document.getElementById('countdow').innerHTML = days;
 
 		if (timeLeft < 0) {
 			clearInterval(countdownTimer);
-			document.getElementById('countdown').innerHTML =
+			document.getElementById('countdow').innerHTML =
 				'The day has arrived!';
 		}
 	}

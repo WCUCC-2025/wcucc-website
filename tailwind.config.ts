@@ -51,7 +51,7 @@ const config: Config = {
         transform: false,
         touchAction: false,
         scrollSnapType: false,
-        borderColor: false, // If we don't disable this, Tailwind will apply a default border color to all the elements
+        borderColor: true, // If we don't disable this, Tailwind will apply a default border color to all the elements
         borderOpacity: false,
         textOpacity: false,
         // Things we might need in the future but disable for now as they also add stuff
