@@ -4,8 +4,6 @@ import tailwind from '@astrojs/tailwind';
 import qwikdev from '@qwikdev/astro';
 import vercel from '@astrojs/vercel/static';
 
-import react from '@astrojs/react';
-
 // https://astro.build/config
 export default defineConfig({
     output: 'static',
@@ -15,5 +13,5 @@ export default defineConfig({
         },
     }),
     site: 'https://2025.wcucc.com/',
-    integrations: [tailwind(), qwikdev(), react()],
+    integrations: [tailwind(), qwikdev()],
 });
