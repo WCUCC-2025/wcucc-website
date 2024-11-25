@@ -1,37 +1,33 @@
 ---
-import SectionIconTitle from '../elements/SectionIconTitle.astro';
+import 'remixicon/fonts/remixicon.css';
+import UIButton from '../elements/ui/button.astro';
+import SectionTitle from '../elements/ui/sectiontitle.astro';
 ---
 
-<section class="bg-[#111B21] p-10 h-[30rem] overflow-hidden">
-	<SectionIconTitle
-		title="Important Deadlines"
-		icon="ri-hourglass-fill"
-		color="bg-wcucc-sky"
-		textColor="white"
-	/>
-	<div class="flex flex-row items-center justify-evenly">
-		<div class="relative">
-			<h4 class="text-white text-lg font-light">ABSTRACT SUBMISSION</h4>
-			<h1 class="text-white text-6xl font-bold">April 14th,<br> 2025</h1>
-			<button>Learn More</button>
-			<img
-				class="absolute bottom-2 top-10"
-				src="/AbstractDeadlineIcon.svg"
-				alt="Abstraction Submission Icon"
-			/>
+<section class="bg-[#111B21] p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle>
+		Important<br>Deadlines
+	</SectionTitle>
+	<div class="">
+		<div class="flex flex-col items-start justify-start gap-2">
+			<h4 class="mb-0 text-xl font-light text-white">
+				ABSTRACT SUBMISSION
+			</h4>
+			<h1 class="mb-0 text-6xl font-bold text-white">April 14th, 2025</h1>
+			<div class="flex flex-row gap-4">
+				<UIButton text="Learn More" link="" />
+				<UIButton text="Add to Calendar" link="" />
+			</div>
 		</div>
-		<div class="relative">
-			<h4 class="text-white text-lg font-light">REGISTRATION</h4>
-			<h1 class="text-white text-6xl font-bold">
-				May 1st,<br> 2025<h1>
-					<button>Register Now</button>
-					<img
-						class="absolute bottom-2 top-10"
-						src="/RegistrationClock.svg"
-						alt="Registration Icon"
-					/>
-				</h1>
-			</h1>
+		<div class="flex flex-col items-start justify-start gap-2">
+			<h4 class="mb-0 text-xl font-light text-white">
+				REGISTRATION
+			</h4>
+			<h1 class="mb-0 text-6xl font-bold text-white">May 1st, 2025</h1>
+			<div class="flex flex-row gap-4">
+				<UIButton text="Learn More" link="" />
+				<UIButton text="Add to Calendar" link="" />
+			</div>
 		</div>
 	</div>
 </section>

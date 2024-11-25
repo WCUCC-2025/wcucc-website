@@ -1,9 +1,12 @@
 ---
-import Landing from '@src/components/sections/Landing.astro';
-import MissonNPrinciples from '@src/components/sections/MissonNPrinciples.astro';
+import SpeakerInformation from '@src/components/elements/SpeakerInformation.astro';
+import Speakers from '@src/components/sections/Speakers.astro';
 import Base from '@src/layouts/Base.astro';
 ---
 
 <Base title="Playground">
-	<MissonNPrinciples />
+	<div class="relative">
+		<Speakers />
+		<SpeakerInformation />
+	</div>
 </Base>
