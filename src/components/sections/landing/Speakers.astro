@@ -1,8 +1,8 @@
 ---
-import SectionIconTitle from '../elements/SectionIconTitle.astro';
-import SpeakerTile from '../elements/SpeakerTile.astro';
-import SectionTitle from '../elements/ui/sectiontitle.astro';
-import SpeakerInformation from '../elements/SpeakerInformation.astro';
+import SectionIconTitle from '@src/components/elements/SectionIconTitle.astro';
+import SpeakerTile from '@src/components/elements/SpeakerTile.astro';
+import SectionTitle from '@src/components/elements/ui/sectiontitle.astro';
+import SpeakerInformation from '@src/components/elements/SpeakerInformation.astro';
 ---
 
 <section class="w-screen p-5 sm:p-10 md:p-14 lg:p-20">
@@ -62,16 +62,16 @@ import SpeakerInformation from '../elements/SpeakerInformation.astro';
 </section>
 <SpeakerInformation />
 <script is:inline>
-	const btn = document.getElementById('trigger-overlay');
-	const overlay = document.getElementById('overlay');
-	btn.addEventListener('click', () => {
+	const speakbtn = document.getElementById('trigger-overlay');
+	const speakoverlay = document.getElementById('speakoverlay');
+	speakbtn.addEventListener('click', () => {
 		console.log('click!!');
-		overlay.classList.toggle('hidden-el');
+		speakoverlay.classList.toggle('hidden-el');
 	});
 
-	overlay.addEventListener('click', () => {
-		if (event.target === overlay) {
-			overlay.classList.add('hidden-el');
+	speakoverlay.addEventListener('click', (event) => {
+		if (event.target === speakoverlay) {
+			speakoverlay.classList.add('hidden-el');
 		}
 	});
 </script>

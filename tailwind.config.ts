@@ -54,6 +54,7 @@ const config: Config = {
         borderColor: true, // If we don't disable this, Tailwind will apply a default border color to all the elements
         borderOpacity: false,
         textOpacity: false,
+		textDecoration: false,
         // Things we might need in the future but disable for now as they also add stuff
         // fontVariantNumeric: false,
     },
