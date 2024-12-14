@@ -34,15 +34,15 @@ import SectionIconTitle from '@src/components/elements/SectionIconTitle.astro';
 
 		const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
 
-		document.getElementById('countdow').innerHTML = days;
+		document.getElementById('countdow')!.innerHTML = days.toString();
 
 		if (timeLeft < 0) {
 			clearInterval(countdownTimer);
-			document.getElementById('countdow').innerHTML =
+			document.getElementById('countdow')!.innerHTML =
 				'The day has arrived!';
 		}
 	}
 
 	updateCountdown();
-	const countdownTimer = setInterval(updateCountdown, 86400000); // Update once per day
+	const countdownTimer = setInterval(updateCountdown, 86400000);
 </script>
