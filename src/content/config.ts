@@ -11,6 +11,19 @@ const biosCollection = defineCollection({
     }),
 });
 
+const carouselCollection = defineCollection({
+    type: 'data',
+    schema: z.object({
+      title: z.string(),
+      description: z.string(),
+      mainImage: z.string(),
+      secondaryImage: z.string(),
+      alt: z.string(),
+      buttonLink: z.string()
+    })
+  })
+
 export const collections = {
     bios: biosCollection,
+	carousel: carouselCollection,
 };

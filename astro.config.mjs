@@ -15,4 +15,3 @@ export default defineConfig({
     site: 'https://2025.wcucc.com/',
     integrations: [tailwind(), qwikdev()],
 });
-

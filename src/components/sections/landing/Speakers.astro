@@ -1,0 +1,77 @@
+---
+import SectionIconTitle from '@src/components/elements/SectionIconTitle.astro';
+import SpeakerTile from '@src/components/elements/SpeakerTile.astro';
+import SectionTitle from '@src/components/elements/ui/sectiontitle.astro';
+import SpeakerInformation from '@src/components/elements/SpeakerInformation.astro';
+---
+
+<section class="w-screen p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle color="black"> Speakers </SectionTitle>
+	<section class="flex w-full flex-col items-center justify-start">
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+			<SpeakerTile
+				image={'/tempPicB.svg'}
+				name={'Dr. Anya Petrovich'}
+				title={'Professor'}
+				university={'McGill University, The Metabolomics Innovation Centre (TMIC)'}
+				talkTitle={'Unlocking Enzyme Potential: Biocatalysts for a Sustainable Future'}
+				learnMore="#"
+			/>
+			<SpeakerTile
+				image={'/tempPicB.svg'}
+				name={'Dr. Ben Stephens'}
+				title={'Associate Professor'}
+				university={'Univesity of British Columbia'}
+				talkTitle={"Nature's Pharmacy: Uncovering Novel Drug Candidates from the Rainforest"}
+				learnMore="#"
+			/>
+			<SpeakerTile
+				image={'/tempPicB.svg'}
+				name={'Dr. Anya Petrovich'}
+				title={'Professor'}
+				university={'McGill University, The Metabolomics Innovation Centre (TMIC)'}
+				talkTitle={'Unlocking Enzyme Potential: Biocatalysts for a Sustainable Future'}
+				learnMore="#"
+			/>
+			<SpeakerTile
+				image={'/tempPicB.svg'}
+				name={'Dr. Ben Stephens'}
+				title={'Associate Professor'}
+				university={'Univesity of British Columbia'}
+				talkTitle={"Nature's Pharmacy: Uncovering Novel Drug Candidates from the Rainforest"}
+				learnMore="#"
+			/>
+			<SpeakerTile
+				image={'/tempPicB.svg'}
+				name={'Dr. Anya Petrovich'}
+				title={'Professor'}
+				university={'McGill University, The Metabolomics Innovation Centre (TMIC)'}
+				talkTitle={'Unlocking Enzyme Potential: Biocatalysts for a Sustainable Future'}
+				learnMore="#"
+			/>
+			<SpeakerTile
+				image={'/tempPicB.svg'}
+				name={'Dr. Ben Stephens'}
+				title={'Associate Professor'}
+				university={'Univesity of British Columbia'}
+				talkTitle={"Nature's Pharmacy: Uncovering Novel Drug Candidates from the Rainforest"}
+				learnMore="#"
+			/>
+		</div>
+	</section>
+</section>
+<SpeakerInformation />
+<script is:inline>
+	const speakbtn = document.getElementById('trigger-overlay');
+	const speakoverlay = document.getElementById('speakoverlay');
+	speakbtn.addEventListener('click', () => {
+		console.log('click!!');
+		speakoverlay.classList.toggle('hidden-el');
+	});
+
+	speakoverlay.addEventListener('click', (event) => {
+		if (event.target === speakoverlay) {
+			speakoverlay.classList.add('hidden-el');
+		}
+	});
+</script>

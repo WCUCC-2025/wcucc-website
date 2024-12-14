@@ -1,0 +1,12 @@
+---
+const {src, title, description, link} = Astro.props;
+---
+
+<div class="max-w-[500px]">
+	<img src={`/public/placestoeat/${src}.svg`} alt={title} />
+	<div class="flex flex-col justify-center items-start gap-2 py-2">
+	<h4 class="p-0 m-0 leading-none text-2xl text-white font-bold">{title}</h4>
+	<p class="p-0 m-0 leading-7 text-xl text-white font-light">{description}</p>
+	<a class="p-2 border-[1px] border-white border-solid text-white text-xl my-2" href={link}>Learn More</a>
+	</div>
+</div>

@@ -1,18 +1,20 @@
 ---
-
+import SectionTitle from "@src/components/elements/ui/sectiontitle.astro"
 ---
 
-<section class="p-20">
-	<h1 class="pb-10 text-6xl font-medium">Our Mission & Principles</h1>
+<section class="p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle color="black">
+		Our <br class="sm:hidden">Mission & Principles
+	</SectionTitle>
 
-	<p class="pb-10 text-2xl font-light">
+	<p class="pb-2 lg:pb-10 text-2xl font-light">
 		The 37th Western Canadian Undergraduate Chemistry Conference will be
 		held at the University of British Columbia Okanagan, located in the
 		Sylic Okanagan Territory, in May of 2025.
 	</p>
 
-	<div class="grid grid-cols-3 gap-10 pb-10">
-		<p class="col-span-2 text-2xl font-light">
+	<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 pb-10">
+		<p class="col-span-1 md:col-span-2 text-2xl font-light">
 			This conference will provide undergraduates an opportunity to
 			present their research, learn from luminaries in the field of
 			chemistry, and connect with others to foster community. The guiding
@@ -30,8 +32,8 @@
 			</p><p class="py-10 text-5xl">Participants, Ideas, & Disciplines</p>
 		</div>
 		<div
-			class="h-fit bg-white p-4 hover:shadow-2xl transition-all duration-300"
-			style="border: 4px #000000 solid; border-radius: 0.5rem; margin-top: -15rem;"
+			class="h-fit bg-white p-4 hover:shadow-2xl transition-all duration-300 xl:mt-[-15rem]"
+			style="border: 4px #000000 solid; border-radius: 0.5rem;"
 		>
 			<p
 				class="w-fit rounded-lg p-2 text-lg"
@@ -43,8 +45,8 @@
 			</p>
 		</div>
 		<div
-			class="h-fit bg-white p-4 hover:shadow-2xl transition-all duration-300"
-			style="border: 4px #000000 solid; border-radius: 0.5rem; margin-top: -15rem;"
+			class="h-fit bg-white p-4 hover:shadow-2xl transition-all duration-300 xl:mt-[-15rem]"
+			style="border: 4px #000000 solid; border-radius: 0.5rem;"
 		>
 			<p
 				class="w-fit rounded-lg p-2 text-lg"

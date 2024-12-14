@@ -1,0 +1,33 @@
+---
+import 'remixicon/fonts/remixicon.css';
+import UIButton from '@src/components/elements/ui/button.astro';
+import SectionTitle from '@src/components/elements/ui/sectiontitle.astro';
+---
+
+<section class="bg-[#111B21] p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle>
+		Important<br>Deadlines
+	</SectionTitle>
+	<div class="">
+		<div class="flex flex-col items-start justify-start gap-2">
+			<h4 class="mb-0 text-xl font-light text-white">
+				ABSTRACT SUBMISSION
+			</h4>
+			<h1 class="mb-0 text-6xl font-bold text-white">April 14th, 2025</h1>
+			<div class="flex flex-row gap-4">
+				<UIButton text="Learn More" link="" />
+				<UIButton text="Add to Calendar" link="" />
+			</div>
+		</div>
+		<div class="flex flex-col items-start justify-start gap-2">
+			<h4 class="mb-0 text-xl font-light text-white">
+				REGISTRATION
+			</h4>
+			<h1 class="mb-0 text-6xl font-bold text-white">May 1st, 2025</h1>
+			<div class="flex flex-row gap-4">
+				<UIButton text="Learn More" link="" />
+				<UIButton text="Add to Calendar" link="" />
+			</div>
+		</div>
+	</div>
+</section>
