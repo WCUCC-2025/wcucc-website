@@ -1,19 +1,27 @@
 ---
-import NavLink from "./NavLink.astro";
-import RegisterButton from "./elements/RegisterButton.astro";
-
-
+import NavLink from './NavLink.astro';
+import RegisterButton from './elements/RegisterButton.astro';
+import InterestButton from './elements/InterestButton.astro';
 ---
-<div class="absolute w-screen z-50">
-	<nav class="bg-white mx-4 mt-4 px-2 py-2 pr-4 rounded-lg flex flex-row justify-between border border-solid border-red-100 items-center h-16">
-		<div id="logo" class="aspect- flex items-center justify-center h-full w-16">
-			<a href="/" class="font-bold w-14 h-14 bg-wcucc-coral-300 pl-1 pt-1 text-white text-base/tight rounded-full">WCU<br>CC</a>
+
+<div class="fixed z-50 w-screen">
+	<nav
+		class="left-0 right-0 top-0 mx-4 mt-4 flex h-16 flex-row items-center justify-between rounded-lg bg-white px-2 py-2 pr-4 shadow-2xl"
+	>
+		<div
+			id="logo"
+			class="aspect- flex h-full w-16 items-center justify-center"
+		>
+			<a
+				href="/"
+				class="h-12 w-12 rounded-full border-2 bg-lime-200 pl-1 pt-1 text-base/tight font-bold text-white"
+				style="border: 0.1rem #000000 solid;"></a>
 		</div>
 		<div id="links" class="flex flex-row">
-			<NavLink href="/meet-the-team">WCUCC</NavLink>	
-			<NavLink href="/about-kelowna">KELOWNA</NavLink>	
-			<NavLink href="/funding" icon={false}>FUNDING</NavLink>	
-			<RegisterButton />
+			<NavLink href="/meet-the-team">WCUCC</NavLink>
+			<NavLink href="">KELOWNA</NavLink>
+			<NavLink href="/funding" icon={false}>FUNDING</NavLink>
+			<InterestButton />
 		</div>
 	</nav>
 </div>

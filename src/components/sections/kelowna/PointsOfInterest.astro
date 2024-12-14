@@ -1,0 +1,195 @@
+---
+import { getCollection } from 'astro:content';
+import SectionTitle from '@src/components/elements/ui/sectiontitle.astro';
+import 'remixicon/fonts/remixicon.css';
+
+const carouselItems = await getCollection('carousel');
+---
+
+<section class="p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle color="black">
+		Where nature<br />meets the city...
+	</SectionTitle>
+</section>
+
+<div class="relative mb-8 overflow-hidden p-5">
+	<div class="flex items-center justify-center">
+		<div
+			id="carouselWrapper"
+			class="w-full overflow-hidden px-4"
+		>
+			<div
+				id="carouselTrack"
+				class="flex gap-4 transition-transform duration-300"
+			>
+				{
+					carouselItems.map((item, index) => (
+						<div class="carousel-item shrink-0" data-index={index}>
+							<img
+								src={item.data.mainImage}
+								alt={item.data.alt}
+								class="h-[200px] w-[300px] cursor-pointer rounded-lg object-cover transition-all duration-300"
+								data-selected="false"
+							/>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-4 flex justify-start gap-2">
+		<i id="prevBtn" class="ri-arrow-left-circle-fill text-4xl transition-colors hover:cursor-pointer text-gray-300"></i>
+		<i id="nextBtn" class="ri-arrow-right-circle-fill text-4xl transition-colors hover:cursor-pointer"></i>
+	</div>
+</div>
+
+<div
+	id="itemDetails"
+	class="flex w-full flex-row justify-between items-center bg-[#0088FF] p-5 sm:p-10 md:p-14 lg:p-20"
+>
+	<div class="mb-6">
+		<h2
+			id="itemTitle"
+			class="pb-10 text-7xl font-medium text-white sm:text-[5rem] lg:text-[7.8rem]"
+		>
+		</h2>
+		<p id="itemDescription" class="text-xl text-black"></p>
+		<div class="flex flex-col justify-between">
+			<a
+				id="itemButton"
+				href="#"
+				class="mt-4 inline-block rounded-lg bg-pink-600 px-6 py-2 text-white transition-colors hover:bg-pink-700"
+			>
+				Learn More
+			</a>
+		</div>
+	</div>
+
+	<div class="p-10 w-3/4 flex flex-row justify-center items-center">
+		<img
+			id="secondaryImage"
+			src=""
+			alt=""
+			class="h-auto w-full rounded-lg object-cover"
+		/>
+	</div>
+</div>
+
+<script define:vars={{ carouselItems }}>
+	let currentIndex = 0;
+	const track = document.getElementById('carouselTrack');
+	const wrapper = document.getElementById('carouselWrapper');
+	const items = document.querySelectorAll('.carousel-item');
+	const prevBtn = document.getElementById('prevBtn');
+	const nextBtn = document.getElementById('nextBtn');
+
+	const itemWidth = 300;
+	const itemGap = 24;
+	const itemFullWidth = itemWidth + itemGap;
+
+	const itemsData = carouselItems.map(item => ({
+		title: item.data.title,
+		description: item.data.description,
+		mainImage: item.data.mainImage,
+		secondaryImage: item.data.secondaryImage,
+		alt: item.data.alt,
+		buttonText: item.data.buttonText,
+		buttonLink: item.data.buttonLink,
+	}));
+
+	function updateButtonStates() {
+		if (currentIndex === 0) {
+			prevBtn.classList.add('text-gray-300');
+			prevBtn.classList.remove('text-black');
+			prevBtn.style.pointerEvents = 'none';
+		} else {
+			prevBtn.classList.remove('text-gray-300');
+			prevBtn.classList.add('text-black');
+			prevBtn.style.pointerEvents = 'auto';
+		}
+
+		if (currentIndex === items.length - 1) {
+			nextBtn.classList.add('text-gray-300');
+			nextBtn.classList.remove('text-black');
+			nextBtn.style.pointerEvents = 'none';
+		} else {
+			nextBtn.classList.remove('text-gray-300');
+			nextBtn.classList.add('text-black');
+			nextBtn.style.pointerEvents = 'auto';
+		}
+	}
+
+	function calculateOffset() {
+		const wrapperWidth = wrapper.offsetWidth;
+		const totalItems = items.length;
+		const totalWidth = totalItems * itemFullWidth - itemGap;
+		
+		const visibleItems = Math.floor(wrapperWidth / itemFullWidth);
+		
+		if (visibleItems <= 1) {
+			const centerOffset = (wrapperWidth - itemWidth) / 2;
+			let offset = -(currentIndex * itemFullWidth) + centerOffset;
+			
+			const maxOffset = 0;
+			const minOffset = -((totalItems - 1) * itemFullWidth) + centerOffset;
+			offset = Math.max(Math.min(offset, maxOffset), minOffset);
+			
+			return offset;
+		}
+		
+		let offset = -(currentIndex * itemFullWidth);
+		if (-offset > totalWidth - wrapperWidth) {
+			offset = -(totalWidth - wrapperWidth);
+		}
+		
+		offset = Math.min(offset, 0);
+		
+		return offset;
+	}
+
+	function updateCarousel() {
+		const offset = calculateOffset();
+		track.style.transform = `translateX(${offset}px)`;
+
+		const currentItem = itemsData[currentIndex];
+		const titleElement = document.getElementById('itemTitle');
+		const descriptionElement = document.getElementById('itemDescription');
+		const secondaryImageElement = document.getElementById('secondaryImage');
+		const buttonElement = document.getElementById('itemButton');
+
+		if (titleElement) titleElement.textContent = currentItem.title;
+		if (descriptionElement) descriptionElement.textContent = currentItem.description;
+		if (secondaryImageElement) {
+			secondaryImageElement.src = currentItem.secondaryImage;
+			secondaryImageElement.alt = currentItem.alt;
+		}
+		if (buttonElement) {
+			buttonElement.href = currentItem.buttonLink;
+		}
+
+		updateButtonStates();
+	}
+
+	prevBtn.addEventListener('click', () => {
+		if (currentIndex > 0) {
+			currentIndex--;
+			updateCarousel();
+		}
+	});
+
+	nextBtn.addEventListener('click', () => {
+		if (currentIndex < items.length - 1) {
+			currentIndex++;
+			updateCarousel();
+		}
+	});
+
+	window.addEventListener('load', () => {
+		updateCarousel();
+	});
+
+	window.addEventListener('resize', () => {
+		updateCarousel();
+	});
+</script>

@@ -8,12 +8,12 @@ const config: Config = {
 			borderRadius: {
 				ms: '0.250rem'
 			},
-            screens: {
-                sm: { max: '640px' },
-                md: { max: '768px' },
-                lg: { max: '1024px' },
-                xl: { max: '1280px' },
-            },
+            // screens: {
+            //     sml: { max: '640px' },
+            //     med: { max: '768px' },
+            //     lrg: { max: '1024px' },
+            //     xtl: { max: '1280px' },
+            // },
             colors: {
                 'wcucc-yellow': '#F7B801',
                 'wcucc-lavender': '#7678ED',
@@ -33,6 +33,7 @@ const config: Config = {
                     bg: '#fee6a9',
                 },
                 'wcucc-pine': '#077364',
+				'wcucc-sky': '#1B98F2'
             },
         },
     },
@@ -46,13 +47,14 @@ const config: Config = {
         ringColor: false,
         ringOffsetWidth: false,
         ringOffsetColor: false,
-        boxShadow: false,
+        boxShadow: true,
         transform: false,
         touchAction: false,
         scrollSnapType: false,
-        borderColor: false, // If we don't disable this, Tailwind will apply a default border color to all the elements
+        borderColor: true, // If we don't disable this, Tailwind will apply a default border color to all the elements
         borderOpacity: false,
         textOpacity: false,
+		textDecoration: false,
         // Things we might need in the future but disable for now as they also add stuff
         // fontVariantNumeric: false,
     },
