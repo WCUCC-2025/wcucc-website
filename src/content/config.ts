@@ -6,8 +6,10 @@ const biosCollection = defineCollection({
         firstName: z.string(),
         lastName: z.string(),
         role: z.string(),
-        headshotUrl: z.string(),
+        headshot: z.string(),
         major: z.string(),
+		biography: z.string(),
+		funFact: z.string()
     }),
 });
 
@@ -24,6 +26,6 @@ const carouselCollection = defineCollection({
   })
 
 export const collections = {
-    bios: biosCollection,
+    'bios': biosCollection,
 	carousel: carouselCollection,
 };

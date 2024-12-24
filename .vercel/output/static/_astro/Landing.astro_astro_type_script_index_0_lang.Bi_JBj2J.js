@@ -1,0 +1,1 @@
+import{i as e}from"./typed.module.exEGtOgn.js";new e("#typer",{strings:"innovate, create, design, synthesize, pipette, analyze, experiment, teach, learn".split(", "),typeSpeed:100,backSpeed:50,backDelay:1e3,smartBackspace:!0,loop:!0,shuffle:!0});

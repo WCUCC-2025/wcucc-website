@@ -1,12 +1,9 @@
----
-firstName: Trevor
-lastName: Fox
-headshotUrl: '/headshots/trevor.webp'
-major: 'BSc, Biochemistry and Molecular Biology'
-role: 'Web Developer, Designer'
----
-
-I am Trevor, a biochemistry major in his fourth year at UBCO. This year, I serve
+firstName: "Trevor"
+lastName: "Fox"
+headshot: "trevor.webp"
+major: "BSc Biochemistry and Molecular Biology"
+role: "Web Developer, Designer"
+biography: 'I am Trevor, a biochemistry major in his fourth year at UBCO. This year, I serve
 dutifully as one of the architects for this website! I also conduct research
 focused on the field of metabolomics. I just finished developing and validating
 a method to predict the species of origin of frankincense based on 60 and 400
@@ -15,8 +12,7 @@ International Genetically Engineered Machine competition team, where we
 endeavoured to produce bioluminescent cyanobacteria. I love exploring new
 avenues to accomplish things, as evident in my line of research. My hobbies
 include playing piano, programming, ice skating/skiing, and cooking. One might
-say I am “multivalent!” 
-
-**Fun Fact:** Bismuth is my favourite element, not only
+say I am “multivalent!”'
+funFact: "Bismuth is my favourite element, not only
 because it’s pretty, but also because its half-life is longer than the
-universe's age.
+universe's age."
