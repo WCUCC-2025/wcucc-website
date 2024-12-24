@@ -1,10 +1,11 @@
 ---
-import SpeakerInformation from '@src/components/elements/SpeakerInformation.astro';
-import Speakers from '@src/components/sections/landing/Speakers.astro';
 import Base from '@src/layouts/Base.astro';
+import OverlayBase from '@src/components/elements/OverlayBase.astro';
+import SpeakerDetails from '@src/components/sections/landing/elements/SpeakerDetails.astro';
 ---
 
 <Base title="Playground">
-		<Speakers />
-		<SpeakerInformation />
+	<OverlayBase>
+		<SpeakerDetails />
+	</OverlayBase>
 </Base>
