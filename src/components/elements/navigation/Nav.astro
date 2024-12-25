@@ -1,0 +1,55 @@
+---
+import NavLink from '@src/components/elements/navigation/NavLink.astro';
+import NavMenu from '@src/components/elements/navigation/NavMenu.astro';
+import InterestButton from '@src/components/elements/InterestButton.astro';
+---
+
+<div class="fixed right-0 z-50 flex w-screen p-5">
+    <nav class="flex w-full flex-row items-center justify-between">
+        <div id="logo" class="px-4">
+            <a href="/feature">
+                <img
+                    src="/WCUCC-Logo.svg"
+                    alt="WCUCC Logo"
+                    width="100"
+                    height="100"
+                />
+            </a>
+        </div>
+        <div
+            id="links"
+            class="flex h-16 w-fit flex-row items-center justify-between rounded-lg bg-white px-4 py-2 shadow-2xl"
+        >
+            <NavLink 
+                id="conferenceDropdown" 
+                href="/meet-the-team"
+                hasDropdown={true}
+            >
+                CONFERENCE
+                <NavMenu slot="dropdown" />
+            </NavLink>
+            <InterestButton />
+        </div>
+    </nav>
+</div>
+
+<script is:inline>
+    const dropdown = document.getElementById('conferenceDropdown');
+    const menu = dropdown.querySelector('#dropdownMenu');
+    
+    let isHovering = false;
+    
+    dropdown.addEventListener('mouseenter', () => {
+        isHovering = true;
+        menu.classList.remove('hide');
+    });
+    
+    dropdown.addEventListener('mouseleave', () => {
+        isHovering = false;
+        setTimeout(() => {
+            if (!isHovering) {
+                menu.classList.add('hide');
+            }
+        }, 100);
+    });
+</script>

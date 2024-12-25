@@ -1,0 +1,16 @@
+---
+const { title, description, image = '' } = Astro.props;
+---
+
+<section
+	class="flex h-screen w-full flex-col items-start justify-center gap-2 bg-[url('/kelowna-bg.jpg')] bg-cover p-5 sm:p-10 md:p-14 lg:p-20"
+>
+	<h1
+		class="border-[1px] text-7xl font-bold text-white outline-black sm:text-[5rem] lg:text-[7.8rem]"
+	>
+		{title}
+	</h1>
+	<h4 class="my-0 text-2xl font-light text-white lg:text-3xl">
+		{description}
+	</h4>
+</section>
