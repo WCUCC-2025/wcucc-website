@@ -1,7 +1,7 @@
 import { z, defineCollection } from 'astro:content';
 
 const biosCollection = defineCollection({
-    type: 'content',
+    type: 'data',
     schema: z.object({
         firstName: z.string(),
         lastName: z.string(),
