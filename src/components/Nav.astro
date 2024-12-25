@@ -1,27 +1,55 @@
 ---
 import NavLink from './NavLink.astro';
-import RegisterButton from './elements/RegisterButton.astro';
+import NavMenu from '@src/components/elements/NavMenu.astro';
 import InterestButton from './elements/InterestButton.astro';
 ---
 
-<div class="fixed z-50 w-screen">
-	<nav
-		class="left-0 right-0 top-0 mx-4 mt-4 flex h-16 flex-row items-center justify-between rounded-lg bg-white px-2 py-2 pr-4 shadow-2xl"
-	>
-		<div
-			id="logo"
-			class="aspect- flex h-full w-16 items-center justify-center"
-		>
-			<a
-				href="/"
-				class="h-12 w-12 rounded-full border-2 bg-lime-200 pl-1 pt-1 text-base/tight font-bold text-white"
-				style="border: 0.1rem #000000 solid;"></a>
-		</div>
-		<div id="links" class="flex flex-row">
-			<NavLink href="/meet-the-team">WCUCC</NavLink>
-			<NavLink href="">KELOWNA</NavLink>
-			<NavLink href="/funding" icon={false}>FUNDING</NavLink>
-			<InterestButton />
-		</div>
-	</nav>
+<div class="fixed right-0 z-50 flex w-screen p-5">
+    <nav class="flex w-full flex-row items-center justify-between">
+        <div id="logo" class="">
+            <a href="/">
+                <img
+                    src="/WCUCC-Logo.svg"
+                    alt="WCUCC Logo"
+                    width="100"
+                    height="100"
+                />
+            </a>
+        </div>
+        <div
+            id="links"
+            class="flex h-16 w-fit flex-row items-center justify-between rounded-lg bg-white px-4 py-2 pr-4 shadow-2xl"
+        >
+            <NavLink 
+                id="conferenceDropdown" 
+                href="/meet-the-team"
+                hasDropdown={true}
+            >
+                CONFERENCE
+                <NavMenu slot="dropdown" />
+            </NavLink>
+            <InterestButton />
+        </div>
+    </nav>
 </div>
+
+<script is:inline>
+    const dropdown = document.getElementById('conferenceDropdown');
+    const menu = dropdown.querySelector('#dropdownMenu');
+    
+    let isHovering = false;
+    
+    dropdown.addEventListener('mouseenter', () => {
+        isHovering = true;
+        menu.classList.remove('hide');
+    });
+    
+    dropdown.addEventListener('mouseleave', () => {
+        isHovering = false;
+        setTimeout(() => {
+            if (!isHovering) {
+                menu.classList.add('hide');
+            }
+        }, 100);
+    });
+</script>
