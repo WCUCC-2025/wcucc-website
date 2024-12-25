@@ -3,24 +3,28 @@ import { getCollection } from 'astro:content';
 import SectionTitle from '@src/components/elements/ui/sectiontitle.astro';
 
 const bios = await getCollection('bios');
+console.log(bios);
 ---
 
 <section class="p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle color="black">Our Team</SectionTitle>
-	{
-		bios.map(item => (
-			<div>
-				<h3>{`${item.data.firstName} ${item.data.lastName}`}</h3>
-				<p>{item.data.major}</p>
-				<p>{item.data.role}</p>
-				<p>{item.data.biography}</p>
-				<p>{item.data.biography}</p>
-				<p>{item.data.funFact}</p>
-				<img
-					src={`/headshots/${item.data.headshot}`}
-					alt={item.data.firstName}
-				/>
-			</div>
-		))
-	}
+	<div class="grid grid-cols-3 gap-4">
+		{
+			bios.map(item => (
+				<div>
+					<!-- <h3>{`${item.data.firstName} ${item.data.lastName}`}</h3> -->
+					<!-- <p>{item.data.major}</p> -->
+					<!-- <p>{item.data.role}</p> -->
+					<!-- <p>{item.data.biography}</p> -->
+					<!-- <p>{item.data.biography}</p> -->
+					<!-- <p>{item.data.funFact}</p> -->
+					<img
+						class="w-[360px] h-[360px] object-cover object-top"
+						src={`/headshots/${item.data.headshot}`}
+						alt={item.data.firstName}
+					/>
+				</div>
+			))
+		}
+	</div>
 </section>
