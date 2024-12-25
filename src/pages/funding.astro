@@ -1,182 +1,401 @@
 ---
-import Navbar from '../components/Nav.astro';
+import Base from '@src/layouts/Base.astro';
 import PricingTiers from '../components/pricing.astro';
 
 const sponsorshipTiers = [
-  { name: 'Platinum', price: '$10,000', benefits: ['Premium logo placement', 'Six conference passes', 'Premium booth location', 'Keynote speaking slot', 'Exclusive networking event'], color: 'from-[#E5E4E2] to-[#D1D0CE]' },
-  { name: 'Gold', price: '$5,000', benefits: ['Prominent logo placement', 'Four conference passes', 'Large booth space', 'Speaking opportunity'], color: 'from-yellow-500 to-yellow-400' },
-  { name: 'Silver', price: '$2,500', benefits: ['Logo on website', 'Two conference passes', 'Small booth space'], color: 'from-gray-400 to-gray-300' },
-  { name: 'Bronze', price: '$1,000', benefits: ['Logo on website', 'One conference pass'], color: 'from-amber-700 to-amber-600' },
+	{
+		name: 'Platinum',
+		price: '$10,000',
+		benefits: [
+			'Premium logo placement',
+			'Six conference passes',
+			'Premium booth location',
+			'Keynote speaking slot',
+			'Exclusive networking event',
+		],
+		color: 'from-[#E5E4E2] to-[#D1D0CE]',
+	},
+	{
+		name: 'Gold',
+		price: '$5,000',
+		benefits: [
+			'Prominent logo placement',
+			'Four conference passes',
+			'Large booth space',
+			'Speaking opportunity',
+		],
+		color: 'from-yellow-500 to-yellow-400',
+	},
+	{
+		name: 'Silver',
+		price: '$2,500',
+		benefits: [
+			'Logo on website',
+			'Two conference passes',
+			'Small booth space',
+		],
+		color: 'from-gray-400 to-gray-300',
+	},
+	{
+		name: 'Bronze',
+		price: '$1,000',
+		benefits: ['Logo on website', 'One conference pass'],
+		color: 'from-amber-700 to-amber-600',
+	},
 ];
 
 const currentSponsors = [
-  { name: 'ChemCorp', tier: 'Platinum', logo: 'chemcorp-logo.png', link: '#' },
-  { name: 'MolecuLab', tier: 'Gold', logo: 'moleculab-logo.png', link: '#' },
-  { name: 'SciTech Industries', tier: 'Silver', logo: 'scitech-logo.png', link: '#' },
-  { name: 'Atomic Research', tier: 'Bronze', logo: 'atomic-logo.png', link: '#' },
+	{
+		name: 'ChemCorp',
+		tier: 'Platinum',
+		logo: 'chemcorp-logo.png',
+		link: '#',
+	},
+	{ name: 'MolecuLab', tier: 'Gold', logo: 'moleculab-logo.png', link: '#' },
+	{
+		name: 'SciTech Industries',
+		tier: 'Silver',
+		logo: 'scitech-logo.png',
+		link: '#',
+	},
+	{
+		name: 'Atomic Research',
+		tier: 'Bronze',
+		logo: 'atomic-logo.png',
+		link: '#',
+	},
 ];
 
 const getTierColor = (tier: string) => {
-  const tierObj = sponsorshipTiers.find(t => t.name === tier);
-  return tierObj ? tierObj.color : 'from-gray-700 to-gray-600';
+	const tierObj = sponsorshipTiers.find(t => t.name === tier);
+	return tierObj ? tierObj.color : 'from-gray-700 to-gray-600';
 };
 ---
 
-<Navbar />
-<div class="text-black relative overflow-hidden pt-20 font-roboto">
-  <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMjIyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-20"></div>
-  
-  <main class="container mx-auto px-4 py-8 relative z-10">
-    <section class="h-screen text-left mb-16 animate-fade-in flex-grow flex flex-col justify-center">
-      <h1 class="text-7xl font-bold mb-4 animate-title">Sponsors</h1>
-      <p class="text-xl text-black animate-subtitle">Learn about the people that made this conference a reality.</p>
-    </section>
+<Base>
+	<div class="font-roboto relative overflow-hidden pt-20 text-black">
+		<div
+			class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMjIyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-20"
+		>
+		</div>
 
-    <hr class="border-t border-black my-10">
+		<main class="container relative z-10 mx-auto px-4 py-8">
+			<section
+				class="animate-fade-in mb-16 flex h-screen flex-grow flex-col justify-center text-left"
+			>
+				<h1 class="animate-title mb-4 text-7xl font-bold">Sponsors</h1>
+				<p class="animate-subtitle text-xl text-black">
+					Learn about the people that made this conference a reality.
+				</p>
+			</section>
 
-    <section class="mb-16">
-      <h2 class="text-5xl mb-8 text-left">Our Sponsors</h2>
-      <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {currentSponsors.map((sponsor) => (
-          <a href={sponsor.link} class={`bg-gradient-to-br ${getTierColor(sponsor.tier)} p-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-xl flex flex-col items-center`}>
-            <img src={sponsor.logo} alt={`${sponsor.name} logo`} class="w-32 h-32 object-contain mb-4" />
-            <p class="font-bold text-3xl text-stone-900">{sponsor.name}</p>
-            <p class="text-sm text-stone-900">{sponsor.tier} Sponsor</p>
-          </a>
-        ))}
-      </div>
-    </section>
+			<hr class="my-10 border-t border-black" />
 
-    <hr class="border-t border-black my-10">
+			<section class="mb-16">
+				<h2 class="mb-8 text-left text-5xl">Our Sponsors</h2>
+				<div
+					class="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4"
+				>
+					{
+						currentSponsors.map(sponsor => (
+							<a
+								href={sponsor.link}
+								class={`bg-gradient-to-br ${getTierColor(sponsor.tier)} transform flex flex-col items-center rounded-lg p-4 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl`}
+							>
+								<img
+									src={sponsor.logo}
+									alt={`${sponsor.name} logo`}
+									class="mb-4 h-32 w-32 object-contain"
+								/>
+								<p class="text-3xl font-bold text-stone-900">
+									{sponsor.name}
+								</p>
+								<p class="text-sm text-stone-900">
+									{sponsor.tier} Sponsor
+								</p>
+							</a>
+						))
+					}
+				</div>
+			</section>
 
-    <section class="mb-16">
-      <h2 class="text-5xl font-semibold mb-8 text-left">Sponsorship Tiers</h2>
-      <div class="mb-4">
-        <p class="text-lg text-gray-800 mb-10 text-left">
-          Support the advancement of chemistry and connect with a passionate community of professionals and researchers. Choose from flexible sponsorship tiers tailored to highlight your brand, foster innovation, and make a meaningful impact. Explore our packages and join us in shaping the future of chemistry.
-        </p>
-      </div>
-      <div class="container mx-auto px-4">
-        <PricingTiers />
-      </div>
-    </section>
+			<hr class="my-10 border-t border-black" />
 
-    <hr class="border-t border-black my-10">
+			<section class="mb-16">
+				<h2 class="mb-8 text-left text-5xl font-semibold">
+					Sponsorship Tiers
+				</h2>
+				<div class="mb-4">
+					<p class="mb-10 text-left text-lg text-gray-800">
+						Support the advancement of chemistry and connect with a
+						passionate community of professionals and researchers.
+						Choose from flexible sponsorship tiers tailored to
+						highlight your brand, foster innovation, and make a
+						meaningful impact. Explore our packages and join us in
+						shaping the future of chemistry.
+					</p>
+				</div>
+				<div class="container mx-auto px-4">
+					<PricingTiers />
+				</div>
+			</section>
 
-    <section class="mb-16">
-      <h2 class="text-5xl font-semibold mb-8 text-left">Why Sponsor?</h2>
-      <div class="flex flex-col md:flex-row items-start md:items-center gap-8">
-        <div class="flex items-center gap-4">
-          <div class="w-48 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center text-2xl font-bold">Visibility</div>
-          <div>
-            <p class="text-lg text-gray-800">Gain exposure to a targeted audience of professionals and researchers in the field of chemistry.</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <div class="w-48 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl font-bold">Networking</div>
-          <div>
-            <p class="text-lg text-gray-800">Connect with industry leaders, potential clients, and collaborators to expand your professional network.</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <div class="w-48 h-16 bg-red-500 text-white rounded-full flex items-center justify-center text-2xl font-bold">Impact</div>
-          <div>
-            <p class="text-lg text-gray-800">Support the advancement of chemistry and contribute to the growth and development of the field.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+			<hr class="my-10 border-t border-black" />
 
-    <hr class="border-t border-black my-10">
+			<section class="mb-16">
+				<h2 class="mb-8 text-left text-5xl font-semibold">
+					Why Sponsor?
+				</h2>
+				<div
+					class="flex flex-col items-start gap-8 md:flex-row md:items-center"
+				>
+					<div class="flex items-center gap-4">
+						<div
+							class="flex h-16 w-48 items-center justify-center rounded-full bg-blue-500 text-2xl font-bold text-white"
+						>
+							Visibility
+						</div>
+						<div>
+							<p class="text-lg text-gray-800">
+								Gain exposure to a targeted audience of
+								professionals and researchers in the field of
+								chemistry.
+							</p>
+						</div>
+					</div>
+					<div class="flex items-center gap-4">
+						<div
+							class="flex h-16 w-48 items-center justify-center rounded-full bg-green-500 text-2xl font-bold text-white"
+						>
+							Networking
+						</div>
+						<div>
+							<p class="text-lg text-gray-800">
+								Connect with industry leaders, potential
+								clients, and collaborators to expand your
+								professional network.
+							</p>
+						</div>
+					</div>
+					<div class="flex items-center gap-4">
+						<div
+							class="flex h-16 w-48 items-center justify-center rounded-full bg-red-500 text-2xl font-bold text-white"
+						>
+							Impact
+						</div>
+						<div>
+							<p class="text-lg text-gray-800">
+								Support the advancement of chemistry and
+								contribute to the growth and development of the
+								field.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 
-    <section class="mb-16">
-      <h2 class="text-5xl font-bold mb-8 text-left">Frequently Asked Questions</h2>
-      <div class="space-y-8">
-        {[
-          { question: "What are the benefits of sponsoring?", answer: "Sponsoring our conference provides visibility, networking opportunities, and the chance to support the advancement of chemistry." },
-          { question: "How can I become a sponsor?", answer: "You can become a sponsor by filling out the sponsorship application form on our website or contacting us directly." },
-          { question: "What sponsorship tiers are available?", answer: "We offer four sponsorship tiers: Platinum, Gold, Silver, and Bronze, each with different benefits and pricing." },
-          { question: "Can I customize my sponsorship package?", answer: "Yes, we offer customizable sponsorship packages to meet your specific needs and goals. Please contact us for more details." }
-        ].map((faq, index) => (
-        <details class="bg-gray-100 p-4 rounded-lg shadow-md transition-all duration-300" key={index}>
-            <summary class="text-xl font-semibold text-gray-800 cursor-pointer transition-all duration-300">{faq.question}</summary>
-            <p class="text-lg text-gray-800 mt-2 transition-all duration-300">{faq.answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
+			<hr class="my-10 border-t border-black" />
 
-    <hr class="border-t border-black my-10">
+			<section class="mb-16">
+				<h2 class="mb-8 text-left text-5xl font-bold">
+					Frequently Asked Questions
+				</h2>
+				<div class="space-y-8">
+					{
+						[
+							{
+								question:
+									'What are the benefits of sponsoring?',
+								answer: 'Sponsoring our conference provides visibility, networking opportunities, and the chance to support the advancement of chemistry.',
+							},
+							{
+								question: 'How can I become a sponsor?',
+								answer: 'You can become a sponsor by filling out the sponsorship application form on our website or contacting us directly.',
+							},
+							{
+								question:
+									'What sponsorship tiers are available?',
+								answer: 'We offer four sponsorship tiers: Platinum, Gold, Silver, and Bronze, each with different benefits and pricing.',
+							},
+							{
+								question:
+									'Can I customize my sponsorship package?',
+								answer: 'Yes, we offer customizable sponsorship packages to meet your specific needs and goals. Please contact us for more details.',
+							},
+						].map(faq => (
+							<details class="rounded-lg bg-gray-100 p-4 shadow-md transition-all duration-300">
+								<summary class="cursor-pointer text-xl font-semibold text-gray-800 transition-all duration-300">
+									{faq.question}
+								</summary>
+								<p class="mt-2 text-lg text-gray-800 transition-all duration-300">
+									{faq.answer}
+								</p>
+							</details>
+						))
+					}
+				</div>
+			</section>
 
-    <section class="text-left mb-16">
-      <h2 class="text-5xl font-semibold mb-4">Become a Sponsor</h2>
-      <p class="mb-8 text-xl text-gray-300">Interested in sponsoring our conference? We'd love to hear from you!</p>
-      <div class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-2xl max-w-2xl mx-auto">
-        <form class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label for="name" class="block text-left mb-2 text-gray-300">Name</label>
-              <input type="text" id="name" name="name" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-white" required />
-            </div>
-            <div>
-              <label for="email" class="block text-left mb-2 text-gray-300">Email</label>
-              <input type="email" id="email" name="email" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-white" required />
-            </div>
-          </div>
-          <div>
-            <label for="company" class="block text-left mb-2 text-gray-300">Company Name/Affiliation</label>
-            <input type="text" id="company" name="company" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-white" required />
-          </div>
-          <div>
-            <label for="location" class="block text-left mb-2 text-gray-300">Location of Organization</label>
-            <input type="text" id="location" name="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-white" required />
-          </div>
-          <div>
-            <label for="details" class="block text-left mb-2 text-gray-300">Additional Details (Optional)</label>
-            <textarea id="details" name="details" rows="4" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-white"></textarea>
-          </div>
-          <div>
-            <label class="block text-left mb-2 text-gray-300">Are you near UBC?</label>
-            <div class="flex items-center">
-              <input type="radio" id="near-ubc-yes" name="near-ubc" value="yes" class="w-5 h-5 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500" />
-              <label for="near-ubc-yes" class="ml-2 text-gray-300">Yes</label>
-            </div>
-            <div class="flex items-center mt-2">
-              <input type="radio" id="near-ubc-no" name="near-ubc" value="no" class="w-5 h-5 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500" />
-              <label for="near-ubc-no" class="ml-2 text-gray-300">No</label>
-            </div>
-          </div>
-          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-            Submit Application
-          </button>
-        </form>
-      </div>
-    </section>
-  </main>
-</div>
+			<hr class="my-10 border-t border-black" />
+
+			<section class="mb-16 text-left">
+				<h2 class="mb-4 text-5xl font-semibold">Become a Sponsor</h2>
+				<p class="mb-8 text-xl text-gray-300">
+					Interested in sponsoring our conference? We'd love to hear
+					from you!
+				</p>
+				<div
+					class="mx-auto max-w-2xl rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-8 shadow-2xl"
+				>
+					<form class="space-y-6">
+						<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+							<div>
+								<label
+									for="name"
+									class="mb-2 block text-left text-gray-300"
+									>Name</label
+								>
+								<input
+									type="text"
+									id="name"
+									name="name"
+									class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+									required
+								/>
+							</div>
+							<div>
+								<label
+									for="email"
+									class="mb-2 block text-left text-gray-300"
+									>Email</label
+								>
+								<input
+									type="email"
+									id="email"
+									name="email"
+									class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+									required
+								/>
+							</div>
+						</div>
+						<div>
+							<label
+								for="company"
+								class="mb-2 block text-left text-gray-300"
+								>Company Name/Affiliation</label
+							>
+							<input
+								type="text"
+								id="company"
+								name="company"
+								class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+								required
+							/>
+						</div>
+						<div>
+							<label
+								for="location"
+								class="mb-2 block text-left text-gray-300"
+								>Location of Organization</label
+							>
+							<input
+								type="text"
+								id="location"
+								name="location"
+								class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+								required
+							/>
+						</div>
+						<div>
+							<label
+								for="details"
+								class="mb-2 block text-left text-gray-300"
+								>Additional Details (Optional)</label
+							>
+							<textarea
+								id="details"
+								name="details"
+								rows="4"
+								class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+							></textarea>
+						</div>
+						<div>
+							<label class="mb-2 block text-left text-gray-300"
+								>Are you near UBC?</label
+							>
+							<div class="flex items-center">
+								<input
+									type="radio"
+									id="near-ubc-yes"
+									name="near-ubc"
+									value="yes"
+									class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+								/>
+								<label
+									for="near-ubc-yes"
+									class="ml-2 text-gray-300">Yes</label
+								>
+							</div>
+							<div class="mt-2 flex items-center">
+								<input
+									type="radio"
+									id="near-ubc-no"
+									name="near-ubc"
+									value="no"
+									class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+								/>
+								<label
+									for="near-ubc-no"
+									class="ml-2 text-gray-300">No</label
+								>
+							</div>
+						</div>
+						<button
+							type="submit"
+							class="transform w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
+						>
+							Submit Application
+						</button>
+					</form>
+				</div>
+			</section>
+		</main>
+	</div>
+</Base>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
+	body {
+		font-family: 'Roboto', sans-serif;
+	}
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out;
-  }
-  @keyframes slideInFromBottom {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  .animate-title {
-    animation: slideInFromBottom 0.5s ease-out;
-  }
-  .animate-subtitle {
-    animation: slideInFromBottom 0.5s ease-out 0.2s both;
-  }
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	.animate-fade-in {
+		animation: fadeIn 1s ease-out;
+	}
+	@keyframes slideInFromBottom {
+		from {
+			transform: translateY(50px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+	.animate-title {
+		animation: slideInFromBottom 0.5s ease-out;
+	}
+	.animate-subtitle {
+		animation: slideInFromBottom 0.5s ease-out 0.2s both;
+	}
 </style>
+
