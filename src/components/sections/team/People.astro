@@ -1,40 +1,176 @@
 ---
 import { getCollection } from 'astro:content';
 import SectionTitle from '@src/components/elements/ui/sectiontitle.astro';
+import OverlayBase from '@src/components/elements/OverlayBase.astro';
 const bios = await getCollection('bios');
 ---
+
 <section class="p-5 sm:p-10 md:p-14 lg:p-20">
-    <SectionTitle color="black">Our Team</SectionTitle>
-    <div class="grid grid-cols-3 gap-4">
-        {
-            bios.map(item => (
-                <div class="relative w-[360px] h-[360px]">
-                    <img
-                        class="w-full h-full object-cover object-top"
-                        src={`/headshots/${item.data.headshot}`}
-                        alt={item.data.firstName}
-                    />
-                    <div class="absolute bottom-0 left-0 right-0 px-2 py-1">
-                        <svg width="100%" height="75" viewBox="0 0 350 75" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                            <g filter="url(#filter0_b_556_159)">
-                                <path d="M0 10C0 4.47715 4.47715 0 10 0H175H262.5H309.778C312.117 0 314.012 1.89557 314.012 4.23387V7.21154V20.9135V25.3366C314.012 30.8594 318.489 35.3366 324.012 35.3366H328.125L335.181 35.3365L345.766 35.3365C348.104 35.3365 350 37.2321 350 39.5704V65C350 70.5229 345.523 75 340 75H10C4.47715 75 0 70.5229 0 65V10Z" fill="black" fill-opacity="0.5"/>
-                            </g>
-                            <ellipse cx="334.475" cy="15.566" rx="15.5242" ry="15.566" fill="black" fill-opacity="0.5"/>
-                            <path d="M337.301 13.7364L331.227 19.826L330.229 18.8253L336.303 12.7358H330.95V11.3207H338.712V19.1037H337.301V13.7364Z" fill="white"/>
-                            <text x="20" y="30" fill="white" font-family="Arial" font-size="20" font-weight="bold">{`${item.data.firstName} ${item.data.lastName}`}</text>
-                            <text x="20" y="50" fill="white" font-family="Arial" font-size="16">{item.data.role}</text>
-                            <defs>
-                                <filter id="filter0_b_556_159" x="-16.9" y="-16.9" width="383.8" height="108.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="8.45"/>
-                                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_556_159"/>
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_556_159" result="shape"/>
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
-            ))
-        }
-    </div>
+	<SectionTitle color="black">Our Team</SectionTitle>
+	<div class="flex flex-row flex-wrap justify-center gap-2 md:gap-4">
+		{
+			bios.map(item => (
+				<div
+					class="relative h-[350px] w-[350px] cursor-pointer"
+					data-member={JSON.stringify(item.data)}
+				>
+					<img
+						class="h-full w-full object-cover object-top"
+						src={`/headshots/${item.data.headshot}`}
+						alt={item.data.firstName}
+					/>
+					<div class="absolute bottom-0 left-0 right-0 px-2 py-1">
+						<svg
+							width="100%"
+							height="75"
+							viewBox="0 0 350 75"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<g filter="url(#filter0_b_556_159)">
+								<path
+									d="M0 10C0 4.47715 4.47715 0 10 0H175H262.5H309.778C312.117 0 314.012 1.89557 314.012 4.23387V7.21154V20.9135V25.3366C314.012 30.8594 318.489 35.3366 324.012 35.3366H328.125L335.181 35.3365L345.766 35.3365C348.104 35.3365 350 37.2321 350 39.5704V65C350 70.5229 345.523 75 340 75H10C4.47715 75 0 70.5229 0 65V10Z"
+									fill="black"
+									fill-opacity="0.5"
+								/>
+							</g>
+							<ellipse
+								cx="334.475"
+								cy="15.566"
+								rx="15.5242"
+								ry="15.566"
+								fill="black"
+								fill-opacity="0.5"
+							/>
+							<path
+								d="M337.301 13.7364L331.227 19.826L330.229 18.8253L336.303 12.7358H330.95V11.3207H338.712V19.1037H337.301V13.7364Z"
+								fill="white"
+							/>
+							<text
+								x="20"
+								y="30"
+								fill="white"
+								font-family="Arial"
+								font-size="20"
+								font-weight="bold"
+							>{`${item.data.firstName} ${item.data.lastName}`}</text>
+							<text
+								x="20"
+								y="50"
+								fill="white"
+								font-family="Arial"
+								font-size="16"
+							>
+								{item.data.role}
+							</text>
+							<defs>
+								<filter
+									id="filter0_b_556_159"
+									x="-16.9"
+									y="-16.9"
+									width="383.8"
+									height="108.8"
+									filterUnits="userSpaceOnUse"
+									color-interpolation-filters="sRGB"
+								>
+									<feFlood
+										flood-opacity="0"
+										result="BackgroundImageFix"
+									/>
+									<feGaussianBlur
+										in="BackgroundImageFix"
+										stdDeviation="8.45"
+									/>
+									<feComposite
+										in2="SourceAlpha"
+										operator="in"
+										result="effect1_backgroundBlur_556_159"
+									/>
+									<feBlend
+										mode="normal"
+										in="SourceGraphic"
+										in2="effect1_backgroundBlur_556_159"
+										result="shape"
+									/>
+								</filter>
+							</defs>
+						</svg>
+					</div>
+				</div>
+			))
+		}
+	</div>
 </section>
+
+<OverlayBase identifier="team-overlay">
+	<div
+		class="flex h-full max-h-full max-w-[750px] flex-col overflow-hidden rounded-md bg-white sm:flex-row"
+	>
+		<img
+			id="overlay-headshot"
+			class="headshot-img h-[300px] w-full shrink-0 rounded-none object-cover sm:h-full sm:max-w-[300px]"
+			src=""
+			alt=""
+		/>
+		<div class="flex min-h-0 flex-col gap-2 p-4 sm:p-6">
+			<div class="shrink-0">
+				<h4 id="overlay-name" class="m-0 p-0 text-4xl font-bold"></h4>
+				<p id="overlay-role" class="m-0 p-0 text-2xl font-medium"></p>
+			</div>
+			<h4 class="m-0 p-0 text-2xl font-semibold">Who am I?</h4>
+			<div class="min-h-0 flex-1 overflow-y-auto text-[1.1rem]">
+				<p id="overlay-bio"></p>
+			</div>
+		</div>
+	</div>
+</OverlayBase>
+
+<style>
+	.headshot-img {
+		object-position: 22.5% 22.5%;
+	}
+
+	@media (min-width: 640px) {
+		.headshot-img {
+			object-position: 50% 0;
+		}
+	}
+</style>
+
+<script is:inline>
+	const updateOverlay = memberData => {
+		const img = document.getElementById('overlay-headshot');
+		if (img) {
+			img.src = `/headshots/${memberData.headshot}`;
+			img.alt = memberData.firstName;
+		}
+
+		const nameEl = document.getElementById('overlay-name');
+		if (nameEl) {
+			nameEl.textContent = `${memberData.firstName} ${memberData.lastName}`;
+		}
+
+		const roleEl = document.getElementById('overlay-role');
+		if (roleEl) {
+			roleEl.textContent = memberData.role;
+		}
+
+		const bioEl = document.getElementById('overlay-bio');
+		if (bioEl) {
+			bioEl.textContent = memberData.biography;
+		}
+	};
+
+	document.querySelectorAll('[data-member]').forEach(element => {
+		element.addEventListener('click', () => {
+			const memberData = JSON.parse(element.dataset.member);
+			updateOverlay(memberData);
+
+			const overlay = document.getElementById('team-overlay');
+			console.log(overlay);
+			if (overlay) {
+				overlay.classList.remove('hide');
+			}
+		});
+	});
+</script>
