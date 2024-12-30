@@ -5,9 +5,9 @@ import OverlayBase from '@src/components/elements/OverlayBase.astro';
 const bios = await getCollection('bios');
 ---
 
-<section class="p-5 sm:p-10 md:p-14 lg:p-20">
+<section class="p-5 sm:p-10 md:p-14 lg:p-20 transition-all duration-300 ease-in-out">
 	<SectionTitle color="black">Our Team</SectionTitle>
-	<div class="flex flex-row flex-wrap justify-center gap-2 md:gap-4">
+	<div class="flex flex-row flex-wrap justify-center gap-4">
 		{
 			bios.map(item => (
 				<div
