@@ -1,0 +1,41 @@
+---
+import CalendarOverlay from '../CalendarOverlay.astro';
+
+type Props = {
+	title: string;
+	description: string;
+	location: string;
+	startDate: string;
+	endDate: string;
+};
+
+const { title, description, location, startDate, endDate }: Props = Astro.props;
+
+const eventDetails: {
+	title: string;
+	description: string;
+	location: string;
+	startDate: Date;
+	endDate: Date;
+} = {
+	title,
+	description,
+	location,
+	startDate: new Date(startDate),
+	endDate: new Date(endDate),
+};
+---
+
+<div id='calendar-toggle' class="px-4 py-2 hover:cursor-pointer bg-blue-600 text-white rounded-md w-fit hover:shadow shadow-black duration-200 transition-all">
+	<slot />
+</div>
+
+<CalendarOverlay eventDetails={eventDetails} />
+
+<script is:inline>
+	const btn = document.querySelector('#calendar-toggle');
+	btn.addEventListener('click', () => {
+		const overlay = document.querySelector('#calendar-overlay');
+		overlay.classList.toggle('hidden-el');
+	});
+</script>

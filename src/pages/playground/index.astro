@@ -1,11 +1,10 @@
 ---
 import Base from '@src/layouts/Base.astro';
-import OverlayBase from '@src/components/elements/OverlayBase.astro';
-import SpeakerDetails from '@src/components/sections/landing/elements/SpeakerDetails.astro';
+import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
 ---
 
-<Base title="Playground">
-	<OverlayBase>
-		<SpeakerDetails />
-	</OverlayBase>
+<Base>
+	<div class="py-32 px-4">
+		<AddToCalendar title='Example Title: Weeee' description='Example Description' location='The University of British Columbia' startDate='2024-05-15T10:00:00' endDate='2024-05-16T10:00:00'>Add to Calendar</AddToCalendar>
+	</div>
 </Base>
