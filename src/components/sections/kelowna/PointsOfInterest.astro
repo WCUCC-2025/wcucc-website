@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import SectionTitle from '@src/components/elements/ui/sectiontitle.astro';
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 import 'remixicon/fonts/remixicon.css';
 
 const carouselItems = await getCollection('carousel');
@@ -76,7 +76,7 @@ const carouselItems = await getCollection('carousel');
 	</div>
 </div>
 
-<script define:vars={{ carouselItems }}>
+<script is:inline define:vars={{ carouselItems }}>
 	let currentIndex = 0;
 	const track = document.getElementById('carouselTrack');
 	const wrapper = document.getElementById('carouselWrapper');

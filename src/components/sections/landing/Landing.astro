@@ -1,23 +1,19 @@
 ---
 import CountDownTimer from '@src/components/elements/CountDownTimer.astro';
-import CalendarOverlay from '@src/components/elements/CalendarOverlay.astro';
+import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
 ---
 
 <section
-	class="flex h-screen w-screen flex-col items-start justify-center gap-4 bg-[url('/home-hero-bg-d.svg')] p-5 sm:p-10 md:p-14 lg:p-20"
+	class="flex h-screen w-screen flex-col items-start justify-center gap-4 bg-[url('/kelowna-bg.jpg')] p-5 sm:p-10 md:p-14 lg:p-20"
 >
 	<div class="mb-0 flex flex-col gap-2">
 		<div class="mb-0 flex flex-row items-center justify-start gap-4">
 			<p class="mb-0 text-xl font-bold text-white lg:text-2xl">
 				May 7 - 12, 2025
 			</p>
-			<a id="toggle-calendar-overlay" class="hidden sm:inline-block"
-				><button
-					class="rounded-lg border-2 border-solid border-black bg-white p-2 text-sm text-black transition-all duration-300 hover:cursor-pointer"
-					>Add to Calendar <i class="ri-external-link-fill"
-					></i></button
-				></a
-			>
+	<AddToCalendar title='Western Canadian Undergraduate Chemistry Conference' description='Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!' location='The University of British Columbia' startDate='2025-05-07T08:00:00' endDate='2025-05-12T20:00:00'>
+		Add to Calendar
+	</AddToCalendar>
 		</div>
 		<p class="mb-0 text-2xl font-light text-white lg:text-3xl">
 			Western Canada Undergraduate Chemistry Conference
@@ -48,9 +44,9 @@ import CalendarOverlay from '@src/components/elements/CalendarOverlay.astro';
 			>
 		</div>
 	</div>
-	<CountDownTimer />
+	<CountDownTimer targetDate='2025-05-07T23:59:59' />
 </section>
-<CalendarOverlay />
+
 <script>
 	import Typed from 'typed.js';
 	new Typed('#typer', {
@@ -67,17 +63,3 @@ import CalendarOverlay from '@src/components/elements/CalendarOverlay.astro';
 	});
 </script>
 
-<script is:inline>
-	const calbtn = document.getElementById('toggle-calendar-overlay');
-	const caloverlay = document.getElementById('calendar-overlay');
-	calbtn.addEventListener('click', () => {
-		console.log('click!!');
-		caloverlay.classList.toggle('hidden-el');
-	});
-
-	caloverlay.addEventListener('click', event => {
-		if (event.target === caloverlay) {
-			caloverlay.classList.add('hidden-el');
-		}
-	});
-</script>
