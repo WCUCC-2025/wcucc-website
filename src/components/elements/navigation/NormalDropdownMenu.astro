@@ -1,50 +1,55 @@
 ---
-import NavMenuOption from '@src/components/elements/navigation/NavMenuOption.astro';
+import NavigationOption from '@src/components/elements/navigation/NavigationOption.astro';
 ---
 
 <div
-	id="dropdownMenu"
-	class="hide absolute right-0 top-12 mt-2 w-[800px] rounded-lg bg-white px-8 py-6 shadow-xl"
+	id="dropdown-overlay"
+	class="hide absolute right-0 top-full w-[38rem] lg:w-[50rem] h-fit rounded-lg pt-2"
 >
-	<div class="grid grid-cols-6 gap-2">
-		<div class="col-span-2">
-			<NavMenuOption
+	<div
+		class="w-full rounded-lg border-[1px] border-solid border-black bg-white px-8 py-6 font-sans text-black shadow-xl"
+	>
+		<div class="columns-2 lg:columns-3 gap-1">
+			<NavigationOption
 				title="WCUCC 2025"
 				description="Register to attend in-person from may 11th - 14th"
 				href="#"
 			>
-			<p class="w-full h-full py-10 border-[1px] border-solid border-black rounded-md text-center text-pink-600 bg-white">INSERT IMAGE HERE</p>
-			</NavMenuOption>
-		</div>
-		<div class="col-span-2 flex flex-col gap-2">
-			<NavMenuOption
+				<p
+					class="h-full w-full rounded-md border-[1px] border-solid border-black bg-white py-10 text-center text-pink-600"
+				>
+					INSERT IMAGE HERE
+				</p>
+			</NavigationOption>
+
+			<NavigationOption
 				title="About"
 				description="Learn about what our conference is about"
 				href="#"
 			/>
-			<NavMenuOption
+			<NavigationOption
 				title="Speaker"
 				description="Learn more about our valued speakers"
 				href="#"
 			/>
-			<NavMenuOption
+			<NavigationOption
 				title="Meet the Team"
 				description="Meet the team responsible for WCUCC 2025"
 				href="/team"
+				forceNextColumn={true}
 			/>
-		</div>
-		<div class="col-span-2 flex flex-col gap-2">
-			<NavMenuOption
+
+			<NavigationOption
 				title="Itinerary"
 				description="Learn about whats happening at WCUCC 2025"
 				href="#"
 			/>
-			<NavMenuOption
+			<NavigationOption
 				title="Sponsors & Funding"
 				description="Discover how to support our conference and who makes it possible"
 				href="/funding"
 			/>
-			<NavMenuOption
+			<NavigationOption
 				title="Kelowna"
 				description="Learn more about the amazing city hosting our conference"
 				href="/kelowna"
@@ -56,9 +61,5 @@ import NavMenuOption from '@src/components/elements/navigation/NavMenuOption.ast
 <style>
 	.hide {
 		display: none !important;
-	}
-
-	#dropdownMenu {
-		transition: opacity 0.2s ease-in-out;
 	}
 </style>
