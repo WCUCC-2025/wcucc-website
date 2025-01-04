@@ -5,15 +5,26 @@ const config: Config = {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     theme: {
         extend: {
-			borderRadius: {
-				ms: '0.250rem'
-			},
-            // screens: {
-            //     sml: { max: '640px' },
-            //     med: { max: '768px' },
-            //     lrg: { max: '1024px' },
-            //     xtl: { max: '1280px' },
-            // },
+            screens: {
+                mob: { max: '1024px' }, // Mobile
+                gtmob: { min: '1025px' }, // Greater than Mobile (for exclusion)
+
+                // We can use these if needed. Got these from the internet. - TF
+                // mb: { max: '480px' }, // Mobile
+                // tb: { min: '481px', max: '768px' }, // Tablet
+                // lt: { min: '769px', max: '1279px' }, // Laptop
+                // gtlt: { min: '769px' }, // Greater than Laptop
+                // sc: { min: '1280px' }, // Screen
+
+                // These were here before - TF
+                // sml: { max: '640px' },
+                // med: { max: '768px' },
+                // lrg: { max: '1024px' },
+                // xtl: { max: '1280px' },
+            },
+            borderRadius: {
+                ms: '0.250rem',
+            },
             colors: {
                 'wcucc-yellow': '#F7B801',
                 'wcucc-lavender': '#7678ED',
@@ -33,7 +44,7 @@ const config: Config = {
                     bg: '#fee6a9',
                 },
                 'wcucc-pine': '#077364',
-				'wcucc-sky': '#1B98F2'
+                'wcucc-sky': '#1B98F2',
             },
         },
     },
@@ -54,7 +65,7 @@ const config: Config = {
         borderColor: true, // If we don't disable this, Tailwind will apply a default border color to all the elements
         borderOpacity: false,
         textOpacity: false,
-		textDecoration: false,
+        textDecoration: false,
         // Things we might need in the future but disable for now as they also add stuff
         // fontVariantNumeric: false,
     },

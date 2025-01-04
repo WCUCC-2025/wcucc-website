@@ -6,7 +6,9 @@ import AppCard from './elements/AppCard.astro';
 <section class="p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle color="black">Apps we think you will find useful</SectionTitle
 	>
-	<div class="flex flex-row flex-wrap justify-between gap-4">
+	<div
+		class="flex-row flex-wrap justify-between gap-4 mob:grid mob:grid-cols-2 mob:grid-rows-2 gtmob:flex"
+	>
 		<AppCard
 			src="Uber.svg"
 			title="Uber/Uber Eats"
