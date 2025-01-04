@@ -2,11 +2,11 @@
 interface Props {
     id?: string;
     icon?: boolean;
-    href: string;
+    href?: string;
     hasDropdown?: boolean;
 }
 
-let { id, icon, href, hasDropdown } = Astro.props;
+let { id, icon, href = "#", hasDropdown } = Astro.props;
 icon ??= true;
 ---
 
@@ -20,7 +20,7 @@ icon ??= true;
         <a {href} class=""
             ><div
                 class:list={[
-                    "data-[active='true'] mr-0.5 inline-flex items-center p-0 decoration-2 underline-offset-[3px] hover:underline",
+                    "text-black data-[active='true'] mr-0.5 inline-flex items-center p-0 decoration-2 underline-offset-[3px] hover:underline",
                 ]}
             >
                 <slot />
