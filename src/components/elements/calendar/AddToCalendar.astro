@@ -33,8 +33,9 @@ const eventDetails: {
 <CalendarOverlay eventDetails={eventDetails} />
 
 <script is:inline>
-	const btn = document.querySelector('#calendar-toggle');
-	btn.addEventListener('click', () => {
+	const btnCal = document.querySelector('#calendar-toggle');
+	btnCal.addEventListener('click', () => {
+		console.log("Clicked Cal");
 		const overlay = document.querySelector('#calendar-overlay');
 		overlay.classList.toggle('hidden-el');
 	});
