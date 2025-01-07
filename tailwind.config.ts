@@ -48,7 +48,7 @@ const config: Config = {
         ringOffsetWidth: false,
         ringOffsetColor: false,
         boxShadow: true,
-        transform: false,
+        transform: true,
         touchAction: false,
         scrollSnapType: false,
         borderColor: true, // If we don't disable this, Tailwind will apply a default border color to all the elements
