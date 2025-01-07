@@ -10,7 +10,7 @@ const biosCollection = defineCollection({
         major: z.string(),
 		biography: z.string(),
 		funFact: z.string()
-    }),
+    })
 });
 
 const carouselCollection = defineCollection({
@@ -25,7 +25,27 @@ const carouselCollection = defineCollection({
     })
   })
 
+const sponsorsCollection = defineCollection({
+	type: 'data',
+	schema: z.object({
+		name: z.string(),
+		logo: z.string(),
+		link: z.string(),
+		tier: z.enum(['bronze', 'silver', 'gold', 'platinum'])	
+	})
+})
+
+const faqsCollection = defineCollection({
+	type: 'data',
+	schema: z.object ({
+		question: z.string(),
+		answer: z.string()
+	})
+})
+
 export const collections = {
     'bios': biosCollection,
 	carousel: carouselCollection,
+	'sponsors': sponsorsCollection,
+	'faqs': faqsCollection,
 };

@@ -1,6 +1,8 @@
 ---
 import Base from '@src/layouts/Base.astro';
-import PricingTiers from '../components/pricing.astro';
+import PricingTiers from '@src/components/pricing.astro';
+import Sponsors from '@src/components/sections/funding/Sponsors.astro';
+import FAQs from '@src/components/sections/funding/FAQs.astro';
 
 const sponsorshipTiers = [
 	{
@@ -43,36 +45,9 @@ const sponsorshipTiers = [
 		color: 'from-amber-700 to-amber-600',
 	},
 ];
-
-const currentSponsors = [
-	{
-		name: 'ChemCorp',
-		tier: 'Platinum',
-		logo: 'chemcorp-logo.png',
-		link: '#',
-	},
-	{ name: 'MolecuLab', tier: 'Gold', logo: 'moleculab-logo.png', link: '#' },
-	{
-		name: 'SciTech Industries',
-		tier: 'Silver',
-		logo: 'scitech-logo.png',
-		link: '#',
-	},
-	{
-		name: 'Atomic Research',
-		tier: 'Bronze',
-		logo: 'atomic-logo.png',
-		link: '#',
-	},
-];
-
-const getTierColor = (tier: string) => {
-	const tierObj = sponsorshipTiers.find(t => t.name === tier);
-	return tierObj ? tierObj.color : 'from-gray-700 to-gray-600';
-};
 ---
 
-<Base>
+<Base title='Funding & Sponsors'>
 	<div class="font-roboto relative overflow-hidden pt-20 text-black">
 		<div
 			class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMjIyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-20"
@@ -91,33 +66,35 @@ const getTierColor = (tier: string) => {
 
 			<hr class="my-10 border-t border-black" />
 
-			<section class="mb-16">
-				<h2 class="mb-8 text-left text-5xl">Our Sponsors</h2>
-				<div
-					class="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4"
-				>
-					{
-						currentSponsors.map(sponsor => (
-							<a
-								href={sponsor.link}
-								class={`bg-gradient-to-br ${getTierColor(sponsor.tier)} transform flex flex-col items-center rounded-lg p-4 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl`}
-							>
-								<img
-									src={sponsor.logo}
-									alt={`${sponsor.name} logo`}
-									class="mb-4 h-32 w-32 object-contain"
-								/>
-								<p class="text-3xl font-bold text-stone-900">
-									{sponsor.name}
-								</p>
-								<p class="text-sm text-stone-900">
-									{sponsor.tier} Sponsor
-								</p>
-							</a>
-						))
-					}
-				</div>
-			</section>
+			<Sponsors />
+
+			<!-- <section class="mb-16"> -->
+			<!-- 	<h2 class="mb-8 text-left text-5xl">Our Sponsors</h2> -->
+			<!-- 	<div -->
+			<!-- 		class="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4" -->
+			<!-- 	> -->
+			<!-- 		{ -->
+			<!-- 			currentSponsors.map(sponsor => ( -->
+			<!-- 				<a -->
+			<!-- 					href={sponsor.link} -->
+			<!-- 					class={`bg-gradient-to-br ${getTierColor(sponsor.tier)} transform flex flex-col items-center rounded-lg p-4 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl`} -->
+			<!-- 				> -->
+			<!-- 					<img -->
+			<!-- 						src={sponsor.logo} -->
+			<!-- 						alt={`${sponsor.name} logo`} -->
+			<!-- 						class="mb-4 h-32 w-32 object-contain" -->
+			<!-- 					/> -->
+			<!-- 					<p class="text-3xl font-bold text-stone-900"> -->
+			<!-- 						{sponsor.name} -->
+			<!-- 					</p> -->
+			<!-- 					<p class="text-sm text-stone-900"> -->
+			<!-- 						{sponsor.tier} Sponsor -->
+			<!-- 					</p> -->
+			<!-- 				</a> -->
+			<!-- 			)) -->
+			<!-- 		} -->
+			<!-- 	</div> -->
+			<!-- </section> -->
 
 			<hr class="my-10 border-t border-black" />
 
@@ -196,45 +173,47 @@ const getTierColor = (tier: string) => {
 
 			<hr class="my-10 border-t border-black" />
 
-			<section class="mb-16">
-				<h2 class="mb-8 text-left text-5xl font-bold">
-					Frequently Asked Questions
-				</h2>
-				<div class="space-y-8">
-					{
-						[
-							{
-								question:
-									'What are the benefits of sponsoring?',
-								answer: 'Sponsoring our conference provides visibility, networking opportunities, and the chance to support the advancement of chemistry.',
-							},
-							{
-								question: 'How can I become a sponsor?',
-								answer: 'You can become a sponsor by filling out the sponsorship application form on our website or contacting us directly.',
-							},
-							{
-								question:
-									'What sponsorship tiers are available?',
-								answer: 'We offer four sponsorship tiers: Platinum, Gold, Silver, and Bronze, each with different benefits and pricing.',
-							},
-							{
-								question:
-									'Can I customize my sponsorship package?',
-								answer: 'Yes, we offer customizable sponsorship packages to meet your specific needs and goals. Please contact us for more details.',
-							},
-						].map(faq => (
-							<details class="rounded-lg bg-gray-100 p-4 shadow-md transition-all duration-300">
-								<summary class="cursor-pointer text-xl font-semibold text-gray-800 transition-all duration-300">
-									{faq.question}
-								</summary>
-								<p class="mt-2 text-lg text-gray-800 transition-all duration-300">
-									{faq.answer}
-								</p>
-							</details>
-						))
-					}
-				</div>
-			</section>
+			<FAQs />
+
+			<!-- <section class="mb-16"> -->
+			<!-- 	<h2 class="mb-8 text-left text-5xl font-bold"> -->
+			<!-- 		Frequently Asked Questions -->
+			<!-- 	</h2> -->
+			<!-- 	<div class="space-y-8"> -->
+			<!-- 		{ -->
+			<!-- 			[ -->
+			<!-- 				{ -->
+			<!-- 					question: -->
+			<!-- 						'What are the benefits of sponsoring?', -->
+			<!-- 					answer: 'Sponsoring our conference provides visibility, networking opportunities, and the chance to support the advancement of chemistry.', -->
+			<!-- 				}, -->
+			<!-- 				{ -->
+			<!-- 					question: 'How can I become a sponsor?', -->
+			<!-- 					answer: 'You can become a sponsor by filling out the sponsorship application form on our website or contacting us directly.', -->
+			<!-- 				}, -->
+			<!-- 				{ -->
+			<!-- 					question: -->
+			<!-- 						'What sponsorship tiers are available?', -->
+			<!-- 					answer: 'We offer four sponsorship tiers: Platinum, Gold, Silver, and Bronze, each with different benefits and pricing.', -->
+			<!-- 				}, -->
+			<!-- 				{ -->
+			<!-- 					question: -->
+			<!-- 						'Can I customize my sponsorship package?', -->
+			<!-- 					answer: 'Yes, we offer customizable sponsorship packages to meet your specific needs and goals. Please contact us for more details.', -->
+			<!-- 				}, -->
+			<!-- 			].map(faq => ( -->
+			<!-- 				<details class="rounded-lg bg-gray-100 p-4 shadow-md transition-all duration-300"> -->
+			<!-- 					<summary class="cursor-pointer text-xl font-semibold text-gray-800 transition-all duration-300"> -->
+			<!-- 						{faq.question} -->
+			<!-- 					</summary> -->
+			<!-- 					<p class="mt-2 text-lg text-gray-800 transition-all duration-300"> -->
+			<!-- 						{faq.answer} -->
+			<!-- 					</p> -->
+			<!-- 				</details> -->
+			<!-- 			)) -->
+			<!-- 		} -->
+			<!-- 	</div> -->
+			<!-- </section> -->
 
 			<hr class="my-10 border-t border-black" />
 
@@ -352,7 +331,7 @@ const getTierColor = (tier: string) => {
 						</div>
 						<button
 							type="submit"
-							class="transform w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
+							class="w-full transform rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
 						>
 							Submit Application
 						</button>
@@ -398,4 +377,3 @@ const getTierColor = (tier: string) => {
 		animation: slideInFromBottom 0.5s ease-out 0.2s both;
 	}
 </style>
-

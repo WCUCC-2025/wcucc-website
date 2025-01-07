@@ -1,0 +1,23 @@
+---
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
+import { getCollection } from 'astro:content';
+const faqs = await getCollection('faqs');
+---
+
+<section class="mb-16">
+	<SectionTitle color="black">Frequently Asked Questions</SectionTitle>
+	<div class="space-y-8">
+		{
+			faqs.map(faq => (
+				<details class="rounded-lg bg-gray-100 p-4 shadow-md transition-all duration-300">
+					<summary class="cursor-pointer text-xl font-semibold text-gray-800 transition-all duration-300">
+						{faq.data.question}
+					</summary>
+					<p class="mt-2 text-lg text-gray-800 transition-all duration-300">
+						{faq.data.answer}
+					</p>
+				</details>
+			))
+		}
+	</div>
+</section>
