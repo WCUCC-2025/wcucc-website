@@ -3,52 +3,71 @@ import CountDownTimer from '@src/components/elements/CountDownTimer.astro';
 import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
 ---
 
-<section
-	class="flex h-screen w-screen flex-col items-start justify-center gap-4 bg-[url('/kelowna-bg.jpg')] p-5 sm:p-10 md:p-14 lg:p-20"
->
-	<div class="mb-0 flex flex-col gap-2">
-		<div class="mb-0 flex flex-row items-center justify-start gap-4">
-			<p class="mb-0 text-xl font-bold text-white lg:text-2xl">
-				May 7 - 12, 2025
+<div class="fixed inset-0 z-0">
+	<div
+		class="absolute inset-0 h-screen w-full bg-[url('/WCUCC-Landing.svg')] bg-cover bg-center"
+	>
+	</div>
+</div>
+
+<div class="fixed inset-0 z-10">
+	<section
+		class="flex h-screen w-screen flex-col items-start justify-center gap-4 p-5 sm:p-10 md:p-14 lg:p-20"
+	>
+		<div class="mb-0 flex flex-col gap-2">
+			<div class="mb-0 flex flex-row items-center justify-start gap-4">
+				<p class="mb-0 text-xl font-bold text-white lg:text-2xl">
+					May 7 - 12, 2025
+				</p>
+				<AddToCalendar
+					title="Western Canadian Undergraduate Chemistry Conference"
+					description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!"
+					location="The University of British Columbia"
+					startDate="2025-05-07T08:00:00"
+					endDate="2025-05-12T20:00:00"
+				>
+					Add to Calendar
+				</AddToCalendar>
+			</div>
+			<p class="mb-0 text-2xl font-light text-white lg:text-3xl">
+				Western Canada Undergraduate Chemistry Conference
 			</p>
-	<AddToCalendar title='Western Canadian Undergraduate Chemistry Conference' description='Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!' location='The University of British Columbia' startDate='2025-05-07T08:00:00' endDate='2025-05-12T20:00:00'>
-		Add to Calendar
-	</AddToCalendar>
 		</div>
-		<p class="mb-0 text-2xl font-light text-white lg:text-3xl">
-			Western Canada Undergraduate Chemistry Conference
-		</p>
-	</div>
-	<div class="flex flex-col gap-2">
-		<h1
-			class="border-[1px] text-7xl font-bold text-white outline-black sm:text-[5rem] lg:text-[7.8rem]"
-		>
-			WCUCC 2025
-		</h1>
-		<h1 class="mb-0 text-4xl font-semibold text-white lg:text-5xl">
-			Discover how we<br class="sm:hidden" />
-			<span id="typer" class="mb-0 text-wcucc-coral-400"></span>
-		</h1>
-		<div class="between flex flex-row items-center gap-4">
-			<h4 class="my-0 text-2xl font-light text-white lg:text-3xl">
-				@ The University of British Columbia, Okanagan
-			</h4>
-			<a
-				class="hidden w-full sm:inline-block sm:w-auto"
-				href="https://www.google.ca/maps/place/The+University+of+British+Columbia+-+Okanagan+Campus/@49.9398234,-119.3989527,17z/data=!3m1!4b1!4m5!3m4!1s0x537ded7da291f011:0x7ca879b9058df1a4!8m2!3d49.93982!4d-119.396764"
-				><button
-					class="rounded-lg border-0 bg-blue-600 p-2 text-sm text-white transition-all duration-300 hover:cursor-pointer hover:bg-blue-700"
-					>Get Directions <i class="ri-external-link-fill text-[1rem]"
-					></i></button
-				></a
+		<div class="flex flex-col gap-2">
+			<h1
+				class="border-[1px] text-7xl font-bold text-white outline-black sm:text-[5rem] lg:text-[7.8rem]"
 			>
+				WCUCC 2025
+			</h1>
+			<h1 class="mb-0 text-4xl font-semibold text-white lg:text-5xl">
+				Discover how we<br class="sm:hidden" />
+				<span id="typer" class="mb-0 text-wcucc-coral-400"></span>
+			</h1>
+			<div class="between flex flex-row items-center gap-4">
+				<h4 class="my-0 text-2xl font-light text-white lg:text-3xl">
+					@ The University of British Columbia, Okanagan
+				</h4>
+				<a
+					class="hidden w-full sm:inline-block sm:w-auto"
+					href="https://www.google.ca/maps/place/The+University+of+British+Columbia+-+Okanagan+Campus/@49.9398234,-119.3989527,17z/data=!3m1!4b1!4m5!3m4!1s0x537ded7da291f011:0x7ca879b9058df1a4!8m2!3d49.93982!4d-119.396764"
+					><button
+						class="rounded-lg border-0 bg-blue-600 p-2 text-sm text-white transition-all duration-300 hover:cursor-pointer hover:bg-blue-700"
+						>Get Directions <i
+							class="ri-external-link-fill text-[1rem]"
+						></i></button
+					></a
+				>
+			</div>
 		</div>
-	</div>
-	<CountDownTimer targetDate='2025-05-07T23:59:59' />
-</section>
+	</section>
+	<CountDownTimer targetDate="2025-05-07T23:59:59" />
+</div>
+
+<div class="h-screen"></div>
 
 <script>
 	import Typed from 'typed.js';
+
 	new Typed('#typer', {
 		strings:
 			'innovate, create, design, synthesize, pipette, analyze, experiment, teach, learn'.split(

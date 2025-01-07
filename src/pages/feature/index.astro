@@ -7,11 +7,25 @@ import SponsorsAndFunding from '@src/components/sections/landing/SponsorsAndFund
 import Landing from '@src/components/sections/landing/Landing.astro';
 ---
 
-<Base title="Home">
-	<Landing />
-	<MissonNPrinciples />
-	<Deadlines />
-	<Speakers />
-	<SponsorsAndFunding />
-</Base>
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+    height: 100%;
+    overflow-x: hidden;
+  }
 
+  body {
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+</style>
+
+<Base title="Home">
+  <Landing />
+  <MissonNPrinciples />
+  <div class="relative z-40"> 
+    <Deadlines />
+    <Speakers />
+    <SponsorsAndFunding />
+  </div>
+</Base>
