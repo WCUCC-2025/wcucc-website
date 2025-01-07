@@ -1,9 +1,9 @@
 ---
 interface Props {
-  targetDate?: string;
+  targetDate: string;
 }
 
-const { targetDate = '2025-05-07T23:59:59' } = Astro.props;
+const { targetDate } = Astro.props;
 ---
 
 <div id="countdown" class="-ml-2 rounded-lg text-white text-center">
@@ -27,7 +27,7 @@ const { targetDate = '2025-05-07T23:59:59' } = Astro.props;
   </div>
 </div>
 
-<script define:vars={{ targetDate }}>
+<script is:inline define:vars={{ targetDate }}>
   function updateCountdown() {
     const daysEl = document.querySelector('.countdown-days');
     const hoursEl = document.querySelector('.countdown-hours');

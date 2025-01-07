@@ -1,26 +1,32 @@
 ---
 import 'remixicon/fonts/remixicon.css';
 
-const eventDetails = {
-	title: 'Your Event Title',
-	description: 'Event description here',
-	location: 'Event location',
-	startDate: new Date('2024-05-15T10:00:00'),
-	endDate: new Date('2024-05-15T12:00:00'),
+type Props = {
+	eventDetails: {
+		title: string;
+		description: string;
+		location: string;
+		startDate: Date;
+		endDate: Date;
+	};
 };
+
+const { eventDetails }: Props = Astro.props;
 ---
 
 <div
 	id="calendar-overlay"
-	class="hidden-el fixed top-0 z-50 flex h-screen max-h-screen w-screen flex-col items-center justify-center bg-black bg-opacity-60 p-5"
+	class="hidden-el fixed top-0 left-0 z-50 flex h-screen max-h-screen w-screen flex-col items-center justify-center bg-black bg-opacity-60 p-5"
 >
 	<div
 		class="flex h-fit max-h-[96vh] w-[25rem] flex-col gap-4 overflow-hidden rounded-lg bg-white p-5 transition-all duration-300 ease-in-out"
 	>
-	<div class="py-2 flex flex-col justify-center items-start gap-2">
-		<h2 class="m-0 leading-none font-bold text-4xl">Add to Calendar</h2>
-		<p class="m-0 leading-none font-light text-lg">Select the calendar you want to add the event to.</p>
-			</div>
+		<div class="flex flex-col items-start justify-center gap-2 py-2">
+			<h2 class="m-0 text-4xl font-bold leading-none">Add to Calendar</h2>
+			<p class="m-0 text-lg font-light leading-none">
+				Select the calendar you want to add the event to.
+			</p>
+		</div>
 		<div class="flex w-full flex-col items-center justify-center gap-4">
 			<a
 				id="googleCalendar"
@@ -75,7 +81,7 @@ const eventDetails = {
 			</a>
 			<a
 				id="icalCalendar"
-				class="flex w-full cursor-pointer flex-row items-center justify-center gap-4 rounded-md border-[1px] border-solid border-black p-2 no-underline transition-colors hover:bg-gray-100"
+				class="no-underline flex w-full cursor-pointer flex-row items-center justify-center gap-4 rounded-md border-[1px] border-solid border-black p-2 transition-colors hover:bg-gray-100"
 				style="text-decoration: none;"
 			>
 				<i
@@ -100,9 +106,9 @@ const eventDetails = {
 	}
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ eventDetails }}>
 	function formatDateForCalendar(date) {
-		return date.toISOString().replace(/-|:|\.\d+/g, '');
+		return new Date(date).toISOString().replace(/-|:|\.\d+/g, '');
 	}
 
 	function createCalendarLinks(event) {
@@ -112,39 +118,30 @@ const eventDetails = {
 		const startTime = formatDateForCalendar(event.startDate);
 		const endTime = formatDateForCalendar(event.endDate);
 
+		
 		const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startTime}/${endTime}&details=${description}&location=${location}`;
 
-		const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${event.startDate.toISOString()}&enddt=${event.endDate.toISOString()}&body=${description}&location=${location}`;
+		const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${new Date(event.startDate).toISOString()}&enddt=${new Date(event.endDate).toISOString()}&body=${description}&location=${location}`;
 
 		const yahooUrl = `https://calendar.yahoo.com/?v=60&title=${title}&st=${startTime}&et=${endTime}&desc=${description}&in_loc=${location}`;
 
 		const icalContent = `BEGIN:VCALENDAR
-							VERSION:2.0
-							BEGIN:VEVENT
-							URL:${location}
-							DTSTART:${startTime}
-							DTEND:${endTime}
-							SUMMARY:${event.title}
-							DESCRIPTION:${event.description}
-							LOCATION:${event.location}
-							END:VEVENT
-							END:VCALENDAR`;
-
+							 VERSION:2.0
+							 BEGIN:VEVENT
+							 URL:${location}
+							 DTSTART:${startTime}
+							 DTEND:${endTime}
+							 SUMMARY:${event.title}
+							 DESCRIPTION:${event.description}
+							 LOCATION:${event.location}
+							 END:VEVENT
+							 END:VCALENDAR`;
 		return { googleUrl, outlookUrl, yahooUrl, icalContent };
 	}
 
 	const overlay = document.getElementById('calendar-overlay');
-	const event = {
-		title: 'Your Event Title',
-		description: 'Event description here',
-		location: 'Event location',
-		startDate: new Date('2024-05-15T10:00:00'),
-		endDate: new Date('2024-05-15T12:00:00'),
-	};
+	const links = createCalendarLinks(eventDetails);
 
-	const links = createCalendarLinks(event);
-
-	// Setup calendar buttons
 	document.getElementById('googleCalendar').addEventListener('click', e => {
 		e.preventDefault();
 		window.open(links.googleUrl, '_blank');
@@ -167,10 +164,14 @@ const eventDetails = {
 		});
 		const url = window.URL.createObjectURL(blob);
 		const link = document.createElement('a');
+
 		link.href = url;
 		link.download = 'event.ics';
+
 		document.body.appendChild(link);
+
 		link.click();
+
 		document.body.removeChild(link);
 		window.URL.revokeObjectURL(url);
 	});
@@ -181,3 +182,4 @@ const eventDetails = {
 		}
 	});
 </script>
+

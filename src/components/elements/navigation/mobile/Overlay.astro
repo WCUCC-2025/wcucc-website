@@ -1,0 +1,73 @@
+---
+import NavigationOption from '@src/components/elements/navigation/NavigationOption.astro';
+---
+
+<div
+	id="mobile-overlay"
+	class="fixed hide z-[100] h-screen w-screen overflow-hidden font-sans"
+>
+	<div
+		class="flex h-full w-full flex-col justify-between gap-2 overflow-x-hidden overflow-y-scroll rounded-md bg-white shadow shadow-black"
+	>
+		<div class="relative p-2">
+			<NavigationOption
+				title="About"
+				description="Learn about what our conference is about"
+				href="#"
+			/>
+			<NavigationOption
+				title="Speakers"
+				description="Learn more about our valued speakers"
+				href="#"
+			/>
+			<NavigationOption
+				title="Meet the Team"
+				description="Meet the team responsible for WCUCC 2025"
+				href="/team"
+			/>
+			<NavigationOption
+				title="Itinerary & Schedule"
+				description="Learn about whats happening at WCUCC 2025"
+				href="#"
+			/>
+			<NavigationOption
+				title="Sponsors & Funding"
+				description="Discover how to support our conference and who makes it possible"
+				href="/funding"
+			/>
+			<NavigationOption
+				title="Kelowna"
+				description="Learn more about the amazing city hosting our conference"
+				href="/kelowna"
+			/>
+		</div>
+		<div class="sticky bottom-2 flex w-full flex-row gap-2 bg-white p-2">
+			<a
+				class="flex-1 rounded-md bg-blue-600 p-2 text-center text-xl text-white transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-blue-700"
+				style="text-decoration: none;"
+			>
+				RSVP
+			</a>
+			<div
+				id="close-overlay"
+				class="flex flex-col items-center justify-center rounded-md bg-red-600 px-3 py-2 text-xl text-white hover:cursor-pointer hover:bg-red-700"
+			>
+				<i class="ri-close-large-fill"></i>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.hide {
+		display: none;
+	}
+</style>
+
+<script is:inline>
+	const closeButton = document.querySelector('#close-overlay');
+	closeButton.addEventListener('click', () => {
+		const overlay = document.querySelector('#mobile-overlay');
+		overlay.classList.add('hide');
+	});
+</script>

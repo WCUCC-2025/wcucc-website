@@ -2,7 +2,7 @@
 // Base layout component.
 import BaseHead from '@src/components/meta/BaseHead.astro';
 import FontImport from '@src/components/meta/FontImport.astro';
-import Nav from '@src/components/Nav.astro';
+import Nav from '@src/components/elements/navigation/NavigationMenu.astro';
 
 import 'remixicon/fonts/remixicon.css';
 import '@src/animations.css';
@@ -18,6 +18,10 @@ const { title } = Astro.props;
 	<head>
 		<BaseHead {title} />
 		<FontImport />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/favicon-touch-icon.png" />
+		<meta name="theme-color" content="#ffffff" />
 	</head>
 	<body class="font-sans">
 		<div id="root">

@@ -1,0 +1,47 @@
+---
+interface Props {
+    id?: string;
+    icon?: boolean;
+    href?: string;
+    hasDropdown?: boolean;
+}
+
+let { id, icon, href = "#", hasDropdown } = Astro.props;
+icon ??= true;
+---
+
+<div id={id} class="relative flex items-center justify-center group">
+    <div
+        class:list={[
+            'mr-4 flex pt-0.5 transition-colors hover:cursor-pointer',
+            icon && 'mr-',
+        ]}
+    >
+        <a {href} class=""
+            ><div
+                class:list={[
+                    "text-black data-[active='true'] mr-0.5 inline-flex items-center p-0 decoration-2 underline-offset-[3px] hover:underline",
+                ]}
+            >
+                <slot />
+            </div></a
+        >
+        {icon && hasDropdown && <i id="icon" class="ri-arrow-down-line" />}
+    </div>
+    {hasDropdown && <slot name="dropdown" />}
+</div>
+
+<style>
+    #icon::before {
+        translate: 0px -0.5px 0px;
+        display: inline-block;
+        transition: all ease-in-out 0.3s;
+    }
+
+    .group:hover #icon::before {
+        translate: 0px -2px 0px;
+        rotate: 180deg;
+        transition: all ease-in-out 0.3s;
+    }
+</style>
+

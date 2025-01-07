@@ -1,0 +1,26 @@
+---
+const { identifier } = Astro.props;
+---
+
+<div
+	id={identifier}
+	class="overlay-base hide fixed top-0 z-50 flex h-screen max-h-screen w-screen flex-col items-end justify-start bg-black bg-opacity-60 p-5"
+>
+	<slot />
+</div>
+
+<style>
+	.hide {
+		display: none !important;
+	}
+</style>
+
+<script>
+	document.querySelectorAll('.overlay-base').forEach(overlay => {
+		overlay.addEventListener('click', event => {
+			if (event.target === event.currentTarget) {
+				overlay.classList.add('hide');
+			}
+		});
+	});
+</script>
