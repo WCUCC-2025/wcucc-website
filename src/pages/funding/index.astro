@@ -3,51 +3,9 @@ import Base from '@src/layouts/Base.astro';
 import PricingTiers from '@src/components/pricing.astro';
 import Sponsors from '@src/components/sections/funding/Sponsors.astro';
 import FAQs from '@src/components/sections/funding/FAQs.astro';
-
-const sponsorshipTiers = [
-	{
-		name: 'Platinum',
-		price: '$10,000',
-		benefits: [
-			'Premium logo placement',
-			'Six conference passes',
-			'Premium booth location',
-			'Keynote speaking slot',
-			'Exclusive networking event',
-		],
-		color: 'from-[#E5E4E2] to-[#D1D0CE]',
-	},
-	{
-		name: 'Gold',
-		price: '$5,000',
-		benefits: [
-			'Prominent logo placement',
-			'Four conference passes',
-			'Large booth space',
-			'Speaking opportunity',
-		],
-		color: 'from-yellow-500 to-yellow-400',
-	},
-	{
-		name: 'Silver',
-		price: '$2,500',
-		benefits: [
-			'Logo on website',
-			'Two conference passes',
-			'Small booth space',
-		],
-		color: 'from-gray-400 to-gray-300',
-	},
-	{
-		name: 'Bronze',
-		price: '$1,000',
-		benefits: ['Logo on website', 'One conference pass'],
-		color: 'from-amber-700 to-amber-600',
-	},
-];
 ---
 
-<Base title='Funding & Sponsors'>
+<Base title="Funding & Sponsors">
 	<div class="font-roboto relative overflow-hidden pt-20 text-black">
 		<div
 			class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMjIyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-20"
