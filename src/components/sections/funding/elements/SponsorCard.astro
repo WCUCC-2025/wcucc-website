@@ -1,17 +1,26 @@
 ---
 type Props = {
-	name: string;
-	logo: string;
-	href: string;
+    name: string;
+    logo: string;
+    href: string;
 };
 const { name, logo, href }: Props = Astro.props;
 ---
 
 <a
-	{href}
-	class="flex h-fit w-fit flex-col items-center justify-center rounded-md bg-white px-10 py-5 shadow shadow-black"
-	style="text-decoration: none;"
+    {href}
+    class="flex flex-col items-center justify-center rounded-md bg-white px-10 py-5 shadow shadow-black"
+    style="text-decoration: none;"
 >
-	<img class="h-auto w-[10rem]" src={`/sponsors/sample.svg`} alt={name} />
-	<h6 class="m-0 p-0 text-2xl font-bold leading-none">{name}</h6>
+    <img class="h-auto w-[10rem]" src={`/sponsors/sample.svg`} alt={name} />
+    <h6 class="m-0 p-0 text-2xl font-bold leading-none">{name}</h6>
 </a>
+
+<style is:inline>
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

@@ -1,5 +1,4 @@
 ---
-// src/components/PricingTiers.astro
 
 const benefits = [
   { name: 'Logo displayed in the conference program, banner & posters.', type: 'check' },
@@ -52,7 +51,7 @@ const tiers = [
     <table class="w-full border-spacing-x-2">
       <thead>
         <tr>
-          <th class="p-4 text-left bg-white text-gray-800 font-bold text-2xl w-1/5 ">Benefits</th>
+          <th class="p-4 text-left bg-white text-gray-800 font-bold text-2xl w-1/5 benefits-column">Benefits</th>
           {tiers.map(tier => (
             <th class={`p-4 text-left text-white ${tier.color} font-bold text-2xl w-1/5`}>
               {tier.name} 
@@ -64,7 +63,7 @@ const tiers = [
       <tbody>
         {benefits.map((benefit, index) => (
           <tr class="border-b border-gray-200">
-            <td class="p-4 bg-white text-gray-800">{benefit.name}</td>
+            <td class="p-4 bg-white text-gray-800 benefits-column">{benefit.name}</td>
             {tiers.map(tier => (
               <td class={`p-4 text-center ${tier.color} ${tier.textColor}`}>
                 {benefit.type === 'value' 
@@ -87,6 +86,19 @@ const tiers = [
 </div>
 
 <style>
+  .benefits-column {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+  thead th.benefits-column {
+    border-top: 1px solid black;
+  }
+
+  tbody tr:last-child td.benefits-column {
+    border-bottom: 1px solid black;
+  }
+
   tr:hover td {
     transition: all 0.2s ease-in-out;
   }

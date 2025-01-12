@@ -1,0 +1,211 @@
+---
+import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
+
+---
+
+<section class="mb-16 mt-16 pl-20 text-left">
+    <SectionTitle color="black">Become a Sponsor</SectionTitle>
+    <p class="mb-8 text-xl text-black">
+        Interested in sponsoring our conference? We'd love to hear
+        from you!
+    </p>
+    <div
+        class="mx-auto max-w-2xl rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-8 shadow-2xl"
+    >
+        <form class="space-y-6">
+            <div>
+                <label
+                    for="full-name"
+                    class="mb-2 block text-left text-gray-300"
+                    >Full Name</label
+                >
+                <input
+                    type="text"
+                    id="full-name"
+                    name="full-name"
+                    class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+                    required
+                />
+            </div>
+            <div>
+                <label
+                    for="display-name"
+                    class="mb-2 block text-left text-gray-300"
+                    >Name (to be displayed on badge)</label
+                >
+                <input
+                    type="text"
+                    id="display-name"
+                    name="display-name"
+                    class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+                    required
+                />
+            </div>
+            <div>
+                <label
+                    for="package"
+                    class="mb-2 block text-left text-gray-300"
+                    >Which sponsorship package are you interested in?</label
+                >
+                <div class="flex flex-col space-y-2">
+                    <div class="flex items-center">
+                        <input
+                            type="radio"
+                            id="package-platinum"
+                            name="package"
+                            value="platinum"
+                            class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+                            required
+                        />
+                        <label
+                            for="package-platinum"
+                            class="ml-2 text-gray-300">Platinum (2000$)</label
+                        >
+                    </div>
+                    <div class="flex items-center">
+                        <input
+                            type="radio"
+                            id="package-gold"
+                            name="package"
+                            value="gold"
+                            class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+                            required
+                        />
+                        <label
+                            for="package-gold"
+                            class="ml-2 text-gray-300">Gold (1000$)</label
+                        >
+                    </div>
+                    <div class="flex items-center">
+                        <input
+                            type="radio"
+                            id="package-silver"
+                            name="package"
+                            value="silver"
+                            class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+                            required
+                        />
+                        <label
+                            for="package-silver"
+                            class="ml-2 text-gray-300">Silver (500$)</label
+                        >
+                    </div>
+                    <div class="flex items-center">
+                        <input
+                            type="radio"
+                            id="package-bronze"
+                            name="package"
+                            value="bronze"
+                            class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+                            required
+                        />
+                        <label
+                            for="package-bronze"
+                            class="ml-2 text-gray-300">Bronze (250$)</label
+                        >
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label
+                    for="email"
+                    class="mb-2 block text-left text-gray-300"
+                    >Email</label
+                >
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+                />
+            </div>
+            <div>
+                <label
+                    for="phone"
+                    class="mb-2 block text-left text-gray-300"
+                    >Phone Number</label
+                >
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+                />
+            </div>
+            <div id="contact-error" class="hidden text-red-500">
+                Please provide a valid email or phone number.
+            </div>
+            <script>
+                document.querySelector('form')?.addEventListener('submit', function(event) {
+                    const emailElement = document.getElementById('email') as HTMLInputElement | null;
+                    const phoneElement = document.getElementById('phone') as HTMLInputElement | null;
+                    const contactError = document.getElementById('contact-error');
+
+                    const email = emailElement?.value || '';
+                    const phone = phoneElement?.value || '';
+                    const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                    const phoneValid = phone && /^\+?[1-9]\d{1,14}$/.test(phone);
+
+                    if (!emailValid && !phoneValid) {
+                        event.preventDefault();
+                        contactError?.classList.remove('hidden');
+                    } else {
+                        contactError?.classList.add('hidden');
+                    }
+                });
+            </script>
+            <div>
+                <label
+                    for="contributions"
+                    class="mb-2 block text-left text-gray-300"
+                >
+                    Donation in other forms (Food, beverages etc)
+                </label
+                >
+                <textarea
+                    id="contributions"
+                    name="contributions"
+                    rows="4"
+                    class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+                ></textarea>
+            </div>
+            <div>
+                <label class="mb-2 block text-left text-gray-300"
+                    >Are you near UBC Okanagan?</label
+                >
+                <div class="flex items-center">
+                    <input
+                        type="radio"
+                        id="near-ubc-yes"
+                        name="near-ubc"
+                        value="yes"
+                        class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+                    />
+                    <label
+                        for="near-ubc-yes"
+                        class="ml-2 text-gray-300">Yes</label
+                    >
+                </div>
+                <div class="mt-2 flex items-center">
+                    <input
+                        type="radio"
+                        id="near-ubc-no"
+                        name="near-ubc"
+                        value="no"
+                        class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+                    />
+                    <label
+                        for="near-ubc-no"
+                        class="ml-2 text-gray-300">No</label
+                    >
+                </div>
+            </div>
+            <button
+                type="submit"
+                class="w-full transform rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
+            >
+                Submit Application
+            </button>
+        </form>
+    </div>
+</section>
