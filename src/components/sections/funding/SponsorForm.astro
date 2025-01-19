@@ -1,16 +1,15 @@
 ---
 import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
-
 ---
 
-<section class="mb-16 mt-16 pl-20 text-left">
+<section class="mb-16 mt-16 px-4 md:px-20 text-left">
     <SectionTitle color="black">Become a Sponsor</SectionTitle>
-    <p class="mb-8 text-xl text-black">
+    <p class="mb-8 text-lg md:text-xl text-black">
         Interested in sponsoring our conference? We'd love to hear
         from you!
     </p>
     <div
-        class="mx-auto max-w-2xl rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-8 shadow-2xl"
+        class="mx-auto max-w-full md:max-w-2xl rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-4 md:p-8 shadow-2xl"
     >
         <form class="space-y-6">
             <div>
@@ -104,7 +103,35 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                             class="ml-2 text-gray-300">Bronze ($250)</label
                         >
                     </div>
+                    <div class="flex items-center">
+                        <input
+                            type="radio"
+                            id="package-other"
+                            name="package"
+                            value="other"
+                            class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
+                            required
+                        />
+                        <label
+                            for="package-other"
+                            class="ml-2 text-gray-300">Other</label
+                        >
+                    </div>
                 </div>
+            </div>
+            <div id="other-contributions" class="hidden">
+                <label
+                    for="contributions"
+                    class="mb-2 block text-left text-gray-300"
+                >
+                    Please specify your contribution (Food, beverages or any other form of sponsorship)
+                </label>
+                <textarea
+                    id="contributions"
+                    name="contributions"
+                    rows="4"
+                    class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
+                ></textarea>
             </div>
             <div>
                 <label
@@ -153,22 +180,18 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                         contactError?.classList.add('hidden');
                     }
                 });
+
+                document.querySelectorAll('input[name="package"]').forEach((input) => {
+                    input.addEventListener('change', function(this: HTMLInputElement) {
+                        const otherContributions = document.getElementById('other-contributions');
+                        if (this.value === 'other') {
+                            otherContributions?.classList.remove('hidden');
+                        } else {
+                            otherContributions?.classList.add('hidden');
+                        }
+                    });
+                });
             </script>
-            <div>
-                <label
-                    for="contributions"
-                    class="mb-2 block text-left text-gray-300"
-                >
-                    Donation in other forms (Food, beverages etc)
-                </label
-                >
-                <textarea
-                    id="contributions"
-                    name="contributions"
-                    rows="4"
-                    class="focus:ring-2 focus:ring-blue-500 w-full rounded-lg border border-gray-600 bg-gray-700 p-3 text-white transition-all duration-300 focus:border-transparent"
-                ></textarea>
-            </div>
             <div>
                 <label class="mb-2 block text-left text-gray-300"
                     >Are you near UBC Okanagan?</label
