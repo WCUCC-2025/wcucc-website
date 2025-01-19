@@ -5,7 +5,25 @@ const faqs = await getCollection('faqs');
 ---
 
 <section class="mb-16 mt-16 px-8 pl-20 pr-10">
-    <SectionTitle color="black" class="mb-8">Frequently Asked Questions</SectionTitle>
+    <SectionTitle color="black" class="mb-8" id="section-title">Frequently Asked Questions</SectionTitle>
+    <script>
+        const handleResize = () => {
+            const titleElement = document.getElementById('section-title');
+            if (window.innerWidth < 768) {
+                titleElement.textContent = 'FAQs';
+            } else {
+                titleElement.textContent = 'Frequently Asked Questions';
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        // Clean up event listener when the component is unmounted
+        window.addEventListener('beforeunload', () => {
+            window.removeEventListener('resize', handleResize);
+        });
+    </script>
     <div>
         {faqs.map(faq => (
             <details class="group border-t border-black py-4 transition-all duration-300">
