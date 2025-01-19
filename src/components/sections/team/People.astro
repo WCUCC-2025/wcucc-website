@@ -1,4 +1,5 @@
 ---
+import 'remixicon/fonts/remixicon.css';
 import { getCollection } from 'astro:content';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 import OverlayBase from '@src/components/elements/OverlayBase.astro';
@@ -117,6 +118,7 @@ const bios = await getCollection('bios');
 			<div class="shrink-0">
 				<h4 id="overlay-name" class="m-0 p-0 text-4xl font-bold"></h4>
 				<p id="overlay-role" class="m-0 p-0 text-2xl font-normal"></p>
+				<a id="overlay-linkedin" style="text-decoration: none;"><i class="ri-linkedin-box-fill m-0 p-0 text-2xl font-normal"></i></a>
 			</div>
 			<h4 class="m-0 p-0 text-2xl font-semibold">Who am I?</h4>
 			<div class="min-h-0 flex-1 overflow-y-auto text-[1.1rem]">
@@ -140,6 +142,8 @@ const bios = await getCollection('bios');
 
 <script is:inline>
 	const updateOverlay = memberData => {
+
+	console.log(memberData);
 		const img = document.getElementById('overlay-headshot');
 		if (img) {
 			img.src = `/headshots/${memberData.headshot}`;
@@ -154,6 +158,11 @@ const bios = await getCollection('bios');
 		const roleEl = document.getElementById('overlay-role');
 		if (roleEl) {
 			roleEl.textContent = memberData.role;
+		}
+
+		const linkedInEl = document.getElementById('overlay-linkedin');
+		if(linkedInEl) {
+			linkedInEl.href = `${memberData.linkedIn}`;
 		}
 
 		const bioEl = document.getElementById('overlay-bio');

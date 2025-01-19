@@ -1,0 +1,197 @@
+---
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
+import 'remixicon/fonts/remixicon.css';
+
+interface CalendarEvent {
+	title: string;
+	startTime: string;
+	endTime: string;
+	speaker?: string;
+	speakerWebsite?: string;
+	location?: string;
+	color?: string;
+	description?: string;
+}
+
+type Props = {
+	startHour?: number;
+	endHour?: number;
+};
+
+const sampleEvents: CalendarEvent[] = [
+	{
+		title: 'Registration',
+		startTime: '08:00',
+		endTime: '12:00',
+		description: 'Registration for the conference opens.',
+	},
+	{
+		title: 'Introduction to Wine Chemistry',
+		startTime: '12:00',
+		endTime: '13:00',
+		speaker: 'Dr. Wes Zanberg',
+		speakerWebsite:
+			'https://chemistry.ok.ubc.ca/about/contact/wesley-zandberg/',
+		location: 'Main Conference Room',
+		description: 'Daily sync with the team',
+	},
+	{
+		title: 'Wine Tour',
+		startTime: '13:00',
+		endTime: '16:30',
+	},
+	{
+		title: 'Break',
+		startTime: '16:30',
+		endTime: '17:00',
+		color: '#00B2BF',
+	},
+	{
+		title: 'Conference Introduction & Land Acknowledgement',
+		speaker: 'Dr. W. Stephen McNeil',
+		speakerWebsite:
+			'https://chemistry.ok.ubc.ca/about/contact/w-stephen-mcneil/',
+		startTime: '17:00',
+		endTime: '18:00',
+	},
+	{
+		title: 'Dinner',
+		startTime: '18:00',
+		endTime: '19:00',
+	},
+	{
+		title: 'Pub Night',
+		startTime: '19:00',
+		endTime: '21:00',
+	},
+];
+
+const { startHour = 8, endHour = 21 } = Astro.props;
+
+// This generates an array of arrays in the following format:
+
+// 8:00, 8:30
+// 8:30, 9:00
+// ...
+
+const timeSlots = [];
+for (let hour = startHour; hour < endHour; hour++) {
+	timeSlots.push(
+		`${hour.toString().padStart(2, '0')}:00`,
+		`${hour.toString().padStart(2, '0')}:30`
+	);
+}
+
+const getEventPositions = (
+	startTime: string,
+	endTimes: string
+): { top: string; height: string } => {
+	const [startHours, startMinutes] = startTime.split(':').map(Number);
+	const [endHours, endMinutes] = endTimes.split(':').map(Number);
+
+	const startInMins = startHours * 60 + startMinutes;
+	const endInMins = endHours * 60 + endMinutes;
+
+	const eventDuration = endInMins - startInMins;
+
+	// Calculate Position from start of Calendar
+	const positionFromTop = ((startInMins - startHour * 60) / 30) * 8;
+	const eventHeight = (eventDuration / 30) * 8;
+
+	return {
+		top: `${positionFromTop}rem`,
+		height: `${eventHeight}rem`,
+	};
+};
+---
+
+<section class="w-full bg-white p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle color="black">Event Itinerary</SectionTitle>
+
+	<div class="py-10">
+		<h2 class="m-0 p-0 leading-none">Sunday May 7th, 2025</h2>
+	</div>
+
+	<!-- Calendar Graph -->
+
+	<div class="relative grid min-h-[800px] grid-cols-[6.25rem_1fr]">
+		<div class="border-[1px] border-x border-solid border-gray-200">
+			{
+				timeSlots.map(time => (
+					<div class="flex h-32 items-start justify-center py-2 text-xl">
+						{time}
+					</div>
+				))
+			}
+		</div>
+		<div class="relative">
+			{
+				timeSlots.map(() => (
+					<div class="h-32 border-[1px] border-b border-solid border-gray-200 p-2" />
+				))
+			}
+
+			{
+				sampleEvents.map(event => {
+					const styles = getEventPositions(
+						event.startTime,
+						event.endTime
+					);
+
+					return (
+						<div
+							class={`absolute left-0 right-0 p-2`}
+							style={`top: ${styles.top}; height: ${styles.height};`}
+						>
+							<div
+								class="flex h-full flex-col items-start justify-start gap-1 rounded bg-blue-100 p-4 shadow"
+								style={`background-color: ${event.color};`}
+							>
+								<h3
+									class="py-1 text-3xl font-bold text-black"
+									style={event.color && `color: white;`}
+								>
+									{event.title}
+								</h3>
+								<div class="flex flex-row items-center justify-start gap-2 text-xl">
+									<i
+										class="ri-time-fill text-gray-800"
+										style={event.color && `color: white;`}
+									/>
+									<p
+										class="m-0 p-0 leading-none"
+										style={event.color && `color: white;`}
+									>
+										{event.startTime} - {event.endTime}
+									</p>
+								</div>
+								{event.speaker && (
+									<div class="flex flex-row items-center justify-start gap-2 text-xl">
+										<i class="ri-mic-2-fill text-gray-800" />
+										<a
+											class="hover:text-blue-600"
+											href={event.speakerWebsite}
+											style="text-decoration: none;"
+										>
+											<p class="m-0 p-0 leading-none">
+												{event.speaker}
+											</p>
+										</a>
+									</div>
+								)}
+								{event.location && (
+									<div class="flex flex-row items-center justify-start gap-2 text-xl">
+										<i class="ri-map-pin-fill text-gray-800" />
+										<p class="m-0 p-0 leading-none">
+											{event.location}
+										</p>
+									</div>
+								)}
+							</div>
+						</div>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>
