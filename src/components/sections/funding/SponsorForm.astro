@@ -2,14 +2,15 @@
 import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
 ---
 
-<section class="mb-16 mt-16 px-4 md:px-20 text-left">
+<section class="mb-16 mt-16 pl-20 pr-10 md:px-20 text-left">
     <SectionTitle color="black">Become a Sponsor</SectionTitle>
     <p class="mb-8 text-lg md:text-xl text-black">
         Interested in sponsoring our conference? We'd love to hear
         from you!
     </p>
     <div
-        class="mx-auto max-w-full md:max-w-2xl rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-4 md:p-8 shadow-2xl"
+        id="form-container"
+        class="mx-auto max-w-full md:max-w-2xl rounded-2xl bg-gray-900 p-4 md:p-8 shadow-2xl"
     >
         <form class="space-y-6">
             <div>
@@ -181,14 +182,26 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                     }
                 });
 
+                const packageColors = {
+                    platinum: { bg: '#3D3E3E', text: 'white' },
+                    gold: { bg: '#FFC056', text: 'black' },
+                    silver: { bg: '#ACBDD8', text: 'black' },
+                    bronze: { bg: '#AD6A29', text: 'white' },
+                    other: { bg: '#00674F', text: 'white' }
+                };
+
                 document.querySelectorAll('input[name="package"]').forEach((input) => {
                     input.addEventListener('change', function(this: HTMLInputElement) {
                         const otherContributions = document.getElementById('other-contributions');
+                        const formContainer = document.getElementById('form-container');
                         if (this.value === 'other') {
                             otherContributions?.classList.remove('hidden');
                         } else {
                             otherContributions?.classList.add('hidden');
                         }
+                        const selectedPackage = packageColors[this.value as keyof typeof packageColors];
+                        formContainer?.style.setProperty('background-color', selectedPackage.bg);
+                        formContainer?.style.setProperty('color', selectedPackage.text);
                     });
                 });
             </script>

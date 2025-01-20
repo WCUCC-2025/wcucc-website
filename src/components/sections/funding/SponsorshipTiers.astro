@@ -1,5 +1,6 @@
 ---
-import PricingTiers from '@src/components/sections/funding/pricing.astro'
+import PricingTiers from '@src/components/sections/funding/pricing.astro';
+import PricingMobile from '@src/components/sections/funding/pricingMobile.astro';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 ---
 
@@ -18,6 +19,11 @@ import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
         </p>
     </div>
     <div class="container mx-auto px-4">
-        <PricingTiers />
+        <div class="hidden md:block">
+            <PricingTiers />
+        </div>
+        <div class="block md:hidden">
+            <PricingMobile />
+        </div>
     </div>
 </section>
