@@ -7,9 +7,11 @@ type Props = {
 	location: string;
 	startDate: string;
 	endDate: string;
+	id: string;
 };
 
-const { title, description, location, startDate, endDate }: Props = Astro.props;
+const { id, title, description, location, startDate, endDate }: Props =
+	Astro.props;
 
 const eventDetails: {
 	title: string;
@@ -26,17 +28,21 @@ const eventDetails: {
 };
 ---
 
-<div id='calendar-toggle' class="relative z-0 px-4 py-1.5 hover:cursor-pointer text-[1.1rem] font-semibold bg-[#e0ff4f] text-black hover:bg-[#c9eb4b] rounded-md w-fit hover:shadow shadow-black duration-200 transition-all">
+<div
+	id={`calendar-toggle-${id}`}
+	class="relative z-0 w-fit rounded-md bg-[#e0ff4f] px-4 py-1.5 text-[1.1rem] font-semibold text-black shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#c9eb4b] hover:shadow"
+>
 	<slot />
 </div>
 
-<CalendarOverlay eventDetails={eventDetails} />
+	<CalendarOverlay id: {id} eventDetails={eventDetails} />
 
-<script is:inline>
-	const btnCal = document.querySelector('#calendar-toggle');
+<script is:inline define:vars={{ id }}>
+	let btnCal = document.querySelector(`#calendar-toggle-${id}`);
 	btnCal.addEventListener('click', () => {
-		console.log("Clicked Cal");
-		const overlay = document.querySelector('#calendar-overlay');
-		overlay.classList.toggle('hidden-el');
+		console.log('Clicked Cal', btnCal);
+		const overlay = document.querySelector(`#calendar-overlay-${id}`);
+		overlay.classList.remove('hidden-el');
+		console.log(overlay);
 	});
 </script>

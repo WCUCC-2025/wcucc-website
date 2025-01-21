@@ -46,7 +46,7 @@ const types: {
 ---
 
 <div
-	class="flex w-fit flex-col items-start justify-center gap-4 rounded-xl bg-white p-8 min-w-[40rem]"
+	class="flex w-fit min-w-[40rem] flex-col items-start justify-center gap-4 rounded-xl bg-white p-8"
 >
 	<div
 		class="flex flex-row items-center justify-start gap-2"
@@ -58,7 +58,9 @@ const types: {
 			<i class={`ri-${types[deadlineType].icon}`}></i>
 			<p class="m-0 p-0 leading-none">{types[deadlineType].label}</p>
 		</div>
-	<a href={types[deadlineType].helpLink} style="text-decoration: none;"><i class="ri-question-fill text-3xl text-black"></i></a>
+		<a href={types[deadlineType].helpLink} style="text-decoration: none;"
+			><i class="ri-question-fill text-3xl text-black"></i></a
+		>
 	</div>
 	<h3 class="text-4xl font-light">{title}</h3>
 	<p class="m-0 p-0 text-6xl font-bold leading-none">
@@ -67,7 +69,14 @@ const types: {
 		{endDate}
 	</p>
 	<div class="flex flex-row items-center justify-start gap-2">
-		<AddToCalendar>Add to Calendar</AddToCalendar>
+		<AddToCalendar
+			id="event-a"
+			title="Western Canadian Undergraduate Chemistry Conference"
+			description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!"
+			location="The University of British Columbia"
+			startDate="2025-03-01T08:00:00"
+			endDate="2025-04-1T23:59:59">Add to Calendar</AddToCalendar
+		>
 		<a
 			href={detailsLink}
 			class="w-fit rounded-md bg-[#D10838] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#871c2a] hover:shadow sm:inline-block sm:w-auto"
