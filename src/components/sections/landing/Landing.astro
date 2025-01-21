@@ -29,7 +29,7 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 					Add to Calendar
 				</AddToCalendar>
 			</div>
-			<p class="mb-0 text-2xl font-light text-white lg:text-3xl">
+			<p class="mb-0 text-2xl font-normal text-white lg:text-3xl">
 				Western Canada Undergraduate Chemistry Conference
 			</p>
 		</div>
@@ -41,32 +41,30 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 			</h1>
 			<h1 class="mb-0 text-4xl font-semibold text-white lg:text-5xl">
 				Discover how we<br class="sm:hidden" />
-				<span id="typer" class="mb-0 text-wcucc-coral-400"></span>
+				<span id="typer" class="mb-0 text-white"></span>
 			</h1>
 			<div class="between flex flex-row items-center gap-4">
-				<h4 class="my-0 text-2xl font-light text-white lg:text-3xl">
-					@ The University of British Columbia, Okanagan
+				<h4 class="my-0 text-2xl font-medium text-white lg:text-3xl">
+					@ University of British Columbia, Okanagan
 				</h4>
 				<a
-					class="hidden w-full sm:inline-block sm:w-auto"
+					class="hidden sm:inline-block sm:w-auto px-4 py-1.5 hover:cursor-pointer text-[1.1rem] font-semibold bg-[#0058E5] text-white hover:bg-[#173d9b] rounded-md w-fit hover:shadow shadow-black duration-200 transition-all"
 					href="https://www.google.ca/maps/place/The+University+of+British+Columbia+-+Okanagan+Campus/@49.9398234,-119.3989527,17z/data=!3m1!4b1!4m5!3m4!1s0x537ded7da291f011:0x7ca879b9058df1a4!8m2!3d49.93982!4d-119.396764"
-					><button
-						class="rounded-lg border-0 bg-blue-600 p-2 text-sm text-white transition-all duration-300 hover:cursor-pointer hover:bg-blue-700"
-						>Get Directions <i
-							class="ri-external-link-fill text-[1rem]"
-						></i></button
-					></a
-				>
+					style="text-decoration: none;"
+					>Get Directions</a>
 			</div>
 		</div>
+		<CountDownTimer targetDate="2025-05-07T00:00:00" />
 	</section>
-	<CountDownTimer targetDate="2025-05-07T23:59:59" />
 </div>
 
 <div class="h-screen"></div>
 
 <script>
 	import Typed from 'typed.js';
+
+	let idx = 0;
+	const colors = ['#00272B', '#e0ff4f', '#ff6663', '#a51080'];
 
 	new Typed('#typer', {
 		strings:
@@ -78,7 +76,11 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 		backDelay: 1000,
 		smartBackspace: true,
 		loop: true,
-		shuffle: true,
+		shuffle: false,
+		preStringTyped: (_, self) => {
+			if (idx == colors.length) idx = 0;
+			self.el.style.color = colors[idx];
+			idx++;
+		},
 	});
 </script>
-

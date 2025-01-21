@@ -1,30 +1,88 @@
 ---
 import 'remixicon/fonts/remixicon.css';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
+import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
+import DeadlineTiles from './elements/DeadlineTiles.astro';
 ---
 
-<section class="bg-[#111B21] p-5 sm:p-10 md:p-14 lg:p-20 z-40">
-	<SectionTitle>
-		Important<br>Deadlines
-	</SectionTitle>
-	<div class="">
-		<div class="flex flex-col items-start justify-start gap-2">
-			<h4 class="mb-0 text-xl font-light text-white">
-				ABSTRACT SUBMISSION
-			</h4>
-			<h1 class="mb-0 text-6xl font-bold text-white">April 14th, 2025</h1>
-			<div class="flex flex-row gap-4">
-				<!-- Add to Calendar -->	
-			</div>
-		</div>
-		<div class="flex flex-col items-start justify-start gap-2">
-			<h4 class="mb-0 text-xl font-light text-white">
-				REGISTRATION
-			</h4>
-			<h1 class="mb-0 text-6xl font-bold text-white">May 1st, 2025</h1>
-			<div class="flex flex-row gap-4">
-				<!-- Add to Calendar -->
-			</div>
-		</div>
+<section class="relative z-40 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle> Upcoming Deadlines </SectionTitle>
+	<div class="flex flex-row items-center justify-start gap-4 overflow-auto mb-10">
+		<DeadlineTiles
+			deadlineType="earlyBird"
+			title="Abstract Submission"
+			startDate="March 1st, 2025"
+			endDate="April 5th, 2025"
+			calendarObject=""
+			detailsLink=""
+		/>
+		<DeadlineTiles
+			deadlineType="regular"
+			title="Abstract Submission"
+			startDate="March 1st, 2025"
+			endDate="April 5th, 2025"
+			calendarObject=""
+			detailsLink=""
+		/>
+		<DeadlineTiles
+			deadlineType="regular"
+			title="Paper Submission"
+			startDate="March 1st, 2025"
+			endDate="April 5th, 2025"
+			calendarObject=""
+			detailsLink=""
+		/>
+	</div>
+	<div class="flex flex-col justify-center items-start gap-4">
+		<p class="m-0 p-0 text-4xl font-normal leading-none text-white">
+			See all the important deadlines for the conference:
+		</p>
+		<a
+			class="w-fit rounded-md bg-[#0058E5] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#173d9b] hover:shadow sm:inline-block sm:w-auto"
+			href="/kelowna"
+			style="text-decoration: none;">Conference Dates</a
+		>
 	</div>
 </section>
+
+<!-- <a -->
+<!-- 	class="w-fit rounded-md bg-[#0058E5] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#173d9b] hover:shadow sm:inline-block sm:w-auto" -->
+<!-- 	href="/kelowna" -->
+<!-- 	style="text-decoration: none;">Important Conference Dates</a -->
+<!-- > -->
+<!-- <AddToCalendar -->
+<!-- 	title="Western Canadian Undergraduate Chemistry Conference" -->
+<!-- 	description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!" -->
+<!-- 	location="The University of British Columbia" -->
+<!-- 	startDate="2025-03-01T08:00:00" -->
+<!-- 	endDate="2025-04-1T23:59:59">Add to Calendar</AddToCalendar -->
+<!-- > -->
+
+<style>
+	::-webkit-scrollbar {
+		width: 12px;
+		height: 12px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #ffffff;
+		border-radius: 5px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #0368ff;
+		border-radius: 10px;
+		border: 10px solid #f0f0f0;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #0368ff;
+	}
+
+	/* Firefox */
+	html {
+		overflow: auto;
+		scrollbar-color: #0368ff white;
+		scrollbar-width: thick;
+	}
+</style>
