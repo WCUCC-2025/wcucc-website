@@ -1,7 +1,9 @@
+order: 1
 firstName: 'Sophia'
 lastName: 'Vanslyke'
 headshot: 'sophia.webp'
 major: 'BSc. Chemistry'
 role: 'Chair'
+linkedIn: ''
 biography: 'I am a third-year chemistry major who can be most commonly found in one of two places: the lab or outdoors. I have had amazing mentors who introduced me to research almost two years ago and since then I’ve been extremely lucky to work on a project focusing on better understanding the structure function relationship of a carbon-based photocatalytic material known as carbon nitride. I am passionate about my project as it is part of the national effort dedicated to better understanding organic polymers for photocatalytic applications to further our grasp of green, reusable energy and the effects it could have on renewable fuel sources moving forward. However, when I’m not in the lab, I can be found doing any activity that provides an excuse to be in nature whether it be rock climbing, backpacking, running, horseback riding, or skiing.'
 funFact: 'Weeee :)!'

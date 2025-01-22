@@ -1,11 +1,15 @@
 ---
+import 'remixicon/fonts/remixicon.css';
 import { getCollection } from 'astro:content';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 import OverlayBase from '@src/components/elements/OverlayBase.astro';
 const bios = await getCollection('bios');
+bios.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class="p-5 sm:p-10 md:p-14 lg:p-20 transition-all duration-300 ease-in-out">
+<section
+	class="p-5 transition-all duration-300 ease-in-out sm:p-10 md:p-14 lg:p-20"
+>
 	<SectionTitle color="black">Our Team</SectionTitle>
 	<div class="flex flex-row flex-wrap justify-center gap-4">
 		{
@@ -117,61 +121,79 @@ const bios = await getCollection('bios');
 			<div class="shrink-0">
 				<h4 id="overlay-name" class="m-0 p-0 text-4xl font-bold"></h4>
 				<p id="overlay-role" class="m-0 p-0 text-2xl font-normal"></p>
+				<a id="overlay-linkedin" style="text-decoration: none;"
+					><i
+						class="ri-linkedin-box-fill m-0 p-0 text-2xl font-normal"
+					></i></a
+				>
 			</div>
 			<h4 class="m-0 p-0 text-2xl font-semibold">Who am I?</h4>
 			<div class="min-h-0 flex-1 overflow-y-auto text-[1.1rem]">
 				<p id="overlay-bio"></p>
+				<h4 class="m-0 p-0 text-2xl font-semibold">Fun Fact</h4>
+				<p id="overlay-fun-fact" class="m-0 p-0"></p>
 			</div>
 		</div>
 	</div>
-</OverlayBase>
 
-<style>
-	.headshot-img {
-		object-position: 22.5% 22.5%;
-	}
-
-	@media (min-width: 640px) {
+	<style>
 		.headshot-img {
-			object-position: 50% 0;
-		}
-	}
-</style>
-
-<script is:inline>
-	const updateOverlay = memberData => {
-		const img = document.getElementById('overlay-headshot');
-		if (img) {
-			img.src = `/headshots/${memberData.headshot}`;
-			img.alt = memberData.firstName;
+			object-position: 22.5% 22.5%;
 		}
 
-		const nameEl = document.getElementById('overlay-name');
-		if (nameEl) {
-			nameEl.textContent = `${memberData.firstName} ${memberData.lastName}`;
-		}
-
-		const roleEl = document.getElementById('overlay-role');
-		if (roleEl) {
-			roleEl.textContent = memberData.role;
-		}
-
-		const bioEl = document.getElementById('overlay-bio');
-		if (bioEl) {
-			bioEl.textContent = memberData.biography;
-		}
-	};
-
-	document.querySelectorAll('[data-member]').forEach(element => {
-		element.addEventListener('click', () => {
-			const memberData = JSON.parse(element.dataset.member);
-			updateOverlay(memberData);
-
-			const overlay = document.getElementById('team-overlay');
-			console.log(overlay);
-			if (overlay) {
-				overlay.classList.remove('hide');
+		@media (min-width: 640px) {
+			.headshot-img {
+				object-position: 50% 0;
 			}
+		}
+	</style>
+
+	<script is:inline>
+		const updateOverlay = memberData => {
+			console.log(memberData);
+			const img = document.getElementById('overlay-headshot');
+			if (img) {
+				img.src = `/headshots/${memberData.headshot}`;
+				img.alt = memberData.firstName;
+			}
+
+			const nameEl = document.getElementById('overlay-name');
+			if (nameEl) {
+				nameEl.textContent = `${memberData.firstName} ${memberData.lastName}`;
+			}
+
+			const roleEl = document.getElementById('overlay-role');
+			if (roleEl) {
+				roleEl.textContent = memberData.role;
+			}
+
+			const factEl = document.getElementById('overlay-fun-fact');
+			if (factEl) {
+				factEl.textContent = memberData.funFact;
+			}
+
+			const linkedInEl = document.getElementById('overlay-linkedin');
+			if (linkedInEl) {
+				linkedInEl.href = `${memberData.linkedIn}`;
+			}
+
+			const bioEl = document.getElementById('overlay-bio');
+			if (bioEl) {
+				bioEl.textContent = memberData.biography;
+			}
+		};
+
+		document.querySelectorAll('[data-member]').forEach(element => {
+			element.addEventListener('click', () => {
+				const memberData = JSON.parse(element.dataset.member);
+				updateOverlay(memberData);
+
+				const overlay = document.getElementById('team-overlay');
+				console.log(overlay);
+				if (overlay) {
+					overlay.classList.remove('hide');
+				}
+			});
 		});
-	});
-</script>
+	</script>
+</OverlayBase>

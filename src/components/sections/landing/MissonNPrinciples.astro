@@ -1,88 +1,61 @@
 ---
-import SectionTitle from "@src/components/elements/ui/SectionTitle.astro"
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
+import MissionPrincipleTiles from './elements/MissionPrincipleTiles.astro';
 ---
 
 <div class="relative m-0 p-0">
-  <div class="sticky top-0 -mt-[12vh] z-20 p-0 m-0"> 
-    <div class="h-[20vh] w-full bg-[url('/WCUCC-Landing-Transition.svg')] bg-top bg-cover m-0 p-0"></div> 
-  </div>
+	<!-- <div class="sticky top-0 z-20 m-0 -mt-[12vh] p-0"> -->
+	<!-- 	<div -->
+	<!-- 		class="m-0 h-[20vh] w-full bg-[url('/WCUCC-Landing-Transition.svg')] bg-cover bg-top p-0" -->
+	<!-- 	> -->
+	<!-- 	</div> -->
+	<!-- </div> -->
 
-  <section class="relative z-40 bg-white p-5 sm:p-10 md:p-14 lg:p-20">
-    <SectionTitle color="black">
-      Our <br class="sm:hidden">Mission & Principles
-    </SectionTitle>
-
-    <p class="pb-2 lg:pb-10 text-2xl font-light">
-      The 37th Western Canadian Undergraduate Chemistry Conference will be
-      held at the University of British Columbia Okanagan, located in the
-      Sylic Okanagan Territory, in May of 2025.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 pb-10">
-      <p class="col-span-1 md:col-span-2 text-2xl font-light">
-        This conference will provide undergraduates an opportunity to
-        present their research, learn from luminaries in the field of
-        chemistry, and connect with others to foster community. The guiding
-        principles for this gathering are:
-      </p>
-      <div
-        class="h-fit bg-white p-4 hover:shadow-2xl transition-all duration-300"
-        style="border: 4px #000000 solid; border-radius: 0.5rem;"
-      >
-        <p
-          class="w-fit rounded-lg p-2 text-lg"
-          style="border: 1px #000000 solid; border-radius: 1rem;"
-        >
-          Diversity & Inclusion
-        </p>
-        <p class="py-10 text-5xl">Participants, Ideas, & Disciplines</p>
-      </div>
-      <div
-        class="h-fit bg-white p-4 hover:shadow-2xl transition-all duration-300 xl:mt-[-15rem]"
-        style="border: 4px #000000 solid; border-radius: 0.5rem;"
-      >
-        <p
-          class="w-fit rounded-lg p-2 text-lg"
-          style="border: 1px #000000 solid; border-radius: 1rem;"
-        >
-          Interconnection
-        </p>
-        <p class="py-10 text-5xl">
-          Across disciplines and students to build community
-        </p>
-      </div>
-      <div
-        class="h-fit bg-white p-4 hover:shadow-2xl transition-all duration-300 xl:mt-[-15rem]"
-        style="border: 4px #000000 solid; border-radius: 0.5rem;"
-      >
-        <p
-          class="w-fit rounded-lg p-2 text-lg"
-          style="border: 1px #000000 solid; border-radius: 1rem;"
-        >
-          Application
-        </p>
-        <p class="py-10 text-5xl">
-          Research findings to issues in the broader world
-        </p>
-      </div>
-      <div
-        class="h-fit rounded-lg bg-white p-4 hover:shadow-2xl transition-all duration-300"
-        style="border: 4px #000000 solid;"
-      >
-        <p
-          class="w-fit rounded-lg p-2 text-lg"
-          style="border: 1px #000000 solid; border-radius: 1rem;"
-        >
-          Accessibility
-        </p>
-        <p class="py-10 text-5xl">Information to Diverse Audiences</p>
-      </div>
-    </div>
-
-    <p class="pb-10 text-2xl font-light">
-      Our team looks forward to applying these principles in the planning and
-      execution of what we hope will be a spectacular conference. We can't
-      wait to welcome you to the beautiful Okanagan Valley.
-    </p>
-  </section>
+	<section class="relative z-40 bg-white p-5 sm:p-10 md:p-14 lg:p-20">
+		<SectionTitle color="black">
+			Our <br class="sm:hidden" />Mission & Principles
+		</SectionTitle>
+		<div class="flex flex-col justify-start items-start gap-4">
+		<p class="text-2xl font-light">
+			The 37th Western Canadian Undergraduate Chemistry Conference will be
+			held at the University of British Columbia Okanagan, located in the
+			Sylic Okanagan Territory, in May of 2025.
+		</p>
+		<p class="text-2xl font-light">
+			This conference will provide undergraduates an opportunity to
+			present their research, learn from luminaries in the field of
+			chemistry, and connect with others to foster community. The guiding
+			principles for this gathering are:
+		</p>
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4"
+		>
+			<MissionPrincipleTiles
+				principle="Interconnection"
+				description="Across disciplines and students to build community "
+				color="#9F17A7"
+			/>
+			<MissionPrincipleTiles
+				principle="Diversity & Inclusion"
+				description="Participants, Ideas, & Disciplines"
+				color="#D10838"
+			/>
+			<MissionPrincipleTiles
+				principle="Application"
+				description="Research findings to issues in the broader world "
+				color="#5CC75B"
+			/>
+			<MissionPrincipleTiles
+				principle="Accessibility"
+				description="Information to Diverse Audiences"
+				color="#F9B700"
+			/>
+		</div>
+		<p class="m-0 p-0 text-2xl font-light">
+			Our team looks forward to applying these principles in the planning
+			and execution of what we hope will be a spectacular conference. We
+			can't wait to welcome you to the beautiful Okanagan Valley.
+		</p>
+		</div>
+	</section>
 </div>

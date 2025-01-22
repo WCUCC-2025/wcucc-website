@@ -3,7 +3,7 @@ import NavLink from '@src/components/elements/navigation/NavLink.astro';
 import NormalDropdownMenu from '@src/components/elements/navigation/NormalDropdownMenu.astro';
 ---
 
-<div class="hidden md:flex fixed right-0 z-50 w-screen p-5 font-sans">
+<div class="fixed right-0 z-50 hidden w-screen p-5 font-sans md:flex">
 	<nav class="flex w-full flex-row items-center justify-between">
 		<a class="flex flex-row items-center justify-center" href="/feature">
 			<img
@@ -17,19 +17,14 @@ import NormalDropdownMenu from '@src/components/elements/navigation/NormalDropdo
 		<div
 			class="relative flex h-16 w-fit flex-row items-center justify-between rounded-lg border-[1px] border-solid border-black bg-white px-4 py-2 shadow-2xl"
 		>
-			<NavLink
-				id="dropdown-btn"
-				hasDropdown={true}
-			>
-				CONFERENCE
-			</NavLink>
+			<NavLink id="dropdown-btn" hasDropdown={true}> CONFERENCE </NavLink>
 			<a
 				class="hover:no-underline"
 				style="text-decoration: none;"
 				href="https://ubc.ca1.qualtrics.com/jfe/form/SV_a8FwZ21NLZgGYlg"
 				target="_blank"
 				><div
-					class="rounded-lg bg-wcucc-lavender px-3 py-1.5 text-center font-bold text-white transition-all duration-300 hover:cursor-pointer hover:bg-wcucc-purple"
+					class="w-fit rounded-md bg-wcucc-lavender px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#282ac4] hover:shadow"
 				>
 					RSVP
 				</div></a
@@ -40,35 +35,35 @@ import NormalDropdownMenu from '@src/components/elements/navigation/NormalDropdo
 </div>
 
 <script is:inline>
-    const btn = document.querySelector('#dropdown-btn');
-    const menu = document.querySelector('#dropdown-overlay');
-    let isButtonHovered = false;
-    let isMenuHovered = false;
+	const btn = document.querySelector('#dropdown-btn');
+	const menu = document.querySelector('#dropdown-overlay');
+	let isButtonHovered = false;
+	let isMenuHovered = false;
 
-    btn.addEventListener('mouseenter', () => {
-        isButtonHovered = true;
-        menu.classList.remove('hide');
-    });
+	btn.addEventListener('mouseenter', () => {
+		isButtonHovered = true;
+		menu.classList.remove('hide');
+	});
 
-    btn.addEventListener('mouseleave', () => {
-        isButtonHovered = false;
-        setTimeout(() => {
-            if (!isButtonHovered && !isMenuHovered) {
-                menu.classList.add('hide');
-            }
-        }, 100);
-    });
+	btn.addEventListener('mouseleave', () => {
+		isButtonHovered = false;
+		setTimeout(() => {
+			if (!isButtonHovered && !isMenuHovered) {
+				menu.classList.add('hide');
+			}
+		}, 100);
+	});
 
-    menu.addEventListener('mouseenter', () => {
-        isMenuHovered = true;
-    });
+	menu.addEventListener('mouseenter', () => {
+		isMenuHovered = true;
+	});
 
-    menu.addEventListener('mouseleave', () => {
-        isMenuHovered = false;
-        setTimeout(() => {
-            if (!isButtonHovered && !isMenuHovered) {
-                menu.classList.add('hide');
-            }
-        }, 100);
-    });
+	menu.addEventListener('mouseleave', () => {
+		isMenuHovered = false;
+		setTimeout(() => {
+			if (!isButtonHovered && !isMenuHovered) {
+				menu.classList.add('hide');
+			}
+		}, 100);
+	});
 </script>

@@ -1,18 +1,9 @@
+order: 12
 firstName: "Trevor"
 lastName: "Fox"
 headshot: "trevor.webp"
 major: "BSc. Biochemistry and Molecular Biology"
 role: "Web Developer"
-biography: 'I am Trevor, a biochemistry major in his fourth year at UBCO. This year, I serve
-dutifully as one of the architects for this website! I also conduct research
-focused on the field of metabolomics. I just finished developing and validating
-a method to predict the species of origin of frankincense based on 60 and 400
-MHz NMR spectra. In the past, I have also led the wet lab of UBCO’s
-International Genetically Engineered Machine competition team, where we
-endeavoured to produce bioluminescent cyanobacteria. I love exploring new
-avenues to accomplish things, as evident in my line of research. My hobbies
-include playing piano, programming, ice skating/skiing, and cooking. One might
-say I am “multivalent!”'
-funFact: "Bismuth is my favourite element, not only
-because it’s pretty, but also because its half-life is longer than the
-universe's age."
+linkedIn: ''
+biography: 'I am Trevor, a biochemistry major in his fourth year at UBCO. This year, I serve dutifully as one of the architects for this website! I also conduct research focused on the field of metabolomics. I just finished developing and validating a method to predict the species of origin of frankincense based on 60 and 400 MHz NMR spectra. In the past, I have also led the wet lab of UBCO’s International Genetically Engineered Machine competition team, where we endeavoured to produce bioluminescent cyanobacteria. I love exploring new avenues to accomplish things, as evident in my line of research. My hobbies include playing piano, programming, ice skating/skiing, and cooking. One might say I am "multivalent!"'
+funFact: "Bismuth is my favourite element, not only because it’s pretty, but also because its half-life is longer than the universe's age."
