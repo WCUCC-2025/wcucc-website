@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 import OverlayBase from '@src/components/elements/OverlayBase.astro';
 const bios = await getCollection('bios');
+bios.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section

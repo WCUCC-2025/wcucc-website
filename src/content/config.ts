@@ -3,6 +3,7 @@ import { z, defineCollection } from 'astro:content';
 const biosCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
+		order: z.number(),
 		firstName: z.string(),
 		lastName: z.string(),
 		role: z.string(),
@@ -57,10 +58,26 @@ const eventsCollection = defineCollection({
 	}),
 });
 
+const speakersCollection = defineCollection({
+	type: 'data',
+	schema: z.object({
+		firstName: z.string(),
+		lastName: z.string(),
+		institution: z.optional(z.string()),
+		department: z.optional(z.string()),
+		position: z.string(),
+		linkToMoreInformation: z.string(),
+		photograph: z.string(),
+		talkTitle: z.string(),
+		biography: z.string(),
+	}),
+});
+
 export const collections = {
 	bios: biosCollection,
 	carousel: carouselCollection,
 	sponsors: sponsorsCollection,
 	faqs: faqsCollection,
 	events: eventsCollection,
+	speakers: speakersCollection,
 };

@@ -2,25 +2,28 @@
 const { image, name, title, university, talkTitle, learnMore } = Astro.props;
 ---
 
-<div class="flex h-full w-[20rem] flex-col justify-between">
+<div class="flex h-full w-[20rem] flex-col justify-between bg-white shadow shadow-black">
 	<section class="m-0">
-		<div class="mb-2 rounded-md bg-[#00BBFF] p-10 pb-0">
+		<div class="mb-2 rounded-md bg-[#00BBFF] pb-0">
 			<img
-				class="m-0 -mb-[0.375rem] h-auto w-full"
-				src={image}
+				class="m-0 -mb-[0.375rem] h-auto w-full object-cover"
+				src={`speakers/${image}`}
 				alt={name}
 			/>
 		</div>
 		<p class="m-0 text-lg font-bold">{name}</p>
 		<p class="m-0 text-lg font-semibold">{title}</p>
-		<p class="m-0 py-2 text-lg font-light">{university}</p>
+		{
+			university !== 'undefined, undefined' && (
+				<p class="m-0 py-2 text-lg font-light">{university}</p>
+			)
+		}
 		<!-- <p class="m-0">"{talkTitle}"</p> -->
 	</section>
 	<div
 		id="trigger-overlay"
-		class="my-4 flex w-fit flex-row items-center justify-between gap-4 rounded-md border-[1px] border-solid border-black px-2 py-2 text-[1rem] font-light text-black transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-black hover:text-white sm:text-lg"
+		class="w-fit rounded-md bg-blue-600 px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-blue-900 hover:shadow"
 	>
-		<p class="mb-0 h-fit">Learn More</p>
-		<i class="ri-external-link-fill h-fit text-xl"></i>
+		Learn More
 	</div>
 </div>

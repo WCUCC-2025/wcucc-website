@@ -3,60 +3,33 @@ import SpeakerTile from '@src/components/elements/SpeakerTile.astro';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 import OverlayBase from '@src/components/elements/OverlayBase.astro';
 import SpeakerDetails from './elements/SpeakerDetails.astro';
+
+import { getCollection } from 'astro:content';
+const speakers = await getCollection('speakers');
 ---
 
-<section class="w-screen z-50 p-5 sm:p-10 md:p-14 lg:p-20 bg-white">
+<section class="z-50 w-screen bg-white p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle color="black"> Speakers </SectionTitle>
 	<section class="flex w-full flex-col items-center justify-start">
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-			<SpeakerTile
-				image={'/tempPicB.svg'}
-				name={'Dr. Anya Petrovich'}
-				title={'Professor'}
-				university={'McGill University, The Metabolomics Innovation Centre (TMIC)'}
-				talkTitle={'Unlocking Enzyme Potential: Biocatalysts for a Sustainable Future'}
-				learnMore="#"
-			/>
-			<SpeakerTile
-				image={'/tempPicB.svg'}
-				name={'Dr. Ben Stephens'}
-				title={'Associate Professor'}
-				university={'Univesity of British Columbia'}
-				talkTitle={"Nature's Pharmacy: Uncovering Novel Drug Candidates from the Rainforest"}
-				learnMore="#"
-			/>
-			<SpeakerTile
-				image={'/tempPicB.svg'}
-				name={'Dr. Anya Petrovich'}
-				title={'Professor'}
-				university={'McGill University, The Metabolomics Innovation Centre (TMIC)'}
-				talkTitle={'Unlocking Enzyme Potential: Biocatalysts for a Sustainable Future'}
-				learnMore="#"
-			/>
-			<SpeakerTile
-				image={'/tempPicB.svg'}
-				name={'Dr. Ben Stephens'}
-				title={'Associate Professor'}
-				university={'Univesity of British Columbia'}
-				talkTitle={"Nature's Pharmacy: Uncovering Novel Drug Candidates from the Rainforest"}
-				learnMore="#"
-			/>
-			<SpeakerTile
-				image={'/tempPicB.svg'}
-				name={'Dr. Anya Petrovich'}
-				title={'Professor'}
-				university={'McGill University, The Metabolomics Innovation Centre (TMIC)'}
-				talkTitle={'Unlocking Enzyme Potential: Biocatalysts for a Sustainable Future'}
-				learnMore="#"
-			/>
-			<SpeakerTile
-				image={'/tempPicB.svg'}
-				name={'Dr. Ben Stephens'}
-				title={'Associate Professor'}
-				university={'Univesity of British Columbia'}
-				talkTitle={"Nature's Pharmacy: Uncovering Novel Drug Candidates from the Rainforest"}
-				learnMore="#"
-			/>
+			{
+				speakers.map(speaker => {
+					return (
+						<SpeakerTile
+							image={speaker.data.photograph}
+							name={`Dr. ${speaker.data.firstName} ${speaker.data.lastName}`}
+							title={speaker.data.position}
+							university={
+							`${speaker.data.institution}, ${speaker.data.department}`
+							}
+							talkTitle={
+							speaker.data.talkTitle	
+							}
+							learnMore={speaker.data.linkToMoreInformation}
+						/>
+					);
+				})
+			}
 		</div>
 	</section>
 </section>

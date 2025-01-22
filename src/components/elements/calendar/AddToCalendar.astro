@@ -35,7 +35,7 @@ const eventDetails: {
 	<slot />
 </div>
 
-	<CalendarOverlay id: {id} eventDetails={eventDetails} />
+	<CalendarOverlay id={id} eventDetails={eventDetails} />
 
 <script is:inline define:vars={{ id }}>
 	let btnCal = document.querySelector(`#calendar-toggle-${id}`);

@@ -6,7 +6,12 @@ import People from '@src/components/sections/team/People.astro';
 ---
 
 <Base title="Our Team">
-	<HeaderBase title="Our Team" description="Meet the amazing team that made this conference a reality 🙂" />
-	<Team />
-	<People />
+	<HeaderBase
+		title="Our Team"
+		description="Meet the amazing team that made this conference a reality 🙂"
+	/>
+	<div class="p-0 m-0 bg-[url('elements-bg.svg')] bg-cover">
+		<Team />
+		<People />
+	</div>
 </Base>
