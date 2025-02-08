@@ -24,12 +24,14 @@
 		"astro-font": "^0.0.77",
 		"date-fns": "^4.1.0",
 		"date-fns-tz": "^3.2.0",
+		"nodemailer": "^6.10.0",
 		"prettier": "^3.4.2",
 		"prettier-plugin-astro": "^0.13.0",
 		"prettier-plugin-tailwindcss": "^0.5.14",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"remixicon": "^4.6.0",
+		"sanitize-html": "^2.14.0",
 		"tailwind-merge": "^2.6.0",
 		"tailwindcss": "^3.4.17",
 		"typed.js": "^2.1.0",
@@ -39,6 +41,8 @@
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.9",
-		"@tailwindcss/typography": "^0.5.15"
+		"@tailwindcss/typography": "^0.5.15",
+		"@types/nodemailer": "^6.4.17",
+		"@types/sanitize-html": "^2.13.0"
 	}
 }

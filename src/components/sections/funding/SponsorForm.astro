@@ -1,23 +1,21 @@
 ---
-import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 ---
 
-<section class="mb-16 mt-16 pl-20 pr-10 md:px-20 text-left">
+<section class="mb-16 mt-16 pl-20 pr-10 text-left md:px-20">
     <SectionTitle color="black">Become a Sponsor</SectionTitle>
-    <p class="mb-8 text-lg md:text-xl text-black">
-        Interested in sponsoring our conference? We'd love to hear
-        from you!
+    <p class="mb-8 text-lg text-black md:text-xl">
+        Interested in sponsoring our conference? We'd love to hear from you!
     </p>
     <div
         id="form-container"
-        class="mx-auto max-w-full md:max-w-2xl rounded-2xl bg-gray-900 p-4 md:p-8 shadow-2xl"
+        class="mx-auto max-w-full rounded-2xl bg-gray-900 p-4 shadow-2xl md:max-w-2xl md:p-8"
     >
-        <form class="space-y-6">
+        <form class="space-y-6" method="POST" action="/api/funding-formsubmit">
             <div>
                 <label
                     for="full-name"
-                    class="mb-2 block text-left text-gray-300"
-                    >Full Name</label
+                    class="mb-2 block text-left text-gray-300">Full Name</label
                 >
                 <input
                     type="text"
@@ -31,7 +29,7 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                 <label
                     for="display-name"
                     class="mb-2 block text-left text-gray-300"
-                    >Name (to be displayed on badge)</label
+                    >Name (displayed on badge)</label
                 >
                 <input
                     type="text"
@@ -42,9 +40,7 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                 />
             </div>
             <div>
-                <label
-                    for="package"
-                    class="mb-2 block text-left text-gray-300"
+                <label for="package" class="mb-2 block text-left text-gray-300"
                     >Which sponsorship package are you interested in?</label
                 >
                 <div class="flex flex-col space-y-2">
@@ -57,9 +53,8 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                             class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
                             required
                         />
-                        <label
-                            for="package-platinum"
-                            class="ml-2 text-gray-300">Platinum ($2000)</label
+                        <label for="package-platinum" class="ml-2 text-gray-300"
+                            >Platinum ($2000)</label
                         >
                     </div>
                     <div class="flex items-center">
@@ -71,9 +66,8 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                             class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
                             required
                         />
-                        <label
-                            for="package-gold"
-                            class="ml-2 text-gray-300">Gold ($1000)</label
+                        <label for="package-gold" class="ml-2 text-gray-300"
+                            >Gold ($1000)</label
                         >
                     </div>
                     <div class="flex items-center">
@@ -85,9 +79,8 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                             class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
                             required
                         />
-                        <label
-                            for="package-silver"
-                            class="ml-2 text-gray-300">Silver ($500)</label
+                        <label for="package-silver" class="ml-2 text-gray-300"
+                            >Silver ($500)</label
                         >
                     </div>
                     <div class="flex items-center">
@@ -99,9 +92,8 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                             class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
                             required
                         />
-                        <label
-                            for="package-bronze"
-                            class="ml-2 text-gray-300">Bronze ($250)</label
+                        <label for="package-bronze" class="ml-2 text-gray-300"
+                            >Bronze ($250)</label
                         >
                     </div>
                     <div class="flex items-center">
@@ -113,9 +105,8 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                             class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
                             required
                         />
-                        <label
-                            for="package-other"
-                            class="ml-2 text-gray-300">Other</label
+                        <label for="package-other" class="ml-2 text-gray-300"
+                            >Other</label
                         >
                     </div>
                 </div>
@@ -125,7 +116,8 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                     for="contributions"
                     class="mb-2 block text-left text-gray-300"
                 >
-                    Please specify your contribution (Food, beverages or any other form of sponsorship)
+                    Please specify your contribution (Food, beverages or any
+                    other form of sponsorship)
                 </label>
                 <textarea
                     id="contributions"
@@ -135,9 +127,7 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                 ></textarea>
             </div>
             <div>
-                <label
-                    for="email"
-                    class="mb-2 block text-left text-gray-300"
+                <label for="email" class="mb-2 block text-left text-gray-300"
                     >Email</label
                 >
                 <input
@@ -148,9 +138,7 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                 />
             </div>
             <div>
-                <label
-                    for="phone"
-                    class="mb-2 block text-left text-gray-300"
+                <label for="phone" class="mb-2 block text-left text-gray-300"
                     >Phone Number</label
                 >
                 <input
@@ -164,46 +152,75 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                 Please provide a valid email or phone number.
             </div>
             <script>
-                document.querySelector('form')?.addEventListener('submit', function(event) {
-                    const emailElement = document.getElementById('email') as HTMLInputElement | null;
-                    const phoneElement = document.getElementById('phone') as HTMLInputElement | null;
-                    const contactError = document.getElementById('contact-error');
+                document
+                    .querySelector('form')
+                    ?.addEventListener('submit', function (event) {
+                        const emailElement = document.getElementById(
+                            'email'
+                        ) as HTMLInputElement | null;
+                        const phoneElement = document.getElementById(
+                            'phone'
+                        ) as HTMLInputElement | null;
+                        const contactError =
+                            document.getElementById('contact-error');
 
-                    const email = emailElement?.value || '';
-                    const phone = phoneElement?.value || '';
-                    const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-                    const phoneValid = phone && /^\+?[1-9]\d{1,14}$/.test(phone);
+                        const email = emailElement?.value || '';
+                        const phone = phoneElement?.value || '';
+                        const emailValid =
+                            email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                        const phoneValid =
+                            phone && /^\+?[1-9]\d{1,14}$/.test(phone);
 
-                    if (!emailValid && !phoneValid) {
-                        event.preventDefault();
-                        contactError?.classList.remove('hidden');
-                    } else {
-                        contactError?.classList.add('hidden');
-                    }
-                });
+                        if (!emailValid && !phoneValid) {
+                            event.preventDefault();
+                            contactError?.classList.remove('hidden');
+                        } else {
+                            contactError?.classList.add('hidden');
+                        }
+                    });
 
                 const packageColors = {
                     platinum: { bg: '#3D3E3E', text: 'white' },
                     gold: { bg: '#FFC056', text: 'black' },
                     silver: { bg: '#ACBDD8', text: 'black' },
                     bronze: { bg: '#AD6A29', text: 'white' },
-                    other: { bg: '#00674F', text: 'white' }
+                    other: { bg: '#00674F', text: 'white' },
                 };
 
-                document.querySelectorAll('input[name="package"]').forEach((input) => {
-                    input.addEventListener('change', function(this: HTMLInputElement) {
-                        const otherContributions = document.getElementById('other-contributions');
-                        const formContainer = document.getElementById('form-container');
-                        if (this.value === 'other') {
-                            otherContributions?.classList.remove('hidden');
-                        } else {
-                            otherContributions?.classList.add('hidden');
-                        }
-                        const selectedPackage = packageColors[this.value as keyof typeof packageColors];
-                        formContainer?.style.setProperty('background-color', selectedPackage.bg);
-                        formContainer?.style.setProperty('color', selectedPackage.text);
+                document
+                    .querySelectorAll('input[name="package"]')
+                    .forEach(input => {
+                        input.addEventListener(
+                            'change',
+                            function (this: HTMLInputElement) {
+                                const otherContributions =
+                                    document.getElementById(
+                                        'other-contributions'
+                                    );
+                                const formContainer =
+                                    document.getElementById('form-container');
+                                if (this.value === 'other') {
+                                    otherContributions?.classList.remove(
+                                        'hidden'
+                                    );
+                                } else {
+                                    otherContributions?.classList.add('hidden');
+                                }
+                                const selectedPackage =
+                                    packageColors[
+                                        this.value as keyof typeof packageColors
+                                    ];
+                                formContainer?.style.setProperty(
+                                    'background-color',
+                                    selectedPackage.bg
+                                );
+                                formContainer?.style.setProperty(
+                                    'color',
+                                    selectedPackage.text
+                                );
+                            }
+                        );
                     });
-                });
             </script>
             <div>
                 <label class="mb-2 block text-left text-gray-300"
@@ -217,9 +234,8 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                         value="yes"
                         class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
                     />
-                    <label
-                        for="near-ubc-yes"
-                        class="ml-2 text-gray-300">Yes</label
+                    <label for="near-ubc-yes" class="ml-2 text-gray-300"
+                        >Yes</label
                     >
                 </div>
                 <div class="mt-2 flex items-center">
@@ -230,9 +246,8 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                         value="no"
                         class="focus:ring-blue-500 h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600"
                     />
-                    <label
-                        for="near-ubc-no"
-                        class="ml-2 text-gray-300">No</label
+                    <label for="near-ubc-no" class="ml-2 text-gray-300"
+                        >No</label
                     >
                 </div>
             </div>
@@ -245,3 +260,4 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
         </form>
     </div>
 </section>
+
