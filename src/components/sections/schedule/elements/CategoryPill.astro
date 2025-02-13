@@ -1,0 +1,23 @@
+---
+const categories = {
+	Keynote: '#56bcf8',
+	Bureaucracy: '#FF6600',
+	Plenary: '#E31DFD',
+	Exploration: '#FFFB00',
+
+	Leisure: '#08E500',
+};
+
+type Props = {
+	name: string;
+};
+
+const { name }: Props = Astro.props;
+---
+
+<p
+	class="leading-0 m-0 rounded-lg px-4 py-2 text-black"
+	style=`background-color: ${categories[name]}`
+>
+	{name}
+</p>

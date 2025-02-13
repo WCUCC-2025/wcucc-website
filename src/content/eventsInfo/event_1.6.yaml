@@ -1,0 +1,14 @@
+category: "Leisure "
+title: "Opening Ceremonies "
+startTime: "2025-05-09T18:00:00"
+endTime: "2025-05-09T21:00:00"
+location: {
+  onCampus: true,
+  street: "1256 International Mews",
+  postalCode: "V1V 1V7",
+  buildingCode: "?",
+  room: "TBD"
+}
+calendarDescription: 'WCUCC 2025 Opening Ceremonies'
+websiteDescription: 'More info coming soon!'
+isColored: false

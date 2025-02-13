@@ -1,0 +1,14 @@
+category: "Workshop"
+title: "What's Next?\" Workshop"
+startTime: "2025-05-11T16:00:00"
+endTime: "2025-05-11T18:00:00"
+location: {
+  onCampus: true,
+  street: "1177 Research Rd",
+  postalCode: "V1V 1V7",
+  buildingCode: "TBD",
+  room: "TBD"
+}
+calendarDescription: 'More info coming soon!'
+websiteDescription: 'More info coming soon!'
+isColored: false

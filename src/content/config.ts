@@ -1,5 +1,32 @@
 import { z, defineCollection } from 'astro:content';
 
+const eventsInfoCollection = defineCollection({
+	type: 'data',
+	schema: z.object({
+		category: z.string(),
+		title: z.string(),
+		startTime: z.string().datetime({ local: true }),
+		endTime: z.string().datetime({ local: true }),
+		speaker: z.optional(
+			z.object({
+				name: z.string(),
+				website: z.string(),
+			})
+		),
+		location: z.object({
+			onCampus: z.boolean(),
+			street: z.string(),
+			postalCode: z.string(),
+			map: z.optional(z.string()), // ONLY FOR OFF-CAMPUS LOCATIONS
+			buildingCode: z.optional(z.string()),
+			room: z.optional(z.string()),	
+		}),
+		calendarDescription: z.string(),
+		websiteDescription: z.string(),
+		isColored: z.boolean(),
+	}),
+});
+
 const biosCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
@@ -80,4 +107,5 @@ export const collections = {
 	faqs: faqsCollection,
 	events: eventsCollection,
 	speakers: speakersCollection,
+	eventsInfo: eventsInfoCollection 
 };

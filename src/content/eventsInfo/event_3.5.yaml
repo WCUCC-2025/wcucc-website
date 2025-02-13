@@ -1,0 +1,14 @@
+category: "Presentations"
+title: "Poster Presentations"
+startTime: "2025-05-11T14:00:00"
+endTime: "2025-05-11T16:00:00"
+location: {
+  onCampus: true,
+  street: "TBD",
+  postalCode: "TBD",
+  buildingCode: "TBD",
+  room: "TBD"
+}
+calendarDescription: 'Poster presentations for (disciplines)'
+websiteDescription: 'More info coming soon!'
+isColored: false

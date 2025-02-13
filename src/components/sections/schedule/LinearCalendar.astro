@@ -1,0 +1,264 @@
+---
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
+import CalendarCard from '@src/components/sections/schedule/elements/CalendarCard.astro';
+import OverlayBase from '@src/components/elements/OverlayBase.astro';
+import CategoryPill from './elements/CategoryPill.astro';
+import 'remixicon/fonts/remixicon.css';
+import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
+
+import { getCollection } from 'astro:content';
+let eventsInfo = await getCollection('eventsInfo');
+
+eventsInfo.sort((a, b) => new Date(a.data.startTime) - new Date(b.data.startTime));
+
+const UBCOBuildings = {
+	ADM: 'Administration Building',
+	ART: 'Arts Building',
+	ASC: 'Arts and Sciences Centre',
+	COM: 'Commons Building',
+	EME: 'Engineering, Management and Education Building',
+	FIP: 'Fipke Centre for Innovative Research',
+	GYM: 'Gymnasium',
+	LIB: 'Library',
+	SCI: 'Science Building',
+	RHS: 'Reichwald Health Sciences Centre',
+	UNC: 'University Centre',
+	SSC: 'Student Services Centre',
+	CCS: 'Creative and Critical Studies Building',
+	ARTS: 'Arts and Sciences Building',
+	MH4: 'Mountain Home 4 (Arts House)',
+	NIC: 'Nicola Residence',
+	KLO: 'Kalamalka Residence',
+	MON: 'Monashee Residence',
+	PUC: 'Purcell Residence',
+	SIM: 'Similkameen Residence',
+	SKA: 'Skeena Residence',
+	VAN: 'Valhalla Residence',
+	CAS: 'Cassiar Residence',
+	CSC: 'Cascades Residence',
+	NHP: 'Nechako Residence',
+} as const;
+
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  }).format(date);
+}
+---
+
+<section class="w-full bg-white p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle color="black">Event Itinerary</SectionTitle>
+
+	<div class="py-10">
+		<h2 class="m-0 p-0 leading-none">Sunday May 7th, 2025</h2>
+	</div>
+
+	<!-- Calendar Graph -->
+	<div class="items-left flex flex-col justify-start gap-4">
+		{
+			eventsInfo.map(event => {
+			event = event.data;
+				return (
+					<div
+						data-schedule={JSON.stringify(event)}
+						class="rounded-lg border-[1px] border-solid border-black p-4 shadow hover:cursor-pointer"
+						style={
+							event.color &&
+							`background-color: ${event.color}; color: white; border-color: ${event.color};`
+						}
+					>
+						<div class="flex w-full shrink-0 flex-col-reverse items-start justify-start lg:flex-row lg:items-start lg:justify-between">
+							<div class="flex w-fit flex-row items-center justify-center gap-2 p-2">
+								<p>
+									{`${String(new Date(event.startTime).getHours()).padStart(2, '0')}:${String(new Date(event.startTime).getMinutes()).padStart(2, '0')} - ${String(new Date(event.endTime).getHours()).padStart(2, '0')}:${String(new Date(event.endTime).getMinutes()).padStart(2, '0')}`}
+								</p>
+								<p>PST</p>
+								<p>|</p>
+								<p>{formatDate(event.startTime)}</p>
+							</div>
+							{event.category != 'Break' && (
+								<div class="h-fit w-fit rounded-lg border-[1px] border-solid border-black px-4 py-2 shadow">
+									{/* ON-CAMPUS EVENT LOCATION */}
+									{event.location.onCampus && (
+										<p class="m-0 p-0 leading-none">
+											{event.location.room} |{' '}
+											{
+												UBCOBuildings[
+													event.location.buildingCode
+												]
+											}
+										</p>
+									)}
+									{/* OFF-CAMPUS EVENT LOCATION */}
+									{!event.location.onCampus && (
+										<p class="m-0 p-0 leading-none">
+											{event.location.street}
+										</p>
+									)}
+								</div>
+							)}
+						</div>
+						<div class="flex flex-1 flex-col items-start justify-start lg:flex-row lg:flex-wrap lg:items-end lg:justify-between">
+							<div class="flex flex-1 flex-col items-start justify-center gap-2 lg:max-w-[70%]">
+								<h2 class="text-4xl font-bold">
+									{event.title}
+								</h2>
+								{event.speaker && (
+									<p class="text-xl">{event.speaker.name}</p>
+								)}
+							</div>
+							{event.category && event.category != 'Break' && (
+								<div class="flex w-fit shrink-0 flex-row items-center justify-end gap-2 pt-4 lg:pt-0">
+									<AddToCalendar
+										id={event.title
+											.toLowerCase()
+											.split(' ')
+											.join('')}
+										title={event.title}
+										description={event.calendarDescription}
+										location={
+											event.location?.onCampus ?
+												`${event.location.building}, ${event.location.room}`
+											:	event.location?.address
+										}
+										startDate={event.startTime}
+										endDate={event.endTime}
+									>
+										<i class="ri-calendar-fill text-white" />
+									</AddToCalendar>
+									<CategoryPill name={event.category || ''} />
+								</div>
+							)}
+						</div>
+					</div>
+				);
+			})
+		}
+	</div>
+</section>
+
+<OverlayBase identifier="schedule-overlay">
+	<div
+		class="item-start flex h-full w-full flex-col justify-start gap-4 rounded-lg bg-white p-8 overflow-scroll lg:overflow-hidden"
+	>
+		<div
+			class="flex flex-col items-start justify-start gap-2 lg:flex-row lg:justify-start"
+		>
+			<p id="schedule-time" class="m-0 p-0 text-xl leading-none"></p>
+			<p class="m-0 hidden p-0 text-xl leading-none lg:inline-block">|</p>
+			<p class="m-0 p-0 text-xl leading-none">Wednesday, May 7</p>
+		</div>
+		<div
+			class="item-start flex h-full w-full flex-col justify-start gap-4 lg:flex-row lg:justify-evenly"
+		>
+			<div class="flex flex-col items-start justify-start gap-4 w-full">
+				<div class="flex flex-col items-start justify-start gap-2 w-full">
+					<h1
+						id="schedule-title"
+						class="text-5xl font-bold text-black"
+					>
+					</h1>
+					<a
+						class="cursor-pointer text-blue-600 no-underline transition-all duration-300 ease-in-out hover:underline"
+						><p
+							id="schedule-speaker"
+							class="m-0 p-0 text-3xl font-semibold leading-none"
+						>
+						</p></a
+					>
+				</div>
+				<div class="flex flex-col items-start justify-start gap-2">
+					<h2 class="text-2xl font-semibold text-black">
+						Event Details:
+					</h2>
+					<p
+						id="schedule-description"
+						class="m-0 p-0 text-xl leading-relaxed h-full max-h-[85%] lg:max-h-max overflow-y-auto overflow-x-hidden"
+					>
+					</p>
+				</div>
+			</div>
+			<div>
+				<div
+					id="schedule-location-cont"
+					class="flex w-full flex-col items-start justify-start gap-2 lg:min-w-[32rem]"
+				>
+					<div
+						class="flex flex-row gap-1.5 rounded-lg bg-[#D10838] px-2 py-1"
+					>
+						<i class="ri-compass-3-fill text-xl text-white"></i>
+						<h2 class="text-xl font-semibold text-white">
+							Location
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script define:vars={{ UBCOBuildings }} is:inline>
+		const title = document.getElementById('schedule-title');
+		const speaker = document.getElementById('schedule-speaker');
+		const time = document.getElementById('schedule-time');
+		const locCont = document.getElementById('schedule-location-cont');
+		const description = document.getElementById('schedule-description');
+
+		const updateScheduleOverlay = data => {
+			title.innerText = data.title;
+			if (data.speaker) {
+				speaker.classList.remove('hidden');
+				speaker.innerText = data.speaker.name;
+			} else speaker.classList.add('hidden'); // Hide element so no weird padding is visible ;-; - Satanshu was not happy.
+			if (data.category != 'Break') {
+				if (data.location.onCampus) {
+					locCont.innerHTML += `<p id="schedule-location" class="m-0 p-0 leading-none text-xl">
+						${data.location.room} | ${UBCOBuildings[data.location.buildingCode]}
+					</p>`;
+					locCont.innerHTML += `
+				<iframe
+					class="border-[1px] border-solid border-black p-4 w-full object-cover aspect-[1/1]"
+					type="text/html"
+					src="https://maps.ok.ubc.ca/?code=${data.location.buildingCode}"
+				/>
+				`;
+				} else {
+					locCont.innerHTML = `<p id="schedule-location" class="m-0 p-0 leading-none">${data.location.street}, Kelowna, BC, ${data.location.postalCode}</p>`;
+					locCont.innerHTML += `
+					<iframe
+					src="${data.location.map}"
+					width="600"
+					height="500"
+					style="border:0;"
+					allowfullscreen=""
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"></iframe>
+				`;
+				}
+			} else {
+				locCont.innerHTML = '';
+			}
+
+			const startTimeDate = new Date(data.startTime);
+			const endTimeDate = new Date(data.endTime);
+
+			time.innerText = `${String(startTimeDate.getHours()).padStart(2, '0')}:${String(startTimeDate.getMinutes()).padStart(2, '0')} - ${String(endTimeDate.getHours()).padStart(2, '0')}:${String(endTimeDate.getMinutes()).padStart(2, '0')}`;
+
+			description.innerText = data.websiteDescription;
+		};
+
+		document.querySelectorAll('[data-schedule]').forEach(element => {
+			element.addEventListener('click', () => {
+				const eventData = JSON.parse(element.dataset.schedule);
+				updateScheduleOverlay(eventData);
+				const overlay = document.getElementById('schedule-overlay');
+				if (overlay) {
+					overlay.classList.remove('hide');
+				}
+			});
+		});
+	</script></OverlayBase
+>
