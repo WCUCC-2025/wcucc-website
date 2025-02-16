@@ -1,15 +1,19 @@
 ---
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
-import CalendarCard from '@src/components/sections/schedule/elements/CalendarCard.astro';
 import OverlayBase from '@src/components/elements/OverlayBase.astro';
 import CategoryPill from './elements/CategoryPill.astro';
 import 'remixicon/fonts/remixicon.css';
 import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
 
-import { getCollection } from 'astro:content';
-let eventsInfo = await getCollection('eventsInfo');
+import type EventType from '@src/types/Event';
 
-eventsInfo.sort((a, b) => new Date(a.data.startTime) - new Date(b.data.startTime));
+import { getCollection } from 'astro:content';
+const eventsInfo: EventType[] = (
+	(await getCollection('eventsInfo')) as { data: EventType }[]
+).map(event => event.data);
+eventsInfo.sort(
+	(a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
+);
 
 const UBCOBuildings = {
 	ADM: 'Administration Building',
@@ -39,14 +43,13 @@ const UBCOBuildings = {
 	NHP: 'Nechako Residence',
 } as const;
 
-
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  return new Intl.DateTimeFormat('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-  }).format(date);
+function formatDate(dateString: string) {
+	const date = new Date(dateString);
+	return new Intl.DateTimeFormat('en-US', {
+		weekday: 'long',
+		month: 'long',
+		day: 'numeric',
+	}).format(date);
 }
 ---
 
@@ -61,14 +64,18 @@ function formatDate(dateString) {
 	<div class="items-left flex flex-col justify-start gap-4">
 		{
 			eventsInfo.map(event => {
-			event = event.data;
 				return (
 					<div
 						data-schedule={JSON.stringify(event)}
 						class="rounded-lg border-[1px] border-solid border-black p-4 shadow hover:cursor-pointer"
 						style={
-							event.color &&
-							`background-color: ${event.color}; color: white; border-color: ${event.color};`
+							event.isColored ?
+								{
+									backgroundColor: '#56bd72',
+									color: 'white',
+									borderColor: '#56bd72',
+								}
+							:	undefined
 						}
 					>
 						<div class="flex w-full shrink-0 flex-col-reverse items-start justify-start lg:flex-row lg:items-start lg:justify-between">
@@ -121,16 +128,28 @@ function formatDate(dateString) {
 										title={event.title}
 										description={event.calendarDescription}
 										location={
-											event.location?.onCampus ?
-												`${event.location.building}, ${event.location.room}`
-											:	event.location?.address
+											event.location.onCampus ?
+												`${UBCOBuildings[event.location.buildingCode]}, ${event.location.room}`
+											:	`${event.location.street}, Kelowna, BC, ${event.location.postalCode}`
 										}
 										startDate={event.startTime}
 										endDate={event.endTime}
 									>
 										<i class="ri-calendar-fill text-white" />
 									</AddToCalendar>
-									<CategoryPill name={event.category || ''} />
+									<CategoryPill
+										name={
+											event.category.trim() as
+												| 'Keynote'
+												| 'Bureaucracy'
+												| 'Plenary'
+												| 'Exploration'
+												| 'Leisure'
+												| 'Break'
+												| 'Presentations'
+												| 'Workshop'
+										}
+									/>
 								</div>
 							)}
 						</div>
@@ -143,7 +162,7 @@ function formatDate(dateString) {
 
 <OverlayBase identifier="schedule-overlay">
 	<div
-		class="item-start flex h-full w-full flex-col justify-start gap-4 rounded-lg bg-white p-8 overflow-scroll lg:overflow-hidden"
+		class="item-start flex h-full w-full flex-col justify-start gap-4 overflow-scroll rounded-lg bg-white p-8 lg:overflow-hidden"
 	>
 		<div
 			class="flex flex-col items-start justify-start gap-2 lg:flex-row lg:justify-start"
@@ -155,8 +174,10 @@ function formatDate(dateString) {
 		<div
 			class="item-start flex h-full w-full flex-col justify-start gap-4 lg:flex-row lg:justify-evenly"
 		>
-			<div class="flex flex-col items-start justify-start gap-4 w-full">
-				<div class="flex flex-col items-start justify-start gap-2 w-full">
+			<div class="flex w-full flex-col items-start justify-start gap-4">
+				<div
+					class="flex w-full flex-col items-start justify-start gap-2"
+				>
 					<h1
 						id="schedule-title"
 						class="text-5xl font-bold text-black"
@@ -177,7 +198,7 @@ function formatDate(dateString) {
 					</h2>
 					<p
 						id="schedule-description"
-						class="m-0 p-0 text-xl leading-relaxed h-full max-h-[85%] lg:max-h-max overflow-y-auto overflow-x-hidden"
+						class="m-0 h-full max-h-[85%] overflow-y-auto overflow-x-hidden p-0 text-xl leading-relaxed lg:max-h-max"
 					>
 					</p>
 				</div>
@@ -187,14 +208,6 @@ function formatDate(dateString) {
 					id="schedule-location-cont"
 					class="flex w-full flex-col items-start justify-start gap-2 lg:min-w-[32rem]"
 				>
-					<div
-						class="flex flex-row gap-1.5 rounded-lg bg-[#D10838] px-2 py-1"
-					>
-						<i class="ri-compass-3-fill text-xl text-white"></i>
-						<h2 class="text-xl font-semibold text-white">
-							Location
-						</h2>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -209,11 +222,26 @@ function formatDate(dateString) {
 
 		const updateScheduleOverlay = data => {
 			title.innerText = data.title;
+
+			// SPEAKER LOGIC
 			if (data.speaker) {
 				speaker.classList.remove('hidden');
 				speaker.innerText = data.speaker.name;
 			} else speaker.classList.add('hidden'); // Hide element so no weird padding is visible ;-; - Satanshu was not happy.
+
+			// MAP & LOCATION LOGIC
 			if (data.category != 'Break') {
+				locCont.innerHTML = '';
+				locCont.innerHTML += `
+					<div
+						class="flex flex-row gap-1.5 rounded-lg bg-[#D10838] px-2 py-1"
+					>
+						<i class="ri-compass-3-fill text-xl text-white"></i>
+						<h2 class="text-xl font-semibold text-white">
+							Location
+						</h2>
+					</div>
+				`;
 				if (data.location.onCampus) {
 					locCont.innerHTML += `<p id="schedule-location" class="m-0 p-0 leading-none text-xl">
 						${data.location.room} | ${UBCOBuildings[data.location.buildingCode]}
@@ -253,10 +281,12 @@ function formatDate(dateString) {
 		document.querySelectorAll('[data-schedule]').forEach(element => {
 			element.addEventListener('click', () => {
 				const eventData = JSON.parse(element.dataset.schedule);
-				updateScheduleOverlay(eventData);
-				const overlay = document.getElementById('schedule-overlay');
-				if (overlay) {
-					overlay.classList.remove('hide');
+				if (eventData.category !== 'Break') {
+					updateScheduleOverlay(eventData);
+					const overlay = document.getElementById('schedule-overlay');
+					if (overlay) {
+						overlay.classList.remove('hide');
+					}
 				}
 			});
 		});

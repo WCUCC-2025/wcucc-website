@@ -3,20 +3,22 @@ const categories = {
 	Keynote: '#56bcf8',
 	Bureaucracy: '#FF6600',
 	Plenary: '#E31DFD',
-	Exploration: '#FFFB00',
-
+	Exploration: '#E5E100', // #FFFB00
 	Leisure: '#08E500',
+	Break: '',
+	Presentations: '#006FFF',
+	Workshop: '#D10838'
 };
 
 type Props = {
-	name: string;
+	name: keyof typeof categories;
 };
 
 const { name }: Props = Astro.props;
 ---
 
 <p
-	class="leading-0 m-0 rounded-lg px-4 py-2 text-black"
+	class="leading-0 m-0 rounded-lg px-4 py-2 text-white"
 	style=`background-color: ${categories[name]}`
 >
 	{name}
