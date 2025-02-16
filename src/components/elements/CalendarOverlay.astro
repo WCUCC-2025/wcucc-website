@@ -82,7 +82,7 @@ const { id, eventDetails }: Props = Astro.props;
 			</a>
 			<a
 				id="icalCalendar"
-				class="no-underline flex w-full cursor-pointer flex-row items-center justify-center gap-4 rounded-md border-[1px] border-solid border-black p-2 transition-colors hover:bg-gray-100"
+				class="flex w-full cursor-pointer flex-row items-center justify-center gap-4 rounded-md border-[1px] border-solid border-black p-2 no-underline transition-colors hover:bg-gray-100"
 				style="text-decoration: none;"
 			>
 				<i
@@ -177,6 +177,7 @@ const { id, eventDetails }: Props = Astro.props;
 	});
 
 	overlay.addEventListener('click', e => {
+		e.stopPropagation();
 		if (e.target === overlay) {
 			overlay.classList.add('hidden-el');
 		}

@@ -1,0 +1,18 @@
+category: "Plenary"
+title: "Title coming soon!"
+startTime: "2025-05-10T14:00:00"
+endTime: "2025-05-10T15:00:00"
+speaker: {
+  name: "Dr. Thu-Thuy Dang",
+  website: "https://plantbiocore.ok.ubc.ca/"
+}
+location: {
+  onCampus: true,
+  street: "1177 Research Rd",
+  postalCode: "V1V 1V7",
+  buildingCode: "SCI",
+  room: "TBD"
+}
+calendarDescription: 'More info coming soon!'
+websiteDescription: 'More info coming soon!'
+isColored: false

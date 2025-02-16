@@ -1,0 +1,14 @@
+category: "Leisure"
+title: "Closing ceremonies"
+startTime: "2025-05-11T19:00:00"
+endTime: "2025-05-11T22:00:00"
+location: {
+  onCampus: true,
+  street: "1138 Alumni Ave",
+  postalCode: "V1V 1V7",
+  buildingCode: "ADM",
+  room: "121"
+}
+calendarDescription: 'More info coming soon!'
+websiteDescription: 'More info coming soon!'
+isColored: false

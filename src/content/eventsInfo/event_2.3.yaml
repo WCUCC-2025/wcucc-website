@@ -1,0 +1,14 @@
+category: "Presentations"
+title: "Oral Presentations"
+startTime: "2025-05-10T10:30:00"
+endTime: "2025-05-10T13:00:00"
+location: {
+  onCampus: true,
+  street: "TBD",
+  postalCode: "TBD",
+  buildingCode: "SCI",
+  room: "TBD"
+}
+calendarDescription: 'Oral presentations for (disciplines)'
+websiteDescription: 'More info coming soon!'
+isColored: false

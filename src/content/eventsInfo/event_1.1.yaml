@@ -1,0 +1,15 @@
+category: "Bureaucracy "
+title: "Registration "
+startTime: "2025-05-09T08:00:00"
+endTime: "2025-05-09T12:00:00"
+
+location: {
+  onCampus: true,
+  street: "1137 Alumni Ave, Kelowna",
+  postalCode: "V1V 1V7",
+  buildingCode: "TBD",
+  room: "TBD"
+}
+calendarDescription: 'Conference Registration'
+websiteDescription: 'Registration for the 2025 WCUCC will be open from 8:00 AM to 12:00 PM on the first day of the conference. Check in, collect your attendee welcome package, check into your accommodations, and take the opportunity to connect with fellow attendees before the festivities begin. Light refreshments will be available.'
+isColored: false

@@ -1,0 +1,19 @@
+category: "Plenary"
+title: '"From-Pine-to-Wine": Studies on the air-borne transfer of volatiles into grapes and their impact on wine quality.'
+startTime: "2025-05-09T12:00:00"
+endTime: "2025-05-09T13:00:00"
+speaker: {
+  name: "Dr. Wes Zandberg",
+  website: "https://chemistry.ok.ubc.ca/about/contact/wesley-zandberg/"
+}
+location: {
+  onCampus: true,
+  street: "1177 Research Rd",
+  postalCode: "V1V 1V7",
+  buildingCode: "TBD",
+  room: "TBD"
+}
+calendarDescription: 'Dr. Wes Zandberg, associate professor at UBC Okanagan will deliver a "fruitful" lecture on the complex glycoscience underlying smoke taint in wine grapes, and analytical methods to detect these contaminants.'
+websiteDescription: > 
+  The Okanagan Valley, like many other grape-producing regions of the world, is experiencing forest fires with increasing frequency. Smoke from even distant fires contains a range of pungent compounds (dubbed volatile phenols; VPs) that are responsible for its aroma. Through currently ill-defined processes, smoke-borne VPs may be absorbed into ripening wine grapes in which they are subsequently metabolized by the enzyme-catalyzed attachment of one or more carbohydrate residues. The resulting VP-glycosides are not volatile or detectible by smell, however, the yeasts used in the fermentation process are capable of cleaving the carbohydrates from VP-glycosides, thus regenerating the smelly VPs from previously inoffensive in-grape precursors. But smoke exposure does not necessarily lead to "smoke-tainted" wines—the 2020 Okanagan vintage is a good example of this. Neither is smoke the sole source of VPs which maybe naturally produced in some grapes (Shiraz) or leached out of the "toasted" oak barrels used for ageing wine. This talk will describe our efforts to predict when smoke-taint will occur (and when it won't) based on the chemical analyses of both grapes and wines. Efforts to mitigate smoke-taint in-winery or prevent it in-vineyard will also be presented. Finally, evidence will be presented to support the idea that absorption of air-borne pine-derived volatiles into wine grapes may, in some instances, have a positive impact on subsequent wine quality.
+isColored: false

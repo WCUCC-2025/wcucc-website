@@ -1,0 +1,79 @@
+---
+import CategoryPill from '@src/components/sections/schedule/elements/CategoryPill.astro';
+
+import OverlayBase from '@src/components/elements/OverlayBase.astro';
+
+type Props = {
+	category?:
+		| 'Keynote'
+		| 'Bureaucracy'
+		| 'Plenary'
+		| 'Exploration'
+		| 'Leisure';
+	title: string;
+	startTime: string;
+	endTime: string;
+	speaker?: string;
+	speakerWebsite?: string;
+	location?: {
+		room: string;
+		building: string;
+	};
+	color?: string;
+	description?: string;
+	data: any;
+};
+
+const {
+	category,
+	title,
+	startTime,
+	endTime,
+	speaker,
+	speakerWebsite,
+	location,
+	color,
+	description,
+	data
+}: Props = Astro.props;
+---
+
+<div
+	data-schedule={data}
+	class="rounded-lg border-[1px] border-solid border-black p-4 shadow"
+	style={color &&
+		`background-color: ${color}; color: white; border-color: ${color};`}
+>
+	<div class="flex w-full shrink-0 flex-row items-center justify-between">
+		<div class="flex w-fit flex-row items-center justify-center gap-2">
+			<p>
+				{startTime} - {endTime}
+			</p>
+			<p>PST</p>
+			<p>|</p>
+			<p>Wednesday, May 7</p>
+		</div>
+		{
+			location && (
+				<div class="h-fit w-fit rounded-lg border-[1px] border-solid border-black px-4 py-2 shadow">
+					<p class="m-0 p-0 leading-none">
+						{location.room} | {location.building}
+					</p>
+				</div>
+			)
+		}
+	</div>
+	<div class="flex flex-1 flex-col items-start justify-center gap-2">
+		<h2 class="text-4xl font-bold">{title}</h2>
+		<p class="text-xl">{speaker}</p>
+	</div>
+	{
+		category && (
+			<div class="flex w-full shrink-0 flex-row items-center justify-end gap-2">
+				<i class="ri-calendar-fill rounded-lg bg-blue-600 p-2 text-white" />
+
+				<CategoryPill name={category || ''} />
+			</div>
+		)
+	}
+</div>
