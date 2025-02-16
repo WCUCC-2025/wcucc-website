@@ -4,16 +4,20 @@ import OverlayBase from '@src/components/elements/OverlayBase.astro';
 import CategoryPill from './elements/CategoryPill.astro';
 import 'remixicon/fonts/remixicon.css';
 import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
+import EventsDisplay from './elements/EventsDisplay.astro';
 
 import type EventType from '@src/types/Event';
 
 import { getCollection } from 'astro:content';
+
 const eventsInfo: EventType[] = (
 	(await getCollection('eventsInfo')) as { data: EventType }[]
-).map(event => event.data);
-eventsInfo.sort(
-	(a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
-);
+)
+	.map(event => event.data)
+	.sort(
+		(a, b) =>
+			new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
+	);
 
 const UBCOBuildings = {
 	ADM: 'Administration Building',
@@ -56,109 +60,51 @@ function formatDate(dateString: string) {
 <section class="w-full bg-white p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle color="black">Event Itinerary</SectionTitle>
 
-	<div class="py-10">
-		<h2 class="m-0 p-0 leading-none">Sunday May 7th, 2025</h2>
+	<div class="relative m-0 py-5">
+		<div
+			id="selected-date"
+			class="flex w-fit cursor-pointer items-center gap-2 rounded-lg border-[1px] border-solid border-black px-4 py-2 text-xl"
+		>
+			<span>Thursday May 9th, 2025</span>
+			<i class="ri-arrow-down-s-line m-0 p-0 leading-none"></i>
+		</div>
+		<div
+			id="date-dropdown"
+			class="absolute top-[70%] hidden h-fit w-fit rounded-lg border border-gray-200 bg-white shadow-lg"
+		>
+			<p
+				class="selected m-0 cursor-pointer rounded-t-lg p-4 text-xl hover:bg-gray-100"
+				data-date="2025-05-09"
+			>
+				Thursday May 9th, 2025
+			</p>
+			<p
+				class="m-0 cursor-pointer p-4 text-xl hover:bg-gray-100"
+				data-date="2025-05-10"
+			>
+				Friday May 10th, 2025
+			</p>
+			<p
+				class="m-0 cursor-pointer rounded-b-lg p-4 text-xl hover:bg-gray-100"
+				data-date="2025-05-11"
+			>
+				Saturday May 11th, 2025
+			</p>
+		</div>
 	</div>
-
-	<!-- Calendar Graph -->
-	<div class="items-left flex flex-col justify-start gap-4">
-		{
-			eventsInfo.map(event => {
-				return (
-					<div
-						data-schedule={JSON.stringify(event)}
-						class="rounded-lg border-[1px] border-solid border-black p-4 shadow hover:cursor-pointer"
-						style={
-							event.isColored ?
-								{
-									backgroundColor: '#56bd72',
-									color: 'white',
-									borderColor: '#56bd72',
-								}
-							:	undefined
-						}
-					>
-						<div class="flex w-full shrink-0 flex-col-reverse items-start justify-start lg:flex-row lg:items-start lg:justify-between">
-							<div class="flex w-fit flex-row items-center justify-center gap-2 p-2">
-								<p>
-									{`${String(new Date(event.startTime).getHours()).padStart(2, '0')}:${String(new Date(event.startTime).getMinutes()).padStart(2, '0')} - ${String(new Date(event.endTime).getHours()).padStart(2, '0')}:${String(new Date(event.endTime).getMinutes()).padStart(2, '0')}`}
-								</p>
-								<p>PST</p>
-								<p>|</p>
-								<p>{formatDate(event.startTime)}</p>
-							</div>
-							{event.category != 'Break' && (
-								<div class="h-fit w-fit rounded-lg border-[1px] border-solid border-black px-4 py-2 shadow">
-									{/* ON-CAMPUS EVENT LOCATION */}
-									{event.location.onCampus && (
-										<p class="m-0 p-0 leading-none">
-											{event.location.room} |{' '}
-											{
-												UBCOBuildings[
-													event.location.buildingCode
-												]
-											}
-										</p>
-									)}
-									{/* OFF-CAMPUS EVENT LOCATION */}
-									{!event.location.onCampus && (
-										<p class="m-0 p-0 leading-none">
-											{event.location.street}
-										</p>
-									)}
-								</div>
-							)}
-						</div>
-						<div class="flex flex-1 flex-col items-start justify-start lg:flex-row lg:flex-wrap lg:items-end lg:justify-between">
-							<div class="flex flex-1 flex-col items-start justify-center gap-2 lg:max-w-[70%]">
-								<h2 class="text-4xl font-bold">
-									{event.title}
-								</h2>
-								{event.speaker && (
-									<p class="text-xl">{event.speaker.name}</p>
-								)}
-							</div>
-							{event.category && event.category != 'Break' && (
-								<div class="flex w-fit shrink-0 flex-row items-center justify-end gap-2 pt-4 lg:pt-0">
-									<AddToCalendar
-										id={event.title
-											.toLowerCase()
-											.split(' ')
-											.join('')}
-										title={event.title}
-										description={event.calendarDescription}
-										location={
-											event.location.onCampus ?
-												`${UBCOBuildings[event.location.buildingCode]}, ${event.location.room}`
-											:	`${event.location.street}, Kelowna, BC, ${event.location.postalCode}`
-										}
-										startDate={event.startTime}
-										endDate={event.endTime}
-									>
-										<i class="ri-calendar-fill text-white" />
-									</AddToCalendar>
-									<CategoryPill
-										name={
-											event.category.trim() as
-												| 'Keynote'
-												| 'Bureaucracy'
-												| 'Plenary'
-												| 'Exploration'
-												| 'Leisure'
-												| 'Break'
-												| 'Presentations'
-												| 'Workshop'
-										}
-									/>
-								</div>
-							)}
-						</div>
-					</div>
-				);
-			})
-		}
-	</div>
+	<EventsDisplay client:load eventsInfo={eventsInfo} />
 </section>
+
+<style>
+	[data-schedule] {
+		opacity: 1;
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	[data-schedule][style*='display: none'] {
+		opacity: 0;
+	}
+</style>
 
 <OverlayBase identifier="schedule-overlay">
 	<div
@@ -198,7 +144,7 @@ function formatDate(dateString: string) {
 					</h2>
 					<p
 						id="schedule-description"
-						class="m-0 h-full max-h-[85%] overflow-y-auto overflow-x-hidden p-0 text-xl leading-relaxed lg:max-h-max"
+						class="m-0 h-full max-h-[85%] overflow-y-auto overflow-x-hidden p-0 text-xl leading-relaxed 2xl:max-h-max"
 					>
 					</p>
 				</div>
@@ -212,27 +158,35 @@ function formatDate(dateString: string) {
 			</div>
 		</div>
 	</div>
+</OverlayBase>
 
-	<script define:vars={{ UBCOBuildings }} is:inline>
-		const title = document.getElementById('schedule-title');
-		const speaker = document.getElementById('schedule-speaker');
-		const time = document.getElementById('schedule-time');
-		const locCont = document.getElementById('schedule-location-cont');
-		const description = document.getElementById('schedule-description');
+<style>
+	.selected {
+		background-color: #78c568;
+		color: white !important;
+	}
+</style>
 
-		const updateScheduleOverlay = data => {
-			title.innerText = data.title;
+<script define:vars={{ UBCOBuildings }} is:inline>
+	const title = document.getElementById('schedule-title');
+	const speaker = document.getElementById('schedule-speaker');
+	const time = document.getElementById('schedule-time');
+	const locCont = document.getElementById('schedule-location-cont');
+	const description = document.getElementById('schedule-description');
 
-			// SPEAKER LOGIC
-			if (data.speaker) {
-				speaker.classList.remove('hidden');
-				speaker.innerText = data.speaker.name;
-			} else speaker.classList.add('hidden'); // Hide element so no weird padding is visible ;-; - Satanshu was not happy.
+	const updateScheduleOverlay = data => {
+		title.innerText = data.title;
 
-			// MAP & LOCATION LOGIC
-			if (data.category != 'Break') {
-				locCont.innerHTML = '';
-				locCont.innerHTML += `
+		// SPEAKER LOGIC
+		if (data.speaker) {
+			speaker.classList.remove('hidden');
+			speaker.innerText = data.speaker.name;
+		} else speaker.classList.add('hidden'); // Hide element so no weird padding is visible ;-; - Satanshu was not happy.
+
+		// MAP & LOCATION LOGIC
+		if (data.category != 'Break') {
+			locCont.innerHTML = '';
+			locCont.innerHTML += `
 					<div
 						class="flex flex-row gap-1.5 rounded-lg bg-[#D10838] px-2 py-1"
 					>
@@ -242,20 +196,20 @@ function formatDate(dateString: string) {
 						</h2>
 					</div>
 				`;
-				if (data.location.onCampus) {
-					locCont.innerHTML += `<p id="schedule-location" class="m-0 p-0 leading-none text-xl">
+			if (data.location.onCampus) {
+				locCont.innerHTML += `<p id="schedule-location" class="m-0 p-0 leading-none text-xl">
 						${data.location.room} | ${UBCOBuildings[data.location.buildingCode]}
 					</p>`;
-					locCont.innerHTML += `
+				locCont.innerHTML += `
 				<iframe
 					class="border-[1px] border-solid border-black p-4 w-full object-cover aspect-[1/1]"
 					type="text/html"
 					src="https://maps.ok.ubc.ca/?code=${data.location.buildingCode}"
 				/>
 				`;
-				} else {
-					locCont.innerHTML = `<p id="schedule-location" class="m-0 p-0 leading-none">${data.location.street}, Kelowna, BC, ${data.location.postalCode}</p>`;
-					locCont.innerHTML += `
+			} else {
+				locCont.innerHTML = `<p id="schedule-location" class="m-0 p-0 leading-none">${data.location.street}, Kelowna, BC, ${data.location.postalCode}</p>`;
+				locCont.innerHTML += `
 					<iframe
 					src="${data.location.map}"
 					width="600"
@@ -265,30 +219,109 @@ function formatDate(dateString: string) {
 					loading="lazy"
 					referrerpolicy="no-referrer-when-downgrade"></iframe>
 				`;
-				}
-			} else {
-				locCont.innerHTML = '';
 			}
+		} else {
+			locCont.innerHTML = '';
+		}
 
-			const startTimeDate = new Date(data.startTime);
-			const endTimeDate = new Date(data.endTime);
+		const startTimeDate = new Date(data.startTime);
+		const endTimeDate = new Date(data.endTime);
 
-			time.innerText = `${String(startTimeDate.getHours()).padStart(2, '0')}:${String(startTimeDate.getMinutes()).padStart(2, '0')} - ${String(endTimeDate.getHours()).padStart(2, '0')}:${String(endTimeDate.getMinutes()).padStart(2, '0')}`;
+		time.innerText = `${String(startTimeDate.getHours()).padStart(2, '0')}:${String(startTimeDate.getMinutes()).padStart(2, '0')} - ${String(endTimeDate.getHours()).padStart(2, '0')}:${String(endTimeDate.getMinutes()).padStart(2, '0')}`;
 
-			description.innerText = data.websiteDescription;
-		};
+		description.innerText = data.websiteDescription;
+	};
 
-		document.querySelectorAll('[data-schedule]').forEach(element => {
-			element.addEventListener('click', () => {
-				const eventData = JSON.parse(element.dataset.schedule);
-				if (eventData.category !== 'Break') {
-					updateScheduleOverlay(eventData);
-					const overlay = document.getElementById('schedule-overlay');
-					if (overlay) {
-						overlay.classList.remove('hide');
-					}
+	document.querySelectorAll('[data-schedule]').forEach(element => {
+		element.addEventListener('click', () => {
+			const eventData = JSON.parse(element.dataset.schedule);
+			if (eventData.category !== 'Break') {
+				updateScheduleOverlay(eventData);
+				const overlay = document.getElementById('schedule-overlay');
+				if (overlay) {
+					overlay.classList.remove('hide');
+				}
+			}
+		});
+	});
+</script>
+
+<script is:inline>
+	const startDate = new Date('2025-05-09T00:00:00');
+	const nextDay = new Date(startDate);
+	nextDay.setDate(nextDay.getDate() + 1);
+
+	const visibleEvents = [];
+	document.querySelectorAll('[data-schedule]').forEach(event => {
+		const eventData = JSON.parse(event.dataset.schedule);
+		const eventTime = new Date(eventData.startTime);
+
+		if (eventTime >= startDate && eventTime < nextDay) {
+			event.style.display = 'block';
+			visibleEvents.push({ element: event, time: eventTime });
+		} else {
+			event.style.display = 'none';
+		}
+	});
+
+	const container = document.querySelector('section.items-left');
+	visibleEvents
+		.sort((a, b) => a.time - b.time)
+		.forEach(event => container.appendChild(event.element));
+
+	const selectedDate = document.getElementById('selected-date');
+	const dropdown = document.getElementById('date-dropdown');
+	const dateOptions = dropdown.querySelectorAll('p');
+
+	selectedDate.addEventListener('click', event => {
+		dropdown.classList.toggle('hidden');
+	});
+
+	document.addEventListener('click', e => {
+		const dropdown = document.getElementById('date-dropdown');
+		const button = document.getElementById('selected-date');
+
+		if (!dropdown.contains(e.target) && !button.contains(e.target)) {
+			dropdown.classList.add('hidden');
+		}
+	});
+
+	dateOptions.forEach(option => {
+		if (option.innerText === selectedDate.innerText) {
+			option.classList.add('selected');
+		}
+	});
+
+	dropdown.querySelectorAll('p').forEach(dateOption => {
+		dateOption.addEventListener('click', () => {
+			dateOptions.forEach(opt => opt.classList.remove('selected'));
+			dateOption.classList.add('selected');
+
+			const selectedDateStr = dateOption.dataset.date;
+			selectedDate.innerText = dateOption.innerText;
+			dropdown.classList.add('hidden');
+
+			const startDate = new Date(selectedDateStr + 'T00:00:00-07:00');
+			const nextDay = new Date(startDate);
+			nextDay.setDate(nextDay.getDate() + 1);
+
+			const visibleEvents = [];
+			document.querySelectorAll('[data-schedule]').forEach(event => {
+				const eventData = JSON.parse(event.dataset.schedule);
+				const eventTime = new Date(eventData.startTime);
+
+				if (eventTime >= startDate && eventTime < nextDay) {
+					event.style.display = 'block';
+					visibleEvents.push({ element: event, time: eventTime });
+				} else {
+					event.style.display = 'none';
 				}
 			});
+
+			const container = document.querySelector('section.items-left');
+			visibleEvents
+				.sort((a, b) => a.time - b.time)
+				.forEach(event => container.appendChild(event.element));
 		});
-	</script></OverlayBase
->
+	});
+</script>
