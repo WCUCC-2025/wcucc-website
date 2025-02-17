@@ -1,0 +1,29 @@
+---
+import PricingTiers from '@src/components/sections/funding/pricing.astro';
+import PricingMobile from '@src/components/sections/funding/pricingMobile.astro';
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
+---
+
+<section class="mb-16 mt-16 pl-20 pr-10">
+    <SectionTitle color="black">
+        Sponsorship Tiers
+    </SectionTitle>
+    <div class="mb-4">
+        <p class="mb-10 text-left text-lg text-gray-800">
+            Support the advancement of chemistry and connect with a
+            passionate community of professionals and researchers.
+            Choose from flexible sponsorship tiers tailored to
+            highlight your brand, foster innovation, and make a
+            meaningful impact. Explore our packages and join us in
+            shaping the future of chemistry.
+        </p>
+    </div>
+    <div class="container mx-auto px-4">
+        <div class="hidden md:block">
+            <PricingTiers />
+        </div>
+        <div class="block md:hidden">
+            <PricingMobile />
+        </div>
+    </div>
+</section>
