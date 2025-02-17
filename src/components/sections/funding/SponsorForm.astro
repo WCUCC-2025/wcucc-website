@@ -201,7 +201,9 @@ import SectionTitle from "@src/components/elements/ui/SectionTitle.astro";
                         }
                         const selectedPackage = packageColors[this.value as keyof typeof packageColors];
                         formContainer?.style.setProperty('background-color', selectedPackage.bg);
-                        formContainer?.style.setProperty('color', selectedPackage.text);
+                        formContainer?.querySelectorAll('*').forEach((child) => {
+                            (child as HTMLElement).style.setProperty('color', selectedPackage.text);
+                        });
                     });
                 });
             </script>
