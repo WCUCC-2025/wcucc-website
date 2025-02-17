@@ -1,33 +1,33 @@
 ---
-const { image, name, title, university, talkTitle, learnMore } = Astro.props;
+const { image, name, title, university, data, talkTitle, learnMore } =
+	Astro.props;
 ---
 
 <div
-	class="flex h-full w-[20rem] flex-col justify-between bg-white shadow-sm shadow-black rounded"
+	class="flex h-full w-[20rem] flex-col justify-between rounded bg-white shadow-sm shadow-black"
+	data-speaker={JSON.stringify(data)}
 >
-	<section>
-		<div class="mb-2 rounded-t bg-[#00BBFF] pb-0">
-			<img
-				class="m-0 -mb-[0.375rem] h-auto w-full object-cover"
-				src={`speakers/${image}`}
-				alt={name}
-			/>
+	<div class="mb-2 rounded-t bg-[#00BBFF] pb-0">
+		<img
+			class="m-0 -mb-[0.375rem] h-auto max-h-60 w-full object-cover"
+			src={`speakers/${image}`}
+			alt={name}
+		/>
+	</div>
+	<div class="p-4">
+		<p class="m-0 text-lg font-bold">{name}</p>
+		<p class="m-0 text-lg font-semibold">{title}</p>
+		{
+			university !== 'undefined, undefined' && (
+				<p class="m-0 py-2 text-lg font-light">{university}</p>
+			)
+		}
+		<!-- <p class="m-0">"{talkTitle}"</p> -->
+		<div
+			id="trigger-overlay"
+			class="my-2 w-fit rounded-md bg-blue-600 px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-blue-900 hover:shadow"
+		>
+			Learn More
 		</div>
-		<div class="p-4">
-			<p class="m-0 text-lg font-bold">{name}</p>
-			<p class="m-0 text-lg font-semibold">{title}</p>
-			{
-				university !== 'undefined, undefined' && (
-					<p class="m-0 py-2 text-lg font-light">{university}</p>
-				)
-			}
-			<!-- <p class="m-0">"{talkTitle}"</p> -->
-			<div
-				id="trigger-overlay"
-				class="w-fit rounded-md bg-blue-600 px-4 py-1.5 my-2 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-blue-900 hover:shadow"
-			>
-				Learn More
-			</div>
-		</div>
-	</section>
+	</div>
 </div>
