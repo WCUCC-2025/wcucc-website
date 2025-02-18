@@ -150,7 +150,6 @@ bios.sort((a, b) => a.data.order - b.data.order);
 
 	<script is:inline>
 		const updateOverlay = memberData => {
-			console.log(memberData);
 			const img = document.getElementById('overlay-headshot');
 			if (img) {
 				img.src = `/headshots/${memberData.headshot}`;

@@ -1,0 +1,14 @@
+category: "Break"
+title: "Lunch"
+startTime: "2025-05-10T13:00:00"
+endTime: "2025-05-10T14:00:00"
+location: {
+  onCampus: true,
+  street: "1177 Research Rd",
+  postalCode: "V1V 1V7",
+  buildingCode: "SCI",
+  room: "TBD"
+}
+calendarDescription: 'More info coming soon!'
+websiteDescription: 'More info coming soon!'
+isColored: false

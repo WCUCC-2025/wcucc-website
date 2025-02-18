@@ -1,0 +1,13 @@
+category: "Exploration  "
+title: "Downtown Kelowna Social Night"
+startTime: "2025-05-10T18:00:00"
+endTime: "2025-05-10T22:00:00"
+location: {
+  onCampus: false,
+  street: "450 Knox Mountain Dr",
+  postalCode: "V1Y 9X3",
+  map: "https://www.google.com/maps/place/Knox+Mountain+Park/@49.9048856,-119.4950764,17z/data=!3m1!4b1!4m6!3m5!1s0x537df36d499bbeb3:0x16e75f71d8abee54!8m2!3d49.9048856!4d-119.4925015!16s%2Fm%2F0pl12bl?entry=ttu&g_ep=EgoyMDI1MDIwNS4xIKXMDSoASAFQAw%3D%3D"
+}
+calendarDescription: 'Join us for a leisurely hike at Knox Mountain Park, followed by free time to explore downtown Kelowna!'
+websiteDescription: 'More info coming soon!'
+isColored: false

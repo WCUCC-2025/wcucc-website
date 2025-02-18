@@ -5,7 +5,7 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 import DeadlineTiles from './elements/DeadlineTiles.astro';
 ---
 
-<section class="relative z-40 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
+<section class="relative z-30 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle> Upcoming Deadlines </SectionTitle>
 	<div class="flex flex-row items-center justify-start gap-4 overflow-auto mb-10">
 		<DeadlineTiles
@@ -33,15 +33,15 @@ import DeadlineTiles from './elements/DeadlineTiles.astro';
 			detailsLink=""
 		/>
 	</div>
-	<div class="flex flex-col justify-center items-start gap-4">
-		<p class="m-0 p-0 text-4xl font-normal leading-none text-white">
-			See all the important deadlines for the conference:
+	<div class="flex flex-col justify-center items-center gap-4">
+		<p class="m-0 p-0 text-4xl font-normal leading-none text-white underline hover:no-underline hover:cursor-pointer">
+			See all the important deadlines for the conference!
 		</p>
-		<a
-			class="w-fit rounded-md bg-[#0058E5] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#173d9b] hover:shadow sm:inline-block sm:w-auto"
-			href="/kelowna"
-			style="text-decoration: none;">Conference Dates</a
-		>
+		<!-- <a -->
+		<!-- 	class="w-fit rounded-md bg-[#0058E5] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#173d9b] hover:shadow sm:inline-block sm:w-auto" -->
+		<!-- 	href="/kelowna" -->
+		<!-- 	style="text-decoration: none;">Conference Dates</a -->
+		<!-- > -->
 	</div>
 </section>
 

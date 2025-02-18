@@ -9,15 +9,15 @@ const { principle, description, color }: Props = Astro.props;
 
 <div
 	class="h-fit bg-white p-8 transition-all duration-200 ease-in-out hover:shadow-2xl"
-	style="border: 4px #000000 solid; border-radius: 0.5rem;"
+	style="border: 2px #000000 solid; border-radius: 0.5rem;"
 >
 	<p
-		class="w-fit rounded-lg p-2 text-lg"
+		class="w-fit rounded-lg py-2 px-4 text-2xl font-bold"
 		style={`border: 2px ${color} solid; border-radius: 1rem; color: ${color}`}
 	>
 		{principle}
 	</p>
-	<p class="py-10 text-5xl" style={`color: ${color}`}>
+	<p class="text-2xl" style={`color: ${color}`}>
 		{description}
 	</p>
 </div>
