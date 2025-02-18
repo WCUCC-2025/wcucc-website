@@ -2,22 +2,26 @@
 import SlidingBox from './SlidingBox.astro';
 ---
 
-<footer class="z-50 block w-full bg-white p-10">
+<footer class="z-50 inline-block relative w-full bg-white p-10">
 	<div
 		class="hidden w-full flex-col items-center justify-center gap-0 md:flex"
 	>
-		<div class="flex flex-col items-center justify-center lg:flex-row lg:justify-between w-full">
+		<div
+			class="flex w-full flex-col items-center justify-center lg:flex-row lg:justify-between"
+		>
 			<SlidingBox />
 			<div
-				class="flex w-full flex-row items-center justify-evenly gap-20 lg:justify-end lg:gap-10 pt-2 xl:gap-20"
+				class="flex w-full flex-row items-center justify-evenly gap-20 pt-2 lg:justify-end lg:gap-10 xl:gap-20"
 			>
-				<img
-					src="WCUCC-Logo.svg"
-					alt="WCUCC Logo Footer"
-					class="h-auto w-40 xl:w-52"
-				/>
+				<a href="/feature">
+					<img
+						src="WCUCC-Logo.svg"
+						alt="WCUCC Logo Footer"
+						class="h-auto w-40 xl:w-52"
+					/>
+				</a>
 				<div
-					class="flex h-full flex-row items-start justify-start gap-10 lg:flex-col lg:gap-2 text-xl xl:flex-row xl:gap-16 xl:text-2xl"
+					class="flex h-full flex-row items-start justify-start gap-10 text-xl lg:flex-col lg:gap-2 xl:flex-row xl:gap-16 xl:text-2xl"
 				>
 					<div class="flex flex-col items-start justify-start gap-2">
 						<a class="font-normal" href="#">Kelowna</a>
@@ -33,21 +37,23 @@ import SlidingBox from './SlidingBox.astro';
 		</div>
 		<div class="flex flex-row items-center justify-center gap-10 py-2">
 			<a
-				class="cursor-pointer text-2xl hover:text-blue-600"
+				class="cursor-pointer text-2xl hover:text-blue-600 xl:text-4xl"
 				style="text-decoration: none;"
 				><i class="ri-linkedin-fill"></i></a
 			>
 			<a
-				class="cursor-pointer text-2xl hover:text-blue-600"
+				class="cursor-pointer text-2xl hover:text-blue-600 xl:text-4xl"
 				style="text-decoration: none;"
 				><i class="ri-instagram-fill"></i></a
 			>
 			<a
-				class="cursor-pointer text-2xl hover:text-blue-600"
+				class="cursor-pointer text-2xl hover:text-blue-600 xl:text-4xl"
 				style="text-decoration: none;"><i class="ri-tiktok-fill"></i></a
 			>
 		</div>
-		<p class="m-0 gap-1.5 p-0 text-center text-lg leading-normal">
+		<p
+			class="m-0 gap-1.5 p-0 text-center text-lg leading-normal xl:text-2xl"
+		>
 			<span
 				><i class="ri-copyright-line w-fit pr-2"></i>2025 Western
 				Canadian Undergraduate Chemistry Conference</span

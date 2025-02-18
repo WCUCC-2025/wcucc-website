@@ -99,18 +99,15 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.15
         version: 0.5.15(tailwindcss@3.4.17)
-<<<<<<< HEAD
       '@types/nodemailer':
         specifier: ^6.4.17
         version: 6.4.17
       '@types/sanitize-html':
         specifier: ^2.13.0
         version: 2.13.0
-=======
       sass-embedded:
         specifier: ^1.85.0
         version: 1.85.0
->>>>>>> registration-abstracts
 
 packages:
 
@@ -2536,10 +2533,9 @@ packages:
   s.color@0.0.15:
     resolution: {integrity: sha512-AUNrbEUHeKY8XsYr/DYpl+qk5+aM+DChopnWOPEzn8YKzOhv4l2zH6LzZms3tOZP3wwdOyc0RmTciyi46HLIuA==}
 
-<<<<<<< HEAD
   sanitize-html@2.14.0:
     resolution: {integrity: sha512-CafX+IUPxZshXqqRaG9ZClSlfPVjSxI0td7n07hk8QO2oO+9JDnlcL8iM8TWeOXOIBFgIOx6zioTzM53AOMn3g==}
-=======
+
   sass-embedded-android-arm64@1.85.0:
     resolution: {integrity: sha512-4itDzRwezwrW8+YzMLIwHtMeH+qrBNdBsRn9lTVI15K+cNLC8z5JWJi6UCZ8TNNZr9LDBfsh5jUdjSub0yF7jg==}
     engines: {node: '>=14.0.0'}
@@ -2664,7 +2660,6 @@ packages:
     resolution: {integrity: sha512-x3Vv54g0jv1aPSW8OTA/0GzQCs/HMQOjIkLtZJ3Xsn/I4vnyjKbVTQmFTax9bQjldqLEEkdbvy6ES/cOOnYNwA==}
     engines: {node: '>=16.0.0'}
     hasBin: true
->>>>>>> registration-abstracts
 
   sass-formatter@0.7.9:
     resolution: {integrity: sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==}
@@ -5762,7 +5757,6 @@ snapshots:
 
   s.color@0.0.15: {}
 
-<<<<<<< HEAD
   sanitize-html@2.14.0:
     dependencies:
       deepmerge: 4.3.1
@@ -5771,7 +5765,7 @@ snapshots:
       is-plain-object: 5.0.0
       parse-srcset: 1.0.2
       postcss: 8.4.49
-=======
+
   sass-embedded-android-arm64@1.85.0:
     optional: true
 
@@ -5863,7 +5857,6 @@ snapshots:
       sass-embedded-win32-arm64: 1.85.0
       sass-embedded-win32-ia32: 1.85.0
       sass-embedded-win32-x64: 1.85.0
->>>>>>> registration-abstracts
 
   sass-formatter@0.7.9:
     dependencies:

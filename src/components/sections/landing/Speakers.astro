@@ -11,7 +11,7 @@ const speakers = await getCollection('speakers');
 <section class="z-50 w-screen bg-white p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle color="black"> Speakers </SectionTitle>
 	<section class="flex w-full flex-col items-center justify-start">
-		<div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+		<div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
 			{
 				speakers.map(speaker => {
 					return (
@@ -33,55 +33,57 @@ const speakers = await getCollection('speakers');
 
 <OverlayBase identifier="speakerdetails">
 	<div
-		class="xl:[40%] flex max-h-[96vh] w-full flex-1 flex-col gap-4 overflow-hidden rounded-lg bg-white p-5 transition-all duration-300 ease-in-out sm:w-[80%] md:w-[70%] lg:w-[60%]"
+			class="flex max-h-[96vh] w-full flex-1 flex-col gap-4 overflow-y-auto overflow-x-hidden rounded-lg bg-white p-5 transition-all duration-300 ease-in-out sm:w-[80%] md:w-[70%]"
 	>
 		<section class="flex flex-col justify-between md:flex-row">
 			<img
-				class="p-speaker-photograph h-auto w-[8rem] rounded-lg bg-[#00BBFF] object-cover"
-				src="/tempPicB.svg"
+				class="p-speaker-photograph h-auto max-h-[12rem] w-[12rem] rounded-lg bg-[#00BBFF] object-cover"
+				src=""
 				alt="profile-picture"
 			/>
 			<div
 				class="flex flex-1 flex-col items-start justify-center gap-2 py-5 leading-none md:px-5 md:py-0"
 			>
-				<p class="p-speaker-name m-0 text-2xl font-bold leading-none">
-					Dr. Hoby Wedler
+				<p class="p-speaker-name m-0 text-3xl font-bold leading-none">
 				</p>
 				<p
-					class="p-speaker-position m-0 text-lg font-semibold leading-none"
+					class="p-speaker-position m-0 text-xl font-semibold leading-none"
 				>
-					Professor
 				</p>
 				<p
-					class="p-speaker-institution m-0 text-lg font-light leading-none"
+					class="p-speaker-institution m-0 text-xl font-normal leading-snug"
 				>
-					McGill University, The Metabolomics Innovation Centre (TMIC)
 				</p>
 			</div>
 		</section>
-		<section class="flex-1 overflow-y-auto">
-			<p class="m-0 text-lg font-bold">About</p>
-			<p class="p-speaker-bio m-0 text-lg font-light">
-				Dr. Hoby Wedler is a chemist, entrepreneur, sensory expert, and
-				advocate for inclusivity in science. Born completely blind, Dr.
-				Wedler has continuously defied expectations, earning his Ph.D.
-				in organic chemistry from UC Davis in 2016. He has since become
-				a highly sought-after motivational speaker, mentor, and
-				educator, dedicated to making the world more inclusive and
-				accessible. In 2011, Dr. Wedler founded a non-profit
-				organization to host annual chemistry camps for blind and
-				visually impaired students across North America. That same year,
-				he expanded his impact by creating Tasting in the Dark, a unique
-				blindfolded wine-tasting experience that explores the world of
-				aromas without visual influence. Dr. Wedler's groundbreaking
-				work has earned him numerous accolades, including being named a
-				Champion of Change by former U.S. President Barack Obama, a
-				Forbes "30 Under 30" in Food and Drink, and a Wine Enthusiast
-				"40 Under 40 Tastemaker."
-			</p>
+		<section class="flex flex-1 flex-col gap-4">
+			<div
+				class="grid w-full grid-cols-2 grid-rows-1 gap-4 rounded-lg bg-gray-100 p-2"
+			>
+				<div
+					class="p-abstract-toggle toggle-active w-full cursor-pointer rounded-lg p-2 text-center"
+				>
+					Abstract
+				</div>
+				<div
+					class="p-about-toggle w-full cursor-pointer rounded-lg p-2 text-center"
+				>
+					Biography
+				</div>
+			</div>
+			<div class="p-abstract">
+				<p
+					class="p-speaker-abstract m-0 text-xl font-normal leading-normal"
+				>
+				</p>
+			</div>
+			<div class="p-about hide">
+				<p class="p-speaker-bio m-0 text-xl font-normal leading-normal">
+				</p>
+			</div>
 		</section>
-		<section class="p-speaker-events">
-			<p class="m-0 text-lg font-bold">Upcoming Events</p>
+		<section class="p-speaker-events flex flex-col gap-2">
+			<p class="m-0 text-xl font-bold">Upcoming Events</p>
 			<div
 				class="flex flex-row gap-4 rounded-md border-[1px] border-solid border-black p-2"
 			>
@@ -100,6 +102,16 @@ const speakers = await getCollection('speakers');
 	</div>
 </OverlayBase>
 
+<style>
+	.hide {
+		display: none;
+	}
+	.toggle-active {
+		background-color: white;
+		box-shadow: 0px 2px 5px gray;
+	}
+</style>
+
 <script is:inline>
 	const speakbtn = document.getElementById('trigger-overlay');
 	const speakoverlay = document.getElementById('speakerdetails');
@@ -114,24 +126,51 @@ const speakers = await getCollection('speakers');
 	const speakerName = document.querySelector('.p-speaker-name');
 	const speakerPosition = document.querySelector('.p-speaker-position');
 	const speakerInstitution = document.querySelector('.p-speaker-institution');
+	const speakerAbstract = document.querySelector('.p-speaker-abstract');
 	const speakerBio = document.querySelector('.p-speaker-bio');
 
 	const populateOverlay = speakerInfo => {
+		!abstractToggle.classList.contains('toggle-active') &&
+			abstractToggle.classList.add('toggle-active');
+		aboutToggle.classList.remove('toggle-active');
+		abstractContainer.classList.remove('hide');
+		!aboutContainer.classList.contains('hide') &&
+			aboutContainer.classList.add('hide');
+
 		speakerPhotograph.src = `/speakers/${speakerInfo.photograph}`;
 		speakerPhotograph.alt = speakerInfo.lastName;
 		speakerName.textContent = `${speakerInfo.firstName} ${speakerInfo.lastName}`;
 		speakerPosition.textContent = speakerInfo.position;
 		speakerInstitution.textContent = `${speakerInfo.department}, ${speakerInfo.institution}`;
+		speakerAbstract.textContent = `${speakerInfo.abstract}`;
 		speakerBio.textContent = speakerInfo.biography;
 	};
 
-	speakbtn.addEventListener('click', () => {
-		document.querySelectorAll('[data-speaker]').forEach(element => {
-			element.addEventListener('click', () => {
-				const speakerInfo = JSON.parse(element.dataset.speaker);
-				populateOverlay(speakerInfo);
-				speakoverlay.classList.remove('hide');
-			});
+	const abstractToggle = document.querySelector('.p-abstract-toggle');
+	const aboutToggle = document.querySelector('.p-about-toggle');
+
+	const abstractContainer = document.querySelector('.p-abstract');
+	const aboutContainer = document.querySelector('.p-about');
+
+	abstractToggle.addEventListener('click', () => {
+		abstractToggle.classList.add('toggle-active');
+		aboutToggle.classList.remove('toggle-active');
+		abstractContainer.classList.remove('hide');
+		aboutContainer.classList.add('hide');
+	});
+
+	aboutToggle.addEventListener('click', () => {
+		abstractToggle.classList.remove('toggle-active');
+		aboutToggle.classList.add('toggle-active');
+		abstractContainer.classList.add('hide');
+		aboutContainer.classList.remove('hide');
+	});
+
+	document.querySelectorAll('[data-speaker]').forEach(element => {
+		element.addEventListener('click', () => {
+			const speakerInfo = JSON.parse(element.dataset.speaker);
+			populateOverlay(speakerInfo);
+			speakoverlay.classList.remove('hide');
 		});
 	});
 </script>

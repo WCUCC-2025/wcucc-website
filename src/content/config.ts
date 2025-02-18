@@ -97,6 +97,7 @@ const speakersCollection = defineCollection({
 		photograph: z.string(),
 		talkTitle: z.string(),
 		biography: z.string(),
+		abstract: z.string()
 	}),
 });
 
