@@ -1,5 +1,17 @@
 import { z, defineCollection } from 'astro:content';
 
+const deadlinesCollection = defineCollection({
+	type: 'data',
+	schema: z.object({
+		type: z.enum(["E", "R"]),
+		title: z.string(),
+		startTime: z.string().datetime({ local: true }),
+		endTime: z.string().datetime({ local: true }),
+		calendarDescription: z.string(),
+		websiteDescription: z.string()
+	})
+})
+
 const eventsInfoCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
@@ -108,5 +120,6 @@ export const collections = {
 	faqs: faqsCollection,
 	events: eventsCollection,
 	speakers: speakersCollection,
-	eventsInfo: eventsInfoCollection 
+	eventsInfo: eventsInfoCollection,
+	deadlines: deadlinesCollection
 };
