@@ -14,7 +14,7 @@ upcomingDeadlines
 			new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
 	);
 
-function formatDate(dateString) {
+function formatDate(dateString: string) {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
         year: 'numeric', 
@@ -29,6 +29,7 @@ function formatDate(dateString) {
 	<div
 		class="mb-10 flex flex-row items-center justify-start gap-4 overflow-auto"
 	>
+		<!-- <DeadlineTiles -->
 		{
 		upcomingDeadlines.slice(0,3).map(deadline => {
 				return (
@@ -39,36 +40,12 @@ function formatDate(dateString) {
 						title={deadline.data.title}
 						startDate={formatDate(deadline.data.startTime)}
 						endDate={formatDate(deadline.data.endTime)}
-						calendarObject=""
-						detailsLink=""
+						calendarObject={deadline.data.calendarObject}
+						detailsLink={deadline.data.detailsLink}
 					/>
 				);
 			})
 		}
-		<!-- <DeadlineTiles -->
-		<!-- 	deadlineType="earlyBird" -->
-		<!-- 	title="Abstract Submission" -->
-		<!-- 	startDate="March 1st, 2025" -->
-		<!-- 	endDate="April 5th, 2025" -->
-		<!-- 	calendarObject="" -->
-		<!-- 	detailsLink="" -->
-		<!-- /> -->
-		<!-- <DeadlineTiles -->
-		<!-- 	deadlineType="regular" -->
-		<!-- 	title="Abstract Submission" -->
-		<!-- 	startDate="March 1st, 2025" -->
-		<!-- 	endDate="April 5th, 2025" -->
-		<!-- 	calendarObject="" -->
-		<!-- 	detailsLink="" -->
-		<!-- /> -->
-		<!-- <DeadlineTiles -->
-		<!-- 	deadlineType="regular" -->
-		<!-- 	title="Paper Submission" -->
-		<!-- 	startDate="March 1st, 2025" -->
-		<!-- 	endDate="April 5th, 2025" -->
-		<!-- 	calendarObject="" -->
-		<!-- 	detailsLink="" -->
-		<!-- /> -->
 	</div>
 	<div class="flex flex-col items-center justify-center gap-4">
 		<p

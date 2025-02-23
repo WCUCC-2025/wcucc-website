@@ -3,14 +3,22 @@ import { z, defineCollection } from 'astro:content';
 const deadlinesCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
-		type: z.enum(["E", "R"]),
+		type: z.enum(['E', 'R']),
 		title: z.string(),
 		startTime: z.string().datetime({ local: true }),
 		endTime: z.string().datetime({ local: true }),
-		calendarDescription: z.string(),
-		websiteDescription: z.string()
-	})
-})
+		calendarObject: z.object({
+			id: z.string(),
+			title: z.string(),
+			description: z.string(),
+			location: z.string(),
+			startTime: z.string().datetime({ local: true }),
+			endTime: z.string().datetime({ local: true })
+		}),
+		description: z.string(),
+		detailsLink: z.string()
+	}),
+});
 
 const eventsInfoCollection = defineCollection({
 	type: 'data',
@@ -31,7 +39,7 @@ const eventsInfoCollection = defineCollection({
 			postalCode: z.string(),
 			map: z.optional(z.string()), // ONLY FOR OFF-CAMPUS LOCATIONS
 			buildingCode: z.optional(z.string()),
-			room: z.optional(z.string()),	
+			room: z.optional(z.string()),
 		}),
 		calendarDescription: z.string(),
 		websiteDescription: z.string(),
@@ -109,7 +117,7 @@ const speakersCollection = defineCollection({
 		photograph: z.string(),
 		talkTitle: z.string(),
 		biography: z.string(),
-		abstract: z.string()
+		abstract: z.string(),
 	}),
 });
 
@@ -121,5 +129,5 @@ export const collections = {
 	events: eventsCollection,
 	speakers: speakersCollection,
 	eventsInfo: eventsInfoCollection,
-	deadlines: deadlinesCollection
+	deadlines: deadlinesCollection,
 };
