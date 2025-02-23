@@ -22,16 +22,14 @@ upcomingDeadlines
 	>
 		{
 			upcomingDeadlines.map(deadline => {
-				deadline = deadline.data;
-				console.log(deadline, "Weee");
 				return (
 					<DeadlineTiles
 						deadlineType={
-							deadline.type == 'E' ? 'earlyBird' : 'regular'
+							deadline.data.type == 'E' ? 'earlyBird' : 'regular'
 						}
-						title={deadline.title}
-						startDate={deadline.startTime}
-						endDate={deadline.endTime}
+						title={deadline.data.title}
+						startDate={deadline.data.startTime}
+						endDate={deadline.data.endTime}
 						calendarObject=""
 						detailsLink=""
 					/>
