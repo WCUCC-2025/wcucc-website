@@ -15,23 +15,23 @@ upcomingDeadlines
 	);
 
 function formatDate(dateString: string) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-    });
+	const date = new Date(dateString);
+	return date.toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
 }
 ---
 
 <section class="relative z-30 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle> Upcoming Deadlines </SectionTitle>
 	<div
-		class="mb-10 flex flex-row items-center justify-start gap-4 overflow-auto"
+		class="mb-10 flex flex-col items-center justify-start gap-4 overflow-auto md:flex-row"
 	>
 		<!-- <DeadlineTiles -->
 		{
-		upcomingDeadlines.slice(0,3).map(deadline => {
+			upcomingDeadlines.slice(0, 3).map(deadline => {
 				return (
 					<DeadlineTiles
 						deadlineType={
