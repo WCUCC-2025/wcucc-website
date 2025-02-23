@@ -7,12 +7,17 @@ import DeadlineTiles from './elements/DeadlineTiles.astro';
 import { getCollection } from 'astro:content';
 const upcomingDeadlines = await getCollection('deadlines');
 
-upcomingDeadlines
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const filteredDeadlines = upcomingDeadlines
 	.map(deadline => deadline.data)
+	.filter(event => new Date(event.endTime) >= today)
 	.sort(
 		(a, b) =>
 			new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
-	);
+	)
+	.slice(0, 3);
 
 function formatDate(dateString: string) {
 	const date = new Date(dateString);
@@ -31,17 +36,17 @@ function formatDate(dateString: string) {
 	>
 		<!-- <DeadlineTiles -->
 		{
-			upcomingDeadlines.slice(0, 3).map(deadline => {
+			filteredDeadlines.map(deadline => {
 				return (
 					<DeadlineTiles
 						deadlineType={
-							deadline.data.type == 'E' ? 'earlyBird' : 'regular'
+							deadline.type == 'E' ? 'earlyBird' : 'regular'
 						}
-						title={deadline.data.title}
-						startDate={formatDate(deadline.data.startTime)}
-						endDate={formatDate(deadline.data.endTime)}
-						calendarObject={deadline.data.calendarObject}
-						detailsLink={deadline.data.detailsLink}
+						title={deadline.title}
+						startDate={formatDate(deadline.startTime)}
+						endDate={formatDate(deadline.endTime)}
+						calendarObject={deadline.calendarObject}
+						detailsLink={deadline.detailsLink}
 					/>
 				);
 			})

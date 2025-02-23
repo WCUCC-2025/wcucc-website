@@ -1,7 +1,7 @@
 type: 'E'
 title: 'Abstract Submission'
-startTime: &startTime '2025-02-22T00:00:00'
-endTime: &endTime '2025-03-02T00:00:00'
+startTime: &startTime '2025-02-03T00:00:00'
+endTime: &endTime '2025-02-23T00:00:00'
 calendarObject:
     {
         id: 'deadline_abstract-submission_early-bird',
