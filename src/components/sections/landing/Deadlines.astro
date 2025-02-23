@@ -13,6 +13,15 @@ upcomingDeadlines
 		(a, b) =>
 			new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
 	);
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+}
 ---
 
 <section class="relative z-30 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
@@ -21,15 +30,15 @@ upcomingDeadlines
 		class="mb-10 flex flex-row items-center justify-start gap-4 overflow-auto"
 	>
 		{
-			upcomingDeadlines.map(deadline => {
+		upcomingDeadlines.slice(0,3).map(deadline => {
 				return (
 					<DeadlineTiles
 						deadlineType={
 							deadline.data.type == 'E' ? 'earlyBird' : 'regular'
 						}
 						title={deadline.data.title}
-						startDate={deadline.data.startTime}
-						endDate={deadline.data.endTime}
+						startDate={formatDate(deadline.data.startTime)}
+						endDate={formatDate(deadline.data.endTime)}
 						calendarObject=""
 						detailsLink=""
 					/>
