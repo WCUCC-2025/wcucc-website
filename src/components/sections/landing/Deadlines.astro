@@ -3,38 +3,68 @@ import 'remixicon/fonts/remixicon.css';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
 import DeadlineTiles from './elements/DeadlineTiles.astro';
+
+import { getCollection } from 'astro:content';
+const upcomingDeadlines = await getCollection('deadlines');
+
+upcomingDeadlines
+	.map(deadline => deadline.data)
+	.sort(
+		(a, b) =>
+			new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
+	);
 ---
 
-<section class="relative z-40 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
+<section class="relative z-30 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle> Upcoming Deadlines </SectionTitle>
-	<div class="flex flex-row items-center justify-start gap-4 overflow-auto mb-10">
-		<DeadlineTiles
-			deadlineType="earlyBird"
-			title="Abstract Submission"
-			startDate="March 1st, 2025"
-			endDate="April 5th, 2025"
-			calendarObject=""
-			detailsLink=""
-		/>
-		<DeadlineTiles
-			deadlineType="regular"
-			title="Abstract Submission"
-			startDate="March 1st, 2025"
-			endDate="April 5th, 2025"
-			calendarObject=""
-			detailsLink=""
-		/>
-		<DeadlineTiles
-			deadlineType="regular"
-			title="Paper Submission"
-			startDate="March 1st, 2025"
-			endDate="April 5th, 2025"
-			calendarObject=""
-			detailsLink=""
-		/>
+	<div
+		class="mb-10 flex flex-row items-center justify-start gap-4 overflow-auto"
+	>
+		{
+			upcomingDeadlines.map(deadline => {
+				return (
+					<DeadlineTiles
+						deadlineType={
+							deadline.data.type == 'E' ? 'earlyBird' : 'regular'
+						}
+						title={deadline.data.title}
+						startDate={deadline.data.startTime}
+						endDate={deadline.data.endTime}
+						calendarObject=""
+						detailsLink=""
+					/>
+				);
+			})
+		}
+		<!-- <DeadlineTiles -->
+		<!-- 	deadlineType="earlyBird" -->
+		<!-- 	title="Abstract Submission" -->
+		<!-- 	startDate="March 1st, 2025" -->
+		<!-- 	endDate="April 5th, 2025" -->
+		<!-- 	calendarObject="" -->
+		<!-- 	detailsLink="" -->
+		<!-- /> -->
+		<!-- <DeadlineTiles -->
+		<!-- 	deadlineType="regular" -->
+		<!-- 	title="Abstract Submission" -->
+		<!-- 	startDate="March 1st, 2025" -->
+		<!-- 	endDate="April 5th, 2025" -->
+		<!-- 	calendarObject="" -->
+		<!-- 	detailsLink="" -->
+		<!-- /> -->
+		<!-- <DeadlineTiles -->
+		<!-- 	deadlineType="regular" -->
+		<!-- 	title="Paper Submission" -->
+		<!-- 	startDate="March 1st, 2025" -->
+		<!-- 	endDate="April 5th, 2025" -->
+		<!-- 	calendarObject="" -->
+		<!-- 	detailsLink="" -->
+		<!-- /> -->
 	</div>
-	<div class="flex flex-col justify-center items-center gap-4">
-		<p class="m-0 p-0 text-4xl font-normal leading-none text-white underline hover:no-underline hover:cursor-pointer">
+	<div class="flex flex-col items-center justify-center gap-4">
+		<p
+			class="m-0 p-0 text-4xl font-normal leading-none text-white underline hover:cursor-pointer hover:no-underline"
+		>
 			See all the important deadlines for the conference!
 		</p>
 		<!-- <a -->

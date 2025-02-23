@@ -47,6 +47,7 @@ type Props = {
 
 const { eventsInfo }: Props = Astro.props;
 ---
+
 <section class="items-left flex flex-col justify-start gap-4">
 	{
 		eventsInfo.map(event => {
@@ -107,8 +108,8 @@ const { eventsInfo }: Props = Astro.props;
 								<AddToCalendar
 									id={event.title
 										.toLowerCase()
-										.split(' ')
-										.join('')}
+										.replace(/[^a-zA-Z0-9-_]/g, '')
+										.replace(/^[^a-zA-Z]+/, '')}
 									title={event.title}
 									description={event.calendarDescription}
 									location={
