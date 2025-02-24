@@ -5,6 +5,7 @@ endTime: '2025-05-10T22:00:00'
 location:
     {
         onCampus: false,
+        isTBD: false,
         street: '450 Knox Mountain Dr',
         postalCode: 'V1Y 9X3',
         map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2569.6760145446433!2d-119.4925015!3d49.9048856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537df36d499bbeb3%3A0x16e75f71d8abee54!2sKnox%20Mountain%20Park!5e0!3m2!1sen!2sca!4v1740021010035!5m2!1sen!2sca',

@@ -1,18 +1,30 @@
-category: "Keynote"
-title: "Nobody Can See Atoms: Turning Disadvantages into Advantages Through Chemistry and Beyond"
-startTime: "2025-05-10T09:00:00"
-endTime: "2025-05-10T10:30:00"
-speaker: {
-  name: "Dr. Hoby Wedler",
-  website: "https://www.hobywedler.com/"
-}
-location: {
-  onCampus: true,
-  street: "1137 Alumni Ave, Kelowna",
-  postalCode: "V1V 1V7",
-  buildingCode: "ADM",
-  room: "121"
-}
-calendarDescription: 'WCUCC 2025 is proud to present our keynote speaker: the acclaimed educator, chemist, and entrepreneur, Dr. Hoby Wedler.'
-websiteDescription: 'Dr. Hoby Wedler is an organic chemist and entrepreneur who has been completely blind since birth. During this seminar, Hoby will focus on his chemical research in graduate school, focusing specific attention on accessibility and how he made a computational organic chemistry lab accessible to him with minimal sighted assistance. Hoby will then outline work he is currently doing to make experimental research laboratories accessible to blind and low vision researchers. Finally, Hoby will discuss his current work as an entrepreneur and how he applies chemistry to everything he does.'
+category: 'Keynote'
+title:
+    'Nobody Can See Atoms: Turning Disadvantages into Advantages Through
+    Chemistry and Beyond'
+startTime: '2025-05-10T09:00:00'
+endTime: '2025-05-10T10:30:00'
+speaker: { name: 'Dr. Hoby Wedler', website: 'https://www.hobywedler.com/' }
+location:
+    {
+        onCampus: true,
+        isTBD: true,
+        street: '1137 Alumni Ave, Kelowna',
+        postalCode: 'V1V 1V7',
+        buildingCode: 'ADM',
+        room: '121',
+    }
+calendarDescription:
+    'WCUCC 2025 is proud to present our keynote speaker: the acclaimed educator,
+    chemist, and entrepreneur, Dr. Hoby Wedler.'
+websiteDescription:
+    'Dr. Hoby Wedler is an organic chemist and entrepreneur who has been
+    completely blind since birth. During this seminar, Hoby will focus on his
+    chemical research in graduate school, focusing specific attention on
+    accessibility and how he made a computational organic chemistry lab
+    accessible to him with minimal sighted assistance. Hoby will then outline
+    work he is currently doing to make experimental research laboratories
+    accessible to blind and low vision researchers. Finally, Hoby will discuss
+    his current work as an entrepreneur and how he applies chemistry to
+    everything he does.'
 isColored: false

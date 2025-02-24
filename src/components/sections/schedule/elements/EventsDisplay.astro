@@ -46,6 +46,7 @@ type Props = {
 };
 
 const { eventsInfo }: Props = Astro.props;
+console.log(eventsInfo);
 ---
 
 <section class="items-left flex flex-col justify-start gap-4">
@@ -74,7 +75,7 @@ const { eventsInfo }: Props = Astro.props;
 							<p>|</p>
 							<p>{formatDate(event.startTime)}</p>
 						</div>
-						{event.category != 'Break' && (
+						{event.category != 'Break' && !event.location.isTBD && (
 							<div class="h-fit w-fit rounded-lg border-[1px] border-solid border-black px-4 py-2 shadow">
 								{/* ON-CAMPUS EVENT LOCATION */}
 								{event.location.onCampus && (
@@ -93,6 +94,13 @@ const { eventsInfo }: Props = Astro.props;
 										{event.location.street}
 									</p>
 								)}
+							</div>
+						)}
+						{event.category != 'Break' && event.location.isTBD && (
+							<div class="bg-pink-600 text-white h-fit w-fit rounded-lg border-[1px] border-solid border-pink-600 px-4 py-2 shadow">
+								<p class="m-0 p-0 leading-none">
+									TBD
+								</p>
 							</div>
 						)}
 					</div>

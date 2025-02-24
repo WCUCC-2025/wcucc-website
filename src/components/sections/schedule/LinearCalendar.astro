@@ -44,15 +44,6 @@ const UBCOBuildings = {
 	CSC: 'Cascades Residence',
 	NHP: 'Nechako Residence',
 } as const;
-
-function formatDate(dateString: string) {
-	const date = new Date(dateString);
-	return new Intl.DateTimeFormat('en-US', {
-		weekday: 'long',
-		month: 'long',
-		day: 'numeric',
-	}).format(date);
-}
 ---
 
 <section class="w-full bg-white p-5 sm:p-10 md:p-14 lg:p-20">
@@ -271,7 +262,7 @@ function formatDate(dateString: string) {
 	const dropdown = document.getElementById('date-dropdown');
 	const dateOptions = dropdown.querySelectorAll('p');
 
-	selectedDate.addEventListener('click', event => {
+	selectedDate.addEventListener('click', _ => {
 		dropdown.classList.toggle('hidden');
 	});
 

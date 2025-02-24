@@ -13,10 +13,10 @@ const deadlinesCollection = defineCollection({
 			description: z.string(),
 			location: z.string(),
 			startTime: z.string().datetime({ local: true }),
-			endTime: z.string().datetime({ local: true })
+			endTime: z.string().datetime({ local: true }),
 		}),
 		description: z.string(),
-		detailsLink: z.string()
+		detailsLink: z.string(),
 	}),
 });
 
@@ -35,6 +35,7 @@ const eventsInfoCollection = defineCollection({
 		),
 		location: z.object({
 			onCampus: z.boolean(),
+			isTBD: z.boolean(),
 			street: z.string(),
 			postalCode: z.string(),
 			map: z.optional(z.string()), // ONLY FOR OFF-CAMPUS LOCATIONS
