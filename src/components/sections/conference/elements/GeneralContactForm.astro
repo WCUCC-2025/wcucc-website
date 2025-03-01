@@ -1,0 +1,77 @@
+---
+
+---
+
+<form
+	method="POST"
+	action="/api/conference-formsubmit"
+	class="flex flex-col items-start justify-start gap-4 rounded-md bg-gray-800 p-8 text-xl text-white transition-all duration-300 ease-in-out"
+>
+	<div class="flex w-full flex-col gap-2">
+		<label for="general-name"
+			>Name<span class="superscript text-pink-600">*</span></label
+		>
+		<input
+			name="general-name"
+			id="general-name"
+			class="w-full rounded-md"
+			type="text"
+			required
+		/>
+	</div>
+	<div class="flex w-full flex-col gap-2">
+		<label for="general-email"
+			>Email<span class="superscript text-pink-600">*</span></label
+		>
+		<input
+			name="general-email"
+			id="general-email"
+			class="w-full rounded-md"
+			type="email"
+			required
+		/>
+	</div>
+	<div class="flex w-full flex-col gap-2">
+		<label for="general-phone"
+			>Phone<span class="superscript text-pink-600">*</span></label
+		>
+		<input
+			name="general-phone"
+			id="general-phone"
+			class="w-full rounded-md"
+			type="text"
+		/>
+	</div>
+	<div class="flex w-full flex-col gap-2">
+		<label for="general-organization"
+			>Organization<span class="superscript text-pink-600">*</span></label
+		>
+		<input
+			name="general-organization"
+			id="general-organization"
+			class="w-full rounded-md"
+			type="text"
+		/>
+	</div>
+	<div class="flex w-full flex-col gap-2">
+		<label for="general-message"
+			>What can we help you with?<span class="superscript text-pink-600"
+				>*</span
+			></label
+		>
+		<textarea
+			name="general-message"
+			id="general-message"
+			class="w-full rounded-md"
+			required></textarea>
+	</div>
+	<button
+		type="submit"
+		class="w-full rounded-md border-none bg-blue-600 px-4 py-2 indent-0 text-xl text-white cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out"
+		>Submit</button
+	>
+</form>
+
+<style is:inline>
+	/* ADD FORM VALIDATION */
+</style>

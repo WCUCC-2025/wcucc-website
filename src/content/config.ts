@@ -1,5 +1,14 @@
 import { z, defineCollection } from 'astro:content';
 
+const guidelinesCollection = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		icon: z.string(),
+		bgColor: z.string(),
+	}),
+});
+
 const deadlinesCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
@@ -93,19 +102,6 @@ const faqsCollection = defineCollection({
 	}),
 });
 
-const eventsCollection = defineCollection({
-	type: 'data',
-	schema: z.object({
-		title: z.string(),
-		startTime: z.string(),
-		endTime: z.string(),
-		speaker: z.optional(z.string()),
-		location: z.optional(z.string()),
-		color: z.optional(z.string()),
-		description: z.optional(z.string()),
-	}),
-});
-
 const speakersCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
@@ -127,8 +123,8 @@ export const collections = {
 	carousel: carouselCollection,
 	sponsors: sponsorsCollection,
 	faqs: faqsCollection,
-	events: eventsCollection,
 	speakers: speakersCollection,
 	eventsInfo: eventsInfoCollection,
 	deadlines: deadlinesCollection,
+	guidelines: guidelinesCollection,
 };
