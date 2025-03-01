@@ -2,17 +2,19 @@
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 ---
 
-<section class="px-8 py-10 sm:p-10 md:p-14 lg:p-20">
+<section
+	class="flex w-full flex-col items-start justify-start gap-2 px-8 py-10 sm:p-10 md:p-14 lg:p-20"
+>
 	<SectionTitle color="black">Become a Sponsor</SectionTitle>
-	<p class="mb-8 text-2xl text-black md:text-xl">
+	<p class="text-2xl text-black">
 		Interested in sponsoring our conference? We'd love to hear from you!
 	</p>
 	<div
 		id="form-container"
-		class="max-w-full rounded-lg bg-gray-900 p-4 shadow-2xl md:max-w-2xl md:p-8"
+		class="w-full rounded-lg bg-gray-900 p-4 shadow-2xl md:p-8"
 	>
 		<form
-			class="space-y-6 text-xl md:text-2xl"
+			class="w-full space-y-6 text-xl md:text-2xl"
 			method="POST"
 			action="/api/funding-formsubmit"
 		>
@@ -33,7 +35,7 @@ import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 				<label
 					for="display-name"
 					class="mb-2 block text-left text-gray-300"
-					>Name (displayed on badge)</label
+					>Display/Compnay Name (Shown on our website and posters)</label
 				>
 				<input
 					type="text"
