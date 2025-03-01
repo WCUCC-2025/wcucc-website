@@ -1,11 +1,8 @@
----
-
----
-
 <form
 	method="POST"
 	action="/api/conference-formsubmit"
 	class="flex flex-col items-start justify-start gap-4 rounded-md bg-gray-800 p-8 text-xl text-white transition-all duration-300 ease-in-out"
+	id="conferenceForm"
 >
 	<div class="flex w-full flex-col gap-2">
 		<label for="general-name"
@@ -14,10 +11,11 @@
 		<input
 			name="general-name"
 			id="general-name"
-			class="w-full rounded-md"
+			class="w-full rounded-md text-gray-900"
 			type="text"
 			required
 		/>
+		<span class="error-message hidden text-sm text-red-500"></span>
 	</div>
 	<div class="flex w-full flex-col gap-2">
 		<label for="general-email"
@@ -26,10 +24,11 @@
 		<input
 			name="general-email"
 			id="general-email"
-			class="w-full rounded-md"
+			class="w-full rounded-md text-gray-900"
 			type="email"
 			required
 		/>
+		<span class="error-message hidden text-sm text-red-500"></span>
 	</div>
 	<div class="flex w-full flex-col gap-2">
 		<label for="general-phone"
@@ -38,20 +37,21 @@
 		<input
 			name="general-phone"
 			id="general-phone"
-			class="w-full rounded-md"
+			class="w-full rounded-md text-gray-900"
 			type="text"
+			required
 		/>
+		<span class="error-message hidden text-sm text-red-500"></span>
 	</div>
 	<div class="flex w-full flex-col gap-2">
-		<label for="general-organization"
-			>Organization<span class="superscript text-pink-600">*</span></label
-		>
+		<label for="general-organization">Organization</label>
 		<input
 			name="general-organization"
 			id="general-organization"
-			class="w-full rounded-md"
+			class="w-full rounded-md text-gray-900"
 			type="text"
 		/>
+		<span class="error-message hidden text-sm text-red-500"></span>
 	</div>
 	<div class="flex w-full flex-col gap-2">
 		<label for="general-message"
@@ -62,16 +62,108 @@
 		<textarea
 			name="general-message"
 			id="general-message"
-			class="w-full rounded-md"
+			class="w-full rounded-md text-gray-900"
 			required></textarea>
+		<span class="error-message hidden text-sm text-red-500"></span>
+	</div>
+	<div id="form-status" class="mb-4 hidden w-full text-center">
+		<p id="form-status-message" class="text-yellow-400"></p>
 	</div>
 	<button
 		type="submit"
-		class="w-full rounded-md border-none bg-blue-600 px-4 py-2 indent-0 text-xl text-white cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out"
+		class="w-full cursor-pointer rounded-md border-none bg-blue-600 px-4 py-2 indent-0 text-xl text-white transition-all duration-300 ease-in-out hover:bg-blue-700"
 		>Submit</button
 	>
 </form>
 
-<style is:inline>
-	/* ADD FORM VALIDATION */
-</style>
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', function () {
+		const form = document.getElementById('conferenceForm');
+		const formStatus = document.getElementById('form-status');
+		const formStatusMessage = document.getElementById(
+			'form-status-message'
+		);
+
+		const validationRules = {
+			'general-name': {
+				validate: value => value.length >= 2,
+				message: 'Name must be at least 2 characters',
+			},
+			'general-email': {
+				validate: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+				message: 'Please enter a valid email address',
+			},
+			'general-phone': {
+				validate: value => /^\d{10}$/.test(value),
+				message: 'Phone must be 10 digits',
+			},
+			'general-message': {
+				validate: value => value.length >= 10,
+				message: 'Message must be at least 10 characters',
+			},
+		};
+
+		function validateField(field) {
+			const input = form.querySelector(`[name="${field}"]`);
+			const value = input.value.trim();
+			const errorElement = input.nextElementSibling;
+			const rule = validationRules[field];
+
+			if (!rule.validate(value)) {
+				errorElement.textContent = rule.message;
+				errorElement.classList.remove('hidden');
+				input.classList.add('border', 'border-red-500');
+				return false;
+			} else {
+				errorElement.classList.add('hidden');
+				input.classList.remove('border', 'border-red-500');
+				return true;
+			}
+		}
+
+		function validateForm() {
+			let isValid = true;
+
+			Object.keys(validationRules).forEach(field => {
+				if (!validateField(field)) {
+					isValid = false;
+				}
+			});
+
+			return isValid;
+		}
+
+		Object.keys(validationRules).forEach(field => {
+			const input = form.querySelector(`[name="${field}"]`);
+
+			input.addEventListener('blur', () => {
+				validateField(field);
+			});
+
+			input.addEventListener('input', () => {
+				if (input.classList.contains('border-red-500')) {
+					validateField(field);
+				}
+			});
+		});
+
+		form.addEventListener('submit', function (e) {
+			formStatus.classList.add('hidden');
+			if (!validateForm()) {
+				e.preventDefault();
+
+				formStatusMessage.textContent =
+					'Please fix the errors in the form';
+				formStatus.classList.remove('hidden');
+
+				const firstError = form.querySelector('.border-red-500');
+				if (firstError) {
+					firstError.scrollIntoView({
+						behavior: 'smooth',
+						block: 'center',
+					});
+				}
+			}
+		});
+	});
+</script>
