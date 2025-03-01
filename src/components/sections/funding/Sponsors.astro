@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 const sponsors = await getCollection('sponsors');
 ---
 
-<section class="p-5 sm:p-10 md:p-14 lg:p-20">
+<section class="px-8 py-10 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle color="black">Our Sponsors</SectionTitle>
 	<section class="grid gap-5">
 		<div>
@@ -102,4 +102,3 @@ const sponsors = await getCollection('sponsors');
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	}
 </style>
-

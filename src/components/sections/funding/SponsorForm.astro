@@ -2,16 +2,20 @@
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 ---
 
-<section class="mb-16 mt-16 pl-20 pr-10 text-left md:px-20">
+<section class="px-8 py-10 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle color="black">Become a Sponsor</SectionTitle>
-	<p class="mb-8 text-lg text-black md:text-xl">
+	<p class="mb-8 text-2xl text-black md:text-xl">
 		Interested in sponsoring our conference? We'd love to hear from you!
 	</p>
 	<div
 		id="form-container"
-		class="mx-auto max-w-full rounded-2xl bg-gray-900 p-4 shadow-2xl md:max-w-2xl md:p-8"
+		class="max-w-full rounded-lg bg-gray-900 p-4 shadow-2xl md:max-w-2xl md:p-8"
 	>
-		<form class="space-y-6" method="POST" action="/api/funding-formsubmit">
+		<form
+			class="space-y-6 text-xl md:text-2xl"
+			method="POST"
+			action="/api/funding-formsubmit"
+		>
 			<div>
 				<label
 					for="full-name"
@@ -258,7 +262,7 @@ import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 			</div>
 			<button
 				type="submit"
-				class="w-full transform rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
+				class="w-full transform rounded-lg border-none bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 text-xl font-bold text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-blue-800 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg md:text-2xl"
 			>
 				Submit Application
 			</button>
