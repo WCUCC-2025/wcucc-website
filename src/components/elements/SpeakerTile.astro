@@ -4,7 +4,7 @@ const { image, name, title, university, data, talkTitle, learnMore } =
 ---
 
 <div
-	class="flex h-full w-full xs:w-[20rem] flex-col justify-start rounded bg-white shadow shadow-black"
+	class="xs:w-[20rem] flex h-full w-full flex-col justify-start rounded bg-white shadow shadow-black"
 	data-speaker={JSON.stringify(data)}
 >
 	<div class="mb-2 rounded-t bg-white pb-0">
@@ -14,7 +14,7 @@ const { image, name, title, university, data, talkTitle, learnMore } =
 			alt={name}
 		/>
 	</div>
-	<div class="flex flex-col h-full justify-between p-4">
+	<div class="flex h-full flex-col justify-between p-4">
 		<div>
 			<p class="m-0 text-lg font-bold">{name}</p>
 			<p class="m-0 text-lg font-semibold">{title}</p>
@@ -32,3 +32,4 @@ const { image, name, title, university, data, talkTitle, learnMore } =
 		</div>
 	</div>
 </div>
+
