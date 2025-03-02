@@ -4,12 +4,12 @@ startTime: "2025-05-11T14:00:00"
 endTime: "2025-05-11T16:00:00"
 location: {
   onCampus: true,
-  isTBD: true,
-  street: "TBD",
-  postalCode: "TBD",
-  buildingCode: "TBD",
-  room: "TBD"
+  isTBD: false,
+  street: "1256 International Mews",
+  postalCode: "V1V 1V7",
+  buildingCode: "NCH",
+  room: "221 - Gathering"
 }
-calendarDescription: 'Poster presentations for (disciplines)'
-websiteDescription: 'More info coming soon!'
+calendarDescription: 'Poster presentations for (disciplines TBD).'
+websiteDescription: 'Poster presentations for (disciplines TBD) will be held in the Nechako Gathering Room from 2:00–4:00pm.'
 isColored: false

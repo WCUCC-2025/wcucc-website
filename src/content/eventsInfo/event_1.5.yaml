@@ -1,6 +1,6 @@
 category: 'Plenary'
 title:
-    'Interior Salish Pit Cooking Practices as a Contextual Framework in
+    'Opening Remarks/Interior Salish Pit Cooking Practices as a Contextual Framework in
     Introductory Chemistry'
 startTime: '2025-05-09T17:00:00'
 endTime: '2025-05-09T18:00:00'
@@ -12,11 +12,11 @@ speaker:
 location:
     {
         onCampus: true,
-        isTBD: true,
-        street: '1255 International Mews',
+        isTBD: false,
+        street: '1147 Research Rd',
         postalCode: 'V1V 1V7',
-        buildingCode: 'TBD',
-        room: 'TBD',
+        buildingCode: 'ART',
+        room: '214',
     }
 calendarDescription: >
     UBC Okanagan's own Dr. W. Stephen McNeil will open our ceremonies with a

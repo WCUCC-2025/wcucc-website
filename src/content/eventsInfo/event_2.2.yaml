@@ -8,11 +8,11 @@ speaker: { name: 'Dr. Hoby Wedler', website: 'https://www.hobywedler.com/' }
 location:
     {
         onCampus: true,
-        isTBD: true,
-        street: '1137 Alumni Ave, Kelowna',
+        isTBD: false,
+        street: '1147 Research Rd',
         postalCode: 'V1V 1V7',
-        buildingCode: 'ADM',
-        room: '121',
+        buildingCode: 'ART',
+        room: '214',
     }
 calendarDescription:
     'WCUCC 2025 is proud to present our keynote speaker: the acclaimed educator,

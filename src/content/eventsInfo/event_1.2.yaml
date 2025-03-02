@@ -12,11 +12,11 @@ speaker:
 location:
     {
         onCampus: true,
-        isTBD: true,
-        street: '1177 Research Rd',
+        isTBD: false,
+        street: '1147 Research Rd',
         postalCode: 'V1V 1V7',
-        buildingCode: 'TBD',
-        room: 'TBD',
+        buildingCode: 'ART',
+        room: '214',
     }
 calendarDescription:
     'Dr. Wes Zandberg, associate professor at UBC Okanagan will deliver a

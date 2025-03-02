@@ -8,11 +8,11 @@ speaker: {
 }
 location: {
   onCampus: true,
-  isTBD: true,
-  street: "1137 Alumni Ave, Kelowna",
+  isTBD: false,
+  street: "1147 Research Rd",
   postalCode: "V1V 1V7",
-  buildingCode: "TBD",
-  room: "TBD"
+  buildingCode: "ART",
+  room: "214"
 }
 calendarDescription: >
   UBC Okanagan's own Dr. Robert Godin will deliver an engaging lecture on the potential of solar energy conversion and how research into optimizing the efficiency of photocatalytic systems is yielding promising results for green energy production and tackling climate change.
