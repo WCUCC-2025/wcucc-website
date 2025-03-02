@@ -4,12 +4,12 @@ startTime: "2025-05-11T13:00:00"
 endTime: "2025-05-11T14:00:00"
 location: {
   onCampus: true,
-  isTBD: true,
-  street: "1177 Research Rd",
+  isTBD: false,
+  street: "1138 Alumni Ave",
   postalCode: "V1V 1V7",
-  buildingCode: "TBD",
-  room: "TBD"
+  buildingCode: "ADM",
+  room: "121 - Sunroom"
 }
-calendarDescription: 'More info coming soon!'
-websiteDescription: 'More info coming soon!'
+calendarDescription: 'Lunch time!'
+websiteDescription: 'Catered lunch will be served from 1:00–2:00pm in the Sunroom of the Administrative (ADM) Building.'
 isColored: false

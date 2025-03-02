@@ -1,16 +1,16 @@
 category: 'Leisure '
-title: 'Opening Ceremonies '
+title: 'Opening Ceremonies'
 startTime: '2025-05-09T18:00:00'
 endTime: '2025-05-09T21:00:00'
 location:
     {
         onCampus: true,
-        isTBD: true,
-        street: '1256 International Mews',
+        isTBD: false,
+        street: '3272 University Way',
         postalCode: 'V1V 1V7',
-        buildingCode: 'TBD',
-        room: 'TBD',
+        buildingCode: 'UNC',
+        room: 'Courtyard',
     }
-calendarDescription: 'WCUCC 2025 Opening Ceremonies'
-websiteDescription: 'More info coming soon!'
+calendarDescription: 'WCUCC 2025 Opening Ceremonies!'
+websiteDescription: 'Join us for our opening ceremonies, held in the University Centre (UNC) Courtyard! Food and drinks will be available.'
 isColored: false

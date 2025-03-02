@@ -23,7 +23,7 @@ const UBCOBuildings = {
 	VAN: 'Valhalla Residence',
 	CAS: 'Cassiar Residence',
 	CSC: 'Cascades Residence',
-	NHP: 'Nechako Residence',
+	NCH: 'Nechako Residence',
 } as const;
 
 type BuildingCode = keyof typeof UBCOBuildings;
@@ -47,14 +47,14 @@ type OffCampusLocation = {
 
 export default interface Event {
 	category:
-		| 'Keynote'
-		| 'Bureaucracy'
-		| 'Plenary'
-		| 'Exploration'
-		| 'Leisure'
-		| 'Break'
-		| 'Presentations'
-		| 'Workshop';
+	| 'Keynote'
+	| 'Bureaucracy'
+	| 'Plenary'
+	| 'Exploration'
+	| 'Leisure'
+	| 'Break'
+	| 'Presentations'
+	| 'Workshop';
 	title: string;
 	startTime: string;
 	endTime: string;

@@ -5,12 +5,12 @@ endTime: '2025-05-10T13:00:00'
 location:
     {
         onCampus: true,
-        isTBD: true,
-        street: 'TBD',
-        postalCode: 'TBD',
-        buildingCode: 'SCI',
-        room: 'TBD',
+        isTBD: false,
+        street: '1147 Research Rd',
+        postalCode: 'V1V 1V7',
+        buildingCode: 'ART',
+        room: '202/204',
     }
-calendarDescription: 'Oral presentations for (disciplines)'
-websiteDescription: 'More info coming soon!'
+calendarDescription: 'Oral presentations for (disciplines TBD).'
+websiteDescription: 'Oral presentations for (disciplines TBD) will be held in ART 202. Oral presentations for (disciplines TBD) will be held in ART 204.'
 isColored: false

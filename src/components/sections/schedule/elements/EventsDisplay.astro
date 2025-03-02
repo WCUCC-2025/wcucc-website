@@ -29,7 +29,7 @@ const UBCOBuildings = {
 	VAN: 'Valhalla Residence',
 	CAS: 'Cassiar Residence',
 	CSC: 'Cascades Residence',
-	NHP: 'Nechako Residence',
+	NCH: 'Nechako Residence',
 } as const;
 
 function formatDate(dateString: string) {
@@ -46,7 +46,6 @@ type Props = {
 };
 
 const { eventsInfo }: Props = Astro.props;
-console.log(eventsInfo);
 ---
 
 <section class="items-left flex flex-col justify-start gap-4">
@@ -97,10 +96,8 @@ console.log(eventsInfo);
 							</div>
 						)}
 						{event.category != 'Break' && event.location.isTBD && (
-							<div class="bg-pink-600 text-white h-fit w-fit rounded-lg border-[1px] border-solid border-pink-600 px-4 py-2 shadow">
-								<p class="m-0 p-0 leading-none">
-									TBD
-								</p>
+							<div class="h-fit w-fit rounded-lg border-[1px] border-solid border-pink-600 bg-pink-600 px-4 py-2 text-white shadow">
+								<p class="m-0 p-0 leading-none">TBD</p>
 							</div>
 						)}
 					</div>

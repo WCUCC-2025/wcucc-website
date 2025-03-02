@@ -1,16 +1,16 @@
 category: 'Leisure'
-title: 'Pastries and Coffee'
+title: 'Breakfast/ Daily Overview'
 startTime: '2025-05-10T08:00:00'
 endTime: '2025-05-10T09:00:00'
 location:
     {
         onCampus: true,
-        isTBD: true,
-        street: 'TBD',
-        postalCode: 'TBD',
-        buildingCode: 'TBD',
-        room: 'TBD',
+        isTBD: false,
+        street: '1147 Research Rd',
+        postalCode: 'V1V 1V7',
+        buildingCode: 'ART',
+        room: '214',
     }
-calendarDescription: 'More info coming soon!'
-websiteDescription: 'More info coming soon!'
+calendarDescription: "Breakfast and overview of the day's itinerary"
+websiteDescription: "Breakfast will be served from 8:00–9:00am in ART 214. An overview of the day's itinerary will be provided."
 isColored: false
