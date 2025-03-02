@@ -1,0 +1,36 @@
+---
+import 'remixicon/fonts/remixicon.css';
+import GeneralContactForm from '@src/components/sections/conference/elements/GeneralContactForm.astro';
+---
+
+<section
+	class="flex w-full flex-col gap-5 p-5 transition-all duration-300 ease-in-out sm:p-10 md:gap-10 md:p-14 lg:p-20"
+>
+	<section class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+		<div class="flex flex-col gap-6">
+			<h2 class="text-7xl font-medium">Get in touch</h2>
+			<p class="m-0 p-0 text-2xl leading-relaxed">
+				Have any questions regarding any aspect of the conference? We’re
+				here to help. Reach out to us by filling the form below.
+			</p>
+			<p class="m-0 p-0 text-2xl leading-none text-blue-600">
+				<i class="ri-send-plane-fill"></i>
+				<a
+					href="mailto:satanshumishra@outlook.com"
+					class="underline"
+					style="text-decoration: none;">Shoot us an email</a
+				>
+			</p>
+			<p class="m-0 p-0 text-2xl leading-relaxed">
+				Do you want to sponsor our conference? Go to the <a
+					href="/funding"
+					class="text-blue-600 underline"
+					style="text-decoration: none">Sponsors & Funding</a
+				> page for more information.
+			</p>
+		</div>
+		<div>
+			<GeneralContactForm />
+		</div>
+	</section>
+</section>

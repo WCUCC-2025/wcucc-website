@@ -1,12 +1,8 @@
-category: "Break"
-title: "Break"
-startTime: "2025-05-09T16:30:00"
-endTime: "2025-05-09T17:00:00"
-location: {
-  onCampus: false,
-  street: "",
-  postalCode: "",
-}
+category: 'Break'
+title: 'Break'
+startTime: '2025-05-09T16:30:00'
+endTime: '2025-05-09T17:00:00'
+location: { onCampus: false, isTBD: false, street: '', postalCode: '' }
 calendarDescription: '--- Break Calendar Description ---'
 websiteDescription: '--- Break Website Description ---'
 isColored: true

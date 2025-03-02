@@ -4,55 +4,37 @@ import NavigationOption from '@src/components/elements/navigation/NavigationOpti
 
 <div
 	id="dropdown-overlay"
-	class="hide absolute right-0 top-full w-[38rem] lg:w-[50rem] h-fit rounded-lg pt-2"
+	class="hide absolute right-0 top-full h-fit w-[38rem] rounded-lg pt-2 lg:w-[50rem]"
 >
 	<div
 		class="w-full rounded-lg border-[1px] border-solid border-black bg-white px-8 py-6 font-sans text-black shadow-xl"
 	>
-		<div class="columns-2 lg:columns-3 gap-1">
+		<div class="columns-2 gap-1 lg:columns-3">
 			<NavigationOption
-				title="WCUCC 2025"
-				description="Register to attend in-person from may 11th - 14th"
-				href="#"
-			>
-				<p
-					class="h-full w-full rounded-md border-[1px] border-solid border-black bg-white py-10 text-center text-pink-600"
-				>
-					INSERT IMAGE HERE
-				</p>
-			</NavigationOption>
-
-			<NavigationOption
-				title="About"
-				description="Learn about what our conference is about"
-				href="#"
+				title="Conference Information"
+				description="Submission guidelines, deadlines and key info"
+				href="/conference"
 			/>
 			<NavigationOption
-				title="Speaker"
-				description="Learn more about our valued speakers"
+				title="Kelowna"
+				description="Explore our host city"
 				href="#"
 			/>
 			<NavigationOption
 				title="Meet the Team"
-				description="Meet the team responsible for WCUCC 2025"
+				description="The people behind WCUCC 2025"
 				href="/team"
 				forceNextColumn={true}
 			/>
-
 			<NavigationOption
-				title="Itinerary & Schedule"
-				description="Learn about whats happening at WCUCC 2025"
+				title="Events & Schedule"
+				description="What's happening at WCUCC 2025"
 				href="/schedule"
 			/>
 			<NavigationOption
 				title="Sponsors & Funding"
-				description="Discover how to support our conference and who makes it possible"
+				description="Support options and our generous sponsors"
 				href="/funding"
-			/>
-			<NavigationOption
-				title="Kelowna"
-				description="Learn more about the amazing city hosting our conference"
-				href="/kelowna"
 			/>
 		</div>
 	</div>

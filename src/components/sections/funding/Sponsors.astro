@@ -5,91 +5,100 @@ import { getCollection } from 'astro:content';
 const sponsors = await getCollection('sponsors');
 ---
 
-<section class="mb-16 mt-16 pl-20">
-    <SectionTitle color="black">Our Sponsors</SectionTitle>
-    <section class="grid gap-5">
-        <div>
-            <h2 class="mb-8 text-left text-5xl" style="color: #98D8D6;">Platinum</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {
-                    sponsors.map(
-                        sponsor =>
-                            sponsor.data.tier == 'platinum' && (
-                                <SponsorCard
-                                    name={sponsor.data.name}
-                                    logo={sponsor.data.logo}
-                                    href={sponsor.data.link}
-                                />
-                            )
-                    )
-                }
-            </div>
-        </div>
-        <div>
-            <h2 class="mb-8 text-left text-5xl" style="color: #F4C430">Gold</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {
-                    sponsors.map(
-                        sponsor =>
-                            sponsor.data.tier == 'gold' && (
-                                <SponsorCard
-                                    name={sponsor.data.name}
-                                    logo={sponsor.data.logo}
-                                    href={sponsor.data.link}
-                                />
-                            )
-                    )
-                }
-            </div>
-        </div>
-        <div>
-            <h2 class="mb-8 text-left text-5xl" style="color: #C0C0C0">Silver</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {
-                    sponsors.map(
-                        sponsor =>
-                            sponsor.data.tier == 'silver' && (
-                                <SponsorCard
-                                    name={sponsor.data.name}
-                                    logo={sponsor.data.logo}
-                                    href={sponsor.data.link}
-                                />
-                            )
-                    )
-                }
-            </div>
-        </div>
-        <div>
-            <h2 class="mb-8 text-left text-5xl text-black" style="color: #CD7F32">Bronze</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {
-                    sponsors.map(
-                        sponsor =>
-                            sponsor.data.tier == 'bronze' && (
-                                <SponsorCard
-                                    name={sponsor.data.name}
-                                    logo={sponsor.data.logo}
-                                    href={sponsor.data.link}
-                                />
-                            )
-                    )
-                }
-            </div>
-        </div>
-    </section>
+<section class="px-8 py-10 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle color="black">Our Sponsors</SectionTitle>
+	<section class="grid gap-5">
+		<div>
+			<h2 class="mb-8 text-left text-5xl" style="color: #98D8D6;">
+				Platinum
+			</h2>
+			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+				{
+					sponsors.map(
+						sponsor =>
+							sponsor.data.tier == 'platinum' && (
+								<SponsorCard
+									name={sponsor.data.name}
+									logo={sponsor.data.logo}
+									href={sponsor.data.link}
+								/>
+							)
+					)
+				}
+			</div>
+		</div>
+		<div>
+			<h2 class="mb-8 text-left text-5xl" style="color: #F4C430">Gold</h2>
+			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+				{
+					sponsors.map(
+						sponsor =>
+							sponsor.data.tier == 'gold' && (
+								<SponsorCard
+									name={sponsor.data.name}
+									logo={sponsor.data.logo}
+									href={sponsor.data.link}
+								/>
+							)
+					)
+				}
+			</div>
+		</div>
+		<div>
+			<h2 class="mb-8 text-left text-5xl" style="color: #C0C0C0">
+				Silver
+			</h2>
+			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+				{
+					sponsors.map(
+						sponsor =>
+							sponsor.data.tier == 'silver' && (
+								<SponsorCard
+									name={sponsor.data.name}
+									logo={sponsor.data.logo}
+									href={sponsor.data.link}
+								/>
+							)
+					)
+				}
+			</div>
+		</div>
+		<div>
+			<h2
+				class="mb-8 text-left text-5xl text-black"
+				style="color: #CD7F32"
+			>
+				Bronze
+			</h2>
+			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+				{
+					sponsors.map(
+						sponsor =>
+							sponsor.data.tier == 'bronze' && (
+								<SponsorCard
+									name={sponsor.data.name}
+									logo={sponsor.data.logo}
+									href={sponsor.data.link}
+								/>
+							)
+					)
+				}
+			</div>
+		</div>
+	</section>
 </section>
 
 <style is:inline>
-    --platinum-from: #e5e4e2;
-    --platinum-to: #d1d0ce;
-    --gold-from: rgb(234 179 8);
-    --gold-to: rgb(250 204 21);
-    --silver-from: rgb(156 163 175);
-    --silver-to: rgb(209 213 219);
-    --bronze-from: rgb(180 83 9);
-    --bronze-to: rgb(217 119 6);
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
+	--platinum-from: #e5e4e2;
+	--platinum-to: #d1d0ce;
+	--gold-from: rgb(234 179 8);
+	--gold-to: rgb(250 204 21);
+	--silver-from: rgb(156 163 175);
+	--silver-to: rgb(209 213 219);
+	--bronze-from: rgb(180 83 9);
+	--bronze-to: rgb(217 119 6);
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
 </style>

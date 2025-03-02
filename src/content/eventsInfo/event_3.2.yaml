@@ -8,6 +8,7 @@ speaker: {
 }
 location: {
   onCampus: true,
+  isTBD: true,
   street: "1137 Alumni Ave, Kelowna",
   postalCode: "V1V 1V7",
   buildingCode: "TBD",

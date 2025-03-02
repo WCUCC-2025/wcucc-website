@@ -2,7 +2,6 @@
 import SpeakerTile from '@src/components/elements/SpeakerTile.astro';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
 import OverlayBase from '@src/components/elements/OverlayBase.astro';
-import SpeakerDetails from './elements/SpeakerDetails.astro';
 
 import { getCollection } from 'astro:content';
 const speakers = await getCollection('speakers');
@@ -33,7 +32,7 @@ const speakers = await getCollection('speakers');
 
 <OverlayBase identifier="speakerdetails">
 	<div
-			class="flex max-h-[96vh] w-full flex-1 flex-col gap-4 overflow-y-auto overflow-x-hidden rounded-lg bg-white p-5 transition-all duration-300 ease-in-out sm:w-[80%] md:w-[70%]"
+		class="flex max-h-[96vh] w-full flex-1 flex-col gap-4 overflow-y-auto overflow-x-hidden rounded-lg bg-white p-5 transition-all duration-300 ease-in-out sm:w-[80%] md:w-[70%]"
 	>
 		<section class="flex flex-col justify-between md:flex-row">
 			<img
@@ -113,7 +112,6 @@ const speakers = await getCollection('speakers');
 </style>
 
 <script is:inline>
-	const speakbtn = document.getElementById('trigger-overlay');
 	const speakoverlay = document.getElementById('speakerdetails');
 
 	speakoverlay.addEventListener('click', event => {

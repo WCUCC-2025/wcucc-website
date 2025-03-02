@@ -8,9 +8,10 @@ speaker: {
 }
 location: {
   onCampus: true,
+  isTBD: true,
   street: "1177 Research Rd",
   postalCode: "V1V 1V7",
-  buildingCode: "SCI",
+  buildingCode: "TBD",
   room: "TBD"
 }
 calendarDescription: 'More info coming soon!'

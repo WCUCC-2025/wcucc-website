@@ -1,16 +1,33 @@
 import { z, defineCollection } from 'astro:content';
 
+const guidelinesCollection = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		icon: z.string(),
+		bgColor: z.string(),
+	}),
+});
+
 const deadlinesCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
-		type: z.enum(["E", "R"]),
+		type: z.enum(['E', 'R']),
 		title: z.string(),
 		startTime: z.string().datetime({ local: true }),
 		endTime: z.string().datetime({ local: true }),
-		calendarDescription: z.string(),
-		websiteDescription: z.string()
-	})
-})
+		calendarObject: z.object({
+			id: z.string(),
+			title: z.string(),
+			description: z.string(),
+			location: z.string(),
+			startTime: z.string().datetime({ local: true }),
+			endTime: z.string().datetime({ local: true }),
+		}),
+		description: z.string(),
+		detailsLink: z.string(),
+	}),
+});
 
 const eventsInfoCollection = defineCollection({
 	type: 'data',
@@ -27,11 +44,12 @@ const eventsInfoCollection = defineCollection({
 		),
 		location: z.object({
 			onCampus: z.boolean(),
+			isTBD: z.boolean(),
 			street: z.string(),
 			postalCode: z.string(),
 			map: z.optional(z.string()), // ONLY FOR OFF-CAMPUS LOCATIONS
 			buildingCode: z.optional(z.string()),
-			room: z.optional(z.string()),	
+			room: z.optional(z.string()),
 		}),
 		calendarDescription: z.string(),
 		websiteDescription: z.string(),
@@ -84,19 +102,6 @@ const faqsCollection = defineCollection({
 	}),
 });
 
-const eventsCollection = defineCollection({
-	type: 'data',
-	schema: z.object({
-		title: z.string(),
-		startTime: z.string(),
-		endTime: z.string(),
-		speaker: z.optional(z.string()),
-		location: z.optional(z.string()),
-		color: z.optional(z.string()),
-		description: z.optional(z.string()),
-	}),
-});
-
 const speakersCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
@@ -109,7 +114,7 @@ const speakersCollection = defineCollection({
 		photograph: z.string(),
 		talkTitle: z.string(),
 		biography: z.string(),
-		abstract: z.string()
+		abstract: z.string(),
 	}),
 });
 
@@ -118,8 +123,8 @@ export const collections = {
 	carousel: carouselCollection,
 	sponsors: sponsorsCollection,
 	faqs: faqsCollection,
-	events: eventsCollection,
 	speakers: speakersCollection,
 	eventsInfo: eventsInfoCollection,
-	deadlines: deadlinesCollection
+	deadlines: deadlinesCollection,
+	guidelines: guidelinesCollection,
 };

@@ -4,6 +4,7 @@ startTime: "2025-05-10T17:30:00"
 endTime: "2025-05-10T18:00:00"
 location: {
   onCampus: false,
+  isTBD: true,
   street: "",
   postalCode: "",
 }

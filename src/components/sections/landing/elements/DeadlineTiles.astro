@@ -46,7 +46,7 @@ const types: {
 ---
 
 <div
-	class="flex w-fit min-w-[40rem] flex-col items-start justify-center gap-4 rounded-xl bg-white p-8"
+	class="flex w-fit flex-col items-start justify-center gap-4 rounded-xl bg-white p-8 md:min-w-[40rem]"
 >
 	<div
 		class="flex flex-row items-center justify-start gap-2"
@@ -63,19 +63,19 @@ const types: {
 		>
 	</div>
 	<h3 class="text-4xl font-light">{title}</h3>
-	<p class="m-0 p-0 text-6xl font-bold leading-none">
+	<p class="m-0 p-0 text-5xl font-bold leading-none lg:text-6xl">
 		{startDate}
 		<br /><span class="font-normal">to</span>
 		{endDate}
 	</p>
 	<div class="flex flex-row items-center justify-start gap-2">
 		<AddToCalendar
-			id="event-a"
-			title="Western Canadian Undergraduate Chemistry Conference"
-			description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!"
-			location="The University of British Columbia"
-			startDate="2025-03-01T08:00:00"
-			endDate="2025-04-1T23:59:59">Add to Calendar</AddToCalendar
+			id={calendarObject.id}
+			title={calendarObject.title}
+			description={calendarObject.description}
+			location={calendarObject.location}
+			startDate={calendarObject.startTime}
+			endDate={calendarObject.endTime}>Add to Calendar</AddToCalendar
 		>
 		<a
 			href={detailsLink}

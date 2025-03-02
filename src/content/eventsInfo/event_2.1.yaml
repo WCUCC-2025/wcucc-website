@@ -1,14 +1,16 @@
-category: "Leisure"
-title: "Pastries and Coffee"
-startTime: "2025-05-10T08:00:00"
-endTime: "2025-05-10T09:00:00"
-location: {
-  onCampus: true,
-  street: "TBD",
-  postalCode: "TBD",
-  buildingCode: "SCI",
-  room: "TBD"
-}
+category: 'Leisure'
+title: 'Pastries and Coffee'
+startTime: '2025-05-10T08:00:00'
+endTime: '2025-05-10T09:00:00'
+location:
+    {
+        onCampus: true,
+        isTBD: true,
+        street: 'TBD',
+        postalCode: 'TBD',
+        buildingCode: 'TBD',
+        room: 'TBD',
+    }
 calendarDescription: 'More info coming soon!'
 websiteDescription: 'More info coming soon!'
 isColored: false

@@ -29,32 +29,41 @@ const UBCOBuildings = {
 type BuildingCode = keyof typeof UBCOBuildings;
 
 type OnCampusLocation = {
-  onCampus: true;
-  street: string;
-  postalCode: string;
-  buildingCode: BuildingCode;
-  room: string;
-}
+	onCampus: true;
+	isTBD: boolean;
+	street: string;
+	postalCode: string;
+	buildingCode: BuildingCode;
+	room: string;
+};
 
 type OffCampusLocation = {
-  onCampus: false;
-  street: string;
-  postalCode: string;
-  map: string;
-}
+	onCampus: false;
+	isTBD: boolean;
+	street: string;
+	postalCode: string;
+	map: string;
+};
 
 export default interface Event {
-  category: "Keynote" | "Bureaucracy" | "Plenary" | "Exploration" | "Leisure" | "Break" | "Presentations" | "Workshop";
-  title: string;
-  startTime: string;
-  endTime: string;
-  speaker?: {
-    name: string;
-    website: string;
-  };
-  location: OnCampusLocation | OffCampusLocation;
-  calendarDescription: string;
-  websiteDescription: string;
-  isColored: boolean;
+	category:
+		| 'Keynote'
+		| 'Bureaucracy'
+		| 'Plenary'
+		| 'Exploration'
+		| 'Leisure'
+		| 'Break'
+		| 'Presentations'
+		| 'Workshop';
+	title: string;
+	startTime: string;
+	endTime: string;
+	speaker?: {
+		name: string;
+		website: string;
+	};
+	location: OnCampusLocation | OffCampusLocation;
+	calendarDescription: string;
+	websiteDescription: string;
+	isColored: boolean;
 }
-

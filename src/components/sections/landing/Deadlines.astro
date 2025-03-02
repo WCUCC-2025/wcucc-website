@@ -1,65 +1,55 @@
 ---
 import 'remixicon/fonts/remixicon.css';
 import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
-import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
 import DeadlineTiles from './elements/DeadlineTiles.astro';
 
 import { getCollection } from 'astro:content';
 const upcomingDeadlines = await getCollection('deadlines');
 
-upcomingDeadlines
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const filteredDeadlines = upcomingDeadlines
 	.map(deadline => deadline.data)
+	.filter(event => new Date(event.endTime) >= today)
 	.sort(
 		(a, b) =>
 			new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
-	);
+	)
+	.slice(0, 3);
+
+function formatDate(dateString: string) {
+	const date = new Date(dateString);
+	return date.toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
+}
 ---
 
 <section class="relative z-30 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle> Upcoming Deadlines </SectionTitle>
 	<div
-		class="mb-10 flex flex-row items-center justify-start gap-4 overflow-auto"
+		class="mb-10 flex flex-col items-center justify-start gap-4 overflow-auto md:flex-row"
 	>
+		<!-- <DeadlineTiles -->
 		{
-			upcomingDeadlines.map(deadline => {
+			filteredDeadlines.map(deadline => {
 				return (
 					<DeadlineTiles
 						deadlineType={
-							deadline.data.type == 'E' ? 'earlyBird' : 'regular'
+							deadline.type == 'E' ? 'earlyBird' : 'regular'
 						}
-						title={deadline.data.title}
-						startDate={deadline.data.startTime}
-						endDate={deadline.data.endTime}
-						calendarObject=""
-						detailsLink=""
+						title={deadline.title}
+						startDate={formatDate(deadline.startTime)}
+						endDate={formatDate(deadline.endTime)}
+						calendarObject={deadline.calendarObject}
+						detailsLink={deadline.detailsLink}
 					/>
 				);
 			})
 		}
-		<!-- <DeadlineTiles -->
-		<!-- 	deadlineType="earlyBird" -->
-		<!-- 	title="Abstract Submission" -->
-		<!-- 	startDate="March 1st, 2025" -->
-		<!-- 	endDate="April 5th, 2025" -->
-		<!-- 	calendarObject="" -->
-		<!-- 	detailsLink="" -->
-		<!-- /> -->
-		<!-- <DeadlineTiles -->
-		<!-- 	deadlineType="regular" -->
-		<!-- 	title="Abstract Submission" -->
-		<!-- 	startDate="March 1st, 2025" -->
-		<!-- 	endDate="April 5th, 2025" -->
-		<!-- 	calendarObject="" -->
-		<!-- 	detailsLink="" -->
-		<!-- /> -->
-		<!-- <DeadlineTiles -->
-		<!-- 	deadlineType="regular" -->
-		<!-- 	title="Paper Submission" -->
-		<!-- 	startDate="March 1st, 2025" -->
-		<!-- 	endDate="April 5th, 2025" -->
-		<!-- 	calendarObject="" -->
-		<!-- 	detailsLink="" -->
-		<!-- /> -->
 	</div>
 	<div class="flex flex-col items-center justify-center gap-4">
 		<p
@@ -67,26 +57,8 @@ upcomingDeadlines
 		>
 			See all the important deadlines for the conference!
 		</p>
-		<!-- <a -->
-		<!-- 	class="w-fit rounded-md bg-[#0058E5] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#173d9b] hover:shadow sm:inline-block sm:w-auto" -->
-		<!-- 	href="/kelowna" -->
-		<!-- 	style="text-decoration: none;">Conference Dates</a -->
-		<!-- > -->
 	</div>
 </section>
-
-<!-- <a -->
-<!-- 	class="w-fit rounded-md bg-[#0058E5] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#173d9b] hover:shadow sm:inline-block sm:w-auto" -->
-<!-- 	href="/kelowna" -->
-<!-- 	style="text-decoration: none;">Important Conference Dates</a -->
-<!-- > -->
-<!-- <AddToCalendar -->
-<!-- 	title="Western Canadian Undergraduate Chemistry Conference" -->
-<!-- 	description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!" -->
-<!-- 	location="The University of British Columbia" -->
-<!-- 	startDate="2025-03-01T08:00:00" -->
-<!-- 	endDate="2025-04-1T23:59:59">Add to Calendar</AddToCalendar -->
-<!-- > -->
 
 <style>
 	::-webkit-scrollbar {

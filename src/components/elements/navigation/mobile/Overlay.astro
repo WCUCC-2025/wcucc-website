@@ -4,41 +4,37 @@ import NavigationOption from '@src/components/elements/navigation/NavigationOpti
 
 <div
 	id="mobile-overlay"
-	class="fixed hide z-[100] h-screen w-screen overflow-hidden font-sans"
+	class="hide fixed z-[100] h-screen w-screen overflow-hidden font-sans"
 >
 	<div
 		class="flex h-full w-full flex-col justify-between gap-2 overflow-x-hidden overflow-y-scroll rounded-md bg-white shadow shadow-black"
 	>
 		<div class="relative p-2">
 			<NavigationOption
-				title="About"
-				description="Learn about what our conference is about"
-				href="#"
+				title="Conference Information"
+				description="Submission guidelines, deadlines and key info"
+				href="/conference"
 			/>
 			<NavigationOption
-				title="Speakers"
-				description="Learn more about our valued speakers"
+				title="Kelowna"
+				description="Explore our host city"
 				href="#"
 			/>
 			<NavigationOption
 				title="Meet the Team"
-				description="Meet the team responsible for WCUCC 2025"
+				description="The people behind WCUCC 2025"
 				href="/team"
+				forceNextColumn={true}
 			/>
 			<NavigationOption
-				title="Itinerary & Schedule"
-				description="Learn about whats happening at WCUCC 2025"
+				title="Events & Schedule"
+				description="What's happening at WCUCC 2025"
 				href="/schedule"
 			/>
 			<NavigationOption
 				title="Sponsors & Funding"
-				description="Discover how to support our conference and who makes it possible"
+				description="Support options and our generous sponsors"
 				href="/funding"
-			/>
-			<NavigationOption
-				title="Kelowna"
-				description="Learn more about the amazing city hosting our conference"
-				href="/kelowna"
 			/>
 		</div>
 		<div class="sticky bottom-2 flex w-full flex-row gap-2 bg-white p-2">
