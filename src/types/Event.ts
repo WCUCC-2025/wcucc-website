@@ -55,6 +55,7 @@ export default interface Event {
 	| 'Break'
 	| 'Presentations'
 	| 'Workshop';
+	id: string;
 	title: string;
 	startTime: string;
 	endTime: string;

@@ -287,7 +287,10 @@ const UBCOBuildings = {
 			dateOption.classList.add('selected');
 
 			const selectedDateStr = dateOption.dataset.date;
-			selectedDate.innerText = dateOption.innerText;
+			selectedDate.innerHTML = `
+				<span>${dateOption.innerText}</span>
+				<i class="ri-arrow-down-s-line m-0 p-0 leading-none"></i>
+			`;
 			dropdown.classList.add('hidden');
 
 			const startDate = new Date(selectedDateStr + 'T00:00:00-07:00');

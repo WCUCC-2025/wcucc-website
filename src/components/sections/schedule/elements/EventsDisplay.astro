@@ -111,10 +111,7 @@ const { eventsInfo }: Props = Astro.props;
 						{event.category && event.category != 'Break' && (
 							<div class="flex w-fit shrink-0 flex-row items-center justify-end gap-2 pt-4 lg:pt-0">
 								<AddToCalendar
-									id={event.title
-										.toLowerCase()
-										.replace(/[^a-zA-Z0-9-_]/g, '')
-										.replace(/^[^a-zA-Z]+/, '')}
+									id={event.id}
 									title={event.title}
 									description={event.calendarDescription}
 									location={
