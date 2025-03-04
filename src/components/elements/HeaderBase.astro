@@ -16,39 +16,43 @@ const { title, description, image } = Astro.props;
 	>
 		{description}
 	</h4>
-</section>
+	<slot />
 
-<style>
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
+	<style>
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
 		}
-		to {
-			opacity: 1;
+		.animate-fade-in {
+			animation: fadeIn 1s ease-out;
 		}
-	}
-	.animate-fade-in {
-		animation: fadeIn 1s ease-out;
-	}
-	@keyframes slideInFromBottom {
-		from {
-			transform: translateY(50px);
-			opacity: 0;
+		@keyframes slideInFromBottom {
+			from {
+				transform: translateY(50px);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
 		}
-		to {
-			transform: translateY(0);
-			opacity: 1;
+		.animate-title {
+			animation: slideInFromBottom 0.5s ease-out;
 		}
-	}
-	.animate-title {
-		animation: slideInFromBottom 0.5s ease-out;
-	}
-	.animate-subtitle {
-		animation: slideInFromBottom 0.5s ease-out 0.2s both;
-	}
-	.full-width-line {
-		width: 100vw;
-		margin-left: calc(-50vw + 50%);
-		border-top: 1px solid black;
-	}
-</style>
+		.animate-subtitle {
+			animation: slideInFromBottom 0.5s ease-out 0.2s both;
+		}
+		.animate-slot {
+			animation: slideInFromBottom 0.5s ease-out 0.4s both;
+		}
+		.full-width-line {
+			width: 100vw;
+			margin-left: calc(-50vw + 50%);
+			border-top: 1px solid black;
+		}
+	</style>
+</section>

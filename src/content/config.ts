@@ -33,6 +33,7 @@ const eventsInfoCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
 		category: z.string(),
+		id: z.string(),
 		title: z.string(),
 		startTime: z.string().datetime({ local: true }),
 		endTime: z.string().datetime({ local: true }),
