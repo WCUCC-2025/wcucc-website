@@ -1,0 +1,16 @@
+category: "Workshop"
+id: 'event_whats-next-workshop_11-05-2025'
+title: "What's Next?\" Workshop"
+startTime: "2025-05-11T16:00:00"
+endTime: "2025-05-11T18:00:00"
+location: {
+  onCampus: true,
+  isTBD: false,
+  street: "11137 Alumni Ave",
+  postalCode: "V1V 1V7",
+  buildingCode: "ADM",
+  room: "121 - Sunroom"
+}
+calendarDescription: 'Our workshop will be held in the Sunroom of the Administrative (ADM) Building from 4:30–6:00pm. More info coming soon!'
+websiteDescription: 'Our workshop will be held in the Sunroom of the Administrative (ADM) Building from 4:30–6:00pm. More info coming soon!'
+isColored: false

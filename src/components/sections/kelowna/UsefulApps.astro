@@ -1,0 +1,39 @@
+---
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
+import AppCard from './elements/AppCard.astro';
+---
+
+<section class="p-5 sm:p-10 md:p-14 lg:p-20">
+	<SectionTitle color="black">Apps we think you will find useful</SectionTitle
+	>
+	<div class="flex flex-row flex-wrap justify-between gap-4">
+		<AppCard
+			src="Uber.svg"
+			title="Uber/Uber Eats"
+			description="Get food delivered to your doorstep or call rides."
+			playstore="https://play.google.com/store/apps/details?id=com.ubercab&hl=en_CA&pli=1"
+			appstore="https://apps.apple.com/us/app/uber-request-a-ride/id368677368"
+		/>
+		<AppCard
+			src="Transit.svg"
+			title="Transit"
+			description="Get food delivered to your doorstep or call rides."
+			playstore="https://play.google.com/store/apps/details?id=com.thetransitapp.droid&hl=en_CA"
+			appstore="https://apps.apple.com/us/app/transit-subway-bus-times/id498151501"
+		/>
+		<AppCard
+			src="Lime.svg"
+			title="Lime"
+			description="Get food delivered to your doorstep or call rides."
+			playstore="https://play.google.com/store/apps/details?id=com.limebike&hl=en_CA"
+			appstore="https://apps.apple.com/us/app/lime-ridegreen/id1199780189"
+		/>
+		<AppCard
+			src="URide.svg"
+			title="URide"
+			description="Get food delivered to your doorstep or call rides."
+			playstore="https://play.google.com/store/apps/details?id=com.uride.pax&hl=en_CA"
+			appstore="https://apps.apple.com/ca/app/uride-passenger/id1248144806"
+		/>
+	</div>
+</section>

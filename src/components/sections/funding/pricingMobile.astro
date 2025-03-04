@@ -1,0 +1,162 @@
+---
+const benefits = [
+	{
+		name: 'Logo displayed in the conference program, banner & posters',
+		type: 'check',
+	},
+	{ name: 'Logo displayed on the website', type: 'check' },
+	{
+		name: 'Post-conference partner email, social-media, thank you',
+		type: 'check',
+	},
+	{
+		name: 'Item pamphlet added to registration package',
+		type: 'value',
+		values: ['Large', 'Small', 'Small', ''],
+	},
+	{
+		name: 'Invitation to panel',
+		type: 'value',
+		values: ['30 min', '20 min', '10 min', ''],
+	},
+	{ name: 'Tickets to Gala', type: 'value', values: ['3', '2', '1', ''] },
+	{ name: 'Company information/advertisement in the program', type: 'check' },
+	{ name: 'Company banners displayed at conference', type: 'check' },
+	{ name: 'Logo displayed on main page of the website', type: 'check' },
+	{ name: 'Company Lanyard', type: 'check' },
+	{ name: 'Name tags of attendees will have company logo', type: 'check' },
+];
+
+const tiers = [
+	{
+		name: 'Platinum',
+		color: 'bg-[#3D3E3E]',
+		price: '$2000',
+		textColor: 'text-gray-800',
+		benefits: [
+			true,
+			true,
+			true,
+			'Large',
+			'30 min',
+			'3',
+			true,
+			true,
+			true,
+			true,
+			true,
+		],
+	},
+	{
+		name: 'Gold',
+		color: 'bg-[#F4C430]',
+		price: '$1000',
+		textColor: 'text-gray-800',
+		benefits: [
+			true,
+			true,
+			true,
+			'Small',
+			'20 min',
+			'2',
+			true,
+			true,
+			true,
+			false,
+			false,
+		],
+	},
+	{
+		name: 'Silver',
+		color: 'bg-[#C0C0C0]',
+		price: '$500',
+		textColor: 'text-gray-800',
+		benefits: [
+			true,
+			true,
+			true,
+			'Small',
+			'10 min',
+			'1',
+			false,
+			false,
+			false,
+			false,
+			false,
+		],
+	},
+	{
+		name: 'Bronze',
+		color: 'bg-[#CD7F32]',
+		price: '$250',
+		textColor: 'text-gray-800',
+		benefits: [
+			true,
+			true,
+			true,
+			'',
+			'',
+			'',
+			false,
+			false,
+			false,
+			false,
+			false,
+		],
+	},
+];
+---
+
+<div class="flex flex-col items-start justify-start rounded-lg">
+	{
+		tiers.map(tier => (
+			<details class="w-full rounded-lg shadow-lg">
+				<summary
+					class={`p-4 text-left text-white ${tier.color} flex cursor-pointer items-center justify-between text-2xl font-bold`}
+				>
+					<span>{tier.name}</span>
+					<span class="ml-auto font-normal">{tier.price}</span>
+				</summary>
+				<div class="bg-white p-4 text-gray-800">
+					<ul class="list-disc pl-5">
+						{benefits.map(
+							(benefit, index) =>
+								tier.benefits[index] && (
+									<li class="mb-2">
+										{benefit.name}:
+										{benefit.type === 'value' ?
+											tier.benefits[index]
+										:	''}
+									</li>
+								)
+						)}
+					</ul>
+				</div>
+			</details>
+		))
+	}
+</div>
+
+<style>
+	details summary::-webkit-details-marker {
+		display: none;
+	}
+
+	details summary:after {
+		content: '▼';
+		float: right;
+		transition: transform 0.2s ease-in-out;
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+	details[open] summary:after {
+		transform: rotate(-180deg);
+	}
+
+	details summary span:last-child {
+		margin-right: 0;
+		padding-right: 0;
+	}
+</style>
+

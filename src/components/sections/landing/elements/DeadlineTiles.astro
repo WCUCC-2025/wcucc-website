@@ -1,0 +1,86 @@
+---
+import 'remixicon/fonts/remixicon.css';
+import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
+
+type Props = {
+	deadlineType: 'earlyBird' | 'regular';
+	helpLink?: string;
+	title: string;
+	startDate: string;
+	endDate: string;
+	calendarObject: any;
+	detailsLink: string;
+};
+
+const {
+	deadlineType,
+	helpLink = '',
+	title,
+	startDate,
+	endDate,
+	calendarObject,
+	detailsLink,
+}: Props = Astro.props;
+
+const types: {
+	[key: string]: {
+		color: string;
+		icon: string;
+		label: string;
+		helpLink: string;
+	};
+} = {
+	earlyBird: {
+		color: '#0368FF',
+		icon: 'fire-fill',
+		label: 'Early-Bird',
+		helpLink: '#',
+	},
+	regular: {
+		color: '#6700F8',
+		icon: 'time-fill',
+		label: 'Regular',
+		helpLink: '#',
+	},
+};
+---
+
+<div
+	class="flex w-fit flex-col items-start justify-center gap-4 rounded-xl bg-white p-8 md:min-w-[40rem]"
+>
+	<div
+		class="flex flex-row items-center justify-start gap-2"
+		style={`--bg-color:${types[deadlineType].color}`}
+	>
+		<div
+			class={`flex flex-row items-center justify-start gap-2 rounded-lg bg-[var(--bg-color)] px-4 py-1.5 text-[1.1rem] text-white`}
+		>
+			<i class={`ri-${types[deadlineType].icon}`}></i>
+			<p class="m-0 p-0 leading-none">{types[deadlineType].label}</p>
+		</div>
+		<a href={types[deadlineType].helpLink} style="text-decoration: none;"
+			><i class="ri-question-fill text-3xl text-black"></i></a
+		>
+	</div>
+	<h3 class="text-4xl font-light">{title}</h3>
+	<p class="m-0 p-0 text-5xl font-bold leading-none lg:text-6xl">
+		{startDate}
+		<br /><span class="font-normal">to</span>
+		{endDate}
+	</p>
+	<div class="flex flex-row items-center justify-start gap-2">
+		<AddToCalendar
+			id={calendarObject.id}
+			title={calendarObject.title}
+			description={calendarObject.description}
+			location={calendarObject.location}
+			startDate={calendarObject.startTime}
+			endDate={calendarObject.endTime}>Add to Calendar</AddToCalendar
+		>
+		<a
+			href={detailsLink}
+			class="w-fit rounded-md bg-[#D10838] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#871c2a] hover:shadow sm:inline-block sm:w-auto"
+			style="text-decoration: none;">See Details</a
+		>
+	</div>
+</div>

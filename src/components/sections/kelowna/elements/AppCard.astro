@@ -1,0 +1,20 @@
+---
+const { src, title, description, appstore, playstore } = Astro.props;
+---
+
+<div class="max-w-[200px]">
+	<img src={`/usefulapps/${src}`} alt={title} >
+	<div class="p-1 flex flex-col justify-center items-start gap-2">
+	<h4 class="m-0 p-0 leading-none text-2xl">{title}</h4>
+	<p class="m-0 p-0 leading-5">{description}</p>
+	<div class="py-2">
+		<a
+			class="rounded-md border-[1px] border-solid border-black p-2"
+			href={playstore}><i class="ri-google-play-fill"></i></a
+		>
+		<a
+			class="rounded-md border-[1px] border-solid border-black p-2"
+			href={appstore}><i class="ri-apple-fill no-underline"></i></a
+		>
+	</div>
+</div>

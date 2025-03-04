@@ -1,0 +1,47 @@
+category: 'Plenary'
+id: 'event_opening-remarks_09-05-2025'
+title:
+    'Opening Remarks/Interior Salish Pit Cooking Practices as a Contextual Framework in
+    Introductory Chemistry'
+startTime: '2025-05-09T17:00:00'
+endTime: '2025-05-09T18:00:00'
+speaker:
+    {
+        name: 'Dr. W. Stephen McNeil ',
+        website: 'https://ubcoapps.elearning.ubc.ca/~wsmcneil/',
+    }
+location:
+    {
+        onCampus: true,
+        isTBD: false,
+        street: '1147 Research Rd',
+        postalCode: 'V1V 1V7',
+        buildingCode: 'ART',
+        room: '214',
+    }
+calendarDescription: >
+    UBC Okanagan's own Dr. W. Stephen McNeil will open our ceremonies with a
+    fascinating exploration of chemistry practices rooted in local Indigenous
+    knowledge passed down for generations, and how integrating socially relevant
+    topics into chemistry education can make learning both engaging and
+    enlightening.
+websiteDescription: >
+    As part of a long-term project to revise the curriculum, learning
+    objectives, and delivery of the first-year chemistry sequence at The
+    University of British Columbia’s Okanagan campus, we have developed a range
+    of context study activities that meaningfully demonstrate the applicability
+    of introductory chemistry concepts to issues of societal and environmental
+    relevance, an approach that both reinforces those concepts and increases
+    student interest and appreciation for the roles of chemistry and chemical
+    knowledge to their lives and society. One context study draws meaningful
+    connections from course concepts to local Indigenous knowledge, based on the
+    sophisticated and complex process by which the taproot of balsamroot
+    (Balsamorhiza sagittata) is heated in elaborate cooking pits, as
+    traditionally practiced by the Syilx and Secwépemc peoples of the British
+    Columbia Interior Plateau. This process transforms the indigestible complex
+    carbohydrate inulin into a high-energy food source. The necessity for each
+    step in the pit-cooking process can be understood in terms of principles of
+    chemical kinetics, thermodynamics, acid-base chemistry, and substitution
+    reactions in organic compounds, all concepts that map onto our second-term
+    curriculum.
+isColored: false

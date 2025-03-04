@@ -1,0 +1,25 @@
+category: 'Exploration'
+id: 'event_wine-tour_09-05-2025'
+title: 'Wine Tour'
+startTime: '2025-05-09T13:00:00'
+endTime: '2025-05-09T16:00:00'
+location:
+    {
+        onCampus: false,
+        isTBD: false,
+        street: '3303 Boucherie Rd',
+        postalCode: 'V1Z 2S5',
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2572.985454301252!2d-119.56876832341813!3d49.84273083093435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537d8aba6c363499%3A0xcfd7098dc8fce593!2sQuails'%20Gate%20Winery!5e0!3m2!1sen!2sca!4v1738299624250!5m2!1sen!2sca",
+    }
+calendarDescription:
+    'Wine tour to Grey Monk Estate Winery and Ex Nihilo Vineyards, paired with
+    an exclusive "Tasting in the Dark" blindfolded wine tasting experience with
+    Dr. Hoby Wedler. '
+websiteDescription: >
+    'Kick off WCUCC 2025 with our first social event... our wine tour! We are
+    thrilled to partner with two renowned Okanagan Valley wineries, Grey Monk
+    Estate and Ex Nihilo Vineyards, for an unforgettable experience. The tour
+    will culminate in an exclusive "Tasting in the Dark" blindfolded wine
+    tasting led by Dr. Hoby Wedler, before returning to UBC Okanagan for the
+    opening ceremonies. Meet outside of the Arts building at 1pm for coach service.'
+isColored: false

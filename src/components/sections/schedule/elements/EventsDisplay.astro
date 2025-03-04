@@ -1,0 +1,147 @@
+---
+import CategoryPill from './CategoryPill.astro';
+import 'remixicon/fonts/remixicon.css';
+import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
+import type EventType from '@src/types/Event';
+
+const UBCOBuildings = {
+	ADM: 'Administration Building',
+	ART: 'Arts Building',
+	ASC: 'Arts and Sciences Centre',
+	COM: 'Commons Building',
+	EME: 'Engineering, Management and Education Building',
+	FIP: 'Fipke Centre for Innovative Research',
+	GYM: 'Gymnasium',
+	LIB: 'Library',
+	SCI: 'Science Building',
+	RHS: 'Reichwald Health Sciences Centre',
+	UNC: 'University Centre',
+	SSC: 'Student Services Centre',
+	CCS: 'Creative and Critical Studies Building',
+	ARTS: 'Arts and Sciences Building',
+	MH4: 'Mountain Home 4 (Arts House)',
+	NIC: 'Nicola Residence',
+	KLO: 'Kalamalka Residence',
+	MON: 'Monashee Residence',
+	PUC: 'Purcell Residence',
+	SIM: 'Similkameen Residence',
+	SKA: 'Skeena Residence',
+	VAN: 'Valhalla Residence',
+	CAS: 'Cassiar Residence',
+	CSC: 'Cascades Residence',
+	NCH: 'Nechako Residence',
+} as const;
+
+function formatDate(dateString: string) {
+	const date = new Date(dateString);
+	return new Intl.DateTimeFormat('en-US', {
+		weekday: 'long',
+		month: 'long',
+		day: 'numeric',
+	}).format(date);
+}
+
+type Props = {
+	eventsInfo: EventType[];
+};
+
+const { eventsInfo }: Props = Astro.props;
+---
+
+<section class="items-left flex flex-col justify-start gap-4">
+	{
+		eventsInfo.map(event => {
+			return (
+				<div
+					data-schedule={JSON.stringify(event)}
+					class="rounded-lg border-[1px] border-solid border-black p-4 shadow hover:cursor-pointer"
+					style={
+						event.category === 'Break' ?
+							{
+								backgroundColor: '#56bd72',
+								color: 'white',
+								borderColor: '#56bd72',
+							}
+						:	undefined
+					}
+				>
+					<div class="flex w-full shrink-0 flex-col-reverse items-start justify-start lg:flex-row lg:items-start lg:justify-between">
+						<div class="flex w-fit flex-row items-center justify-center gap-2 p-2">
+							<p>
+								{`${String(new Date(event.startTime).getHours()).padStart(2, '0')}:${String(new Date(event.startTime).getMinutes()).padStart(2, '0')} - ${String(new Date(event.endTime).getHours()).padStart(2, '0')}:${String(new Date(event.endTime).getMinutes()).padStart(2, '0')}`}
+							</p>
+							<p>PST</p>
+							<p>|</p>
+							<p>{formatDate(event.startTime)}</p>
+						</div>
+						{event.category != 'Break' && !event.location.isTBD && (
+							<div class="h-fit w-fit rounded-lg border-[1px] border-solid border-black px-4 py-2 shadow">
+								{/* ON-CAMPUS EVENT LOCATION */}
+								{event.location.onCampus && (
+									<p class="m-0 p-0 leading-none">
+										{event.location.room} |{' '}
+										{
+											UBCOBuildings[
+												event.location.buildingCode
+											]
+										}
+									</p>
+								)}
+								{/* OFF-CAMPUS EVENT LOCATION */}
+								{!event.location.onCampus && (
+									<p class="m-0 p-0 leading-none">
+										{event.location.street}
+									</p>
+								)}
+							</div>
+						)}
+						{event.category != 'Break' && event.location.isTBD && (
+							<div class="h-fit w-fit rounded-lg border-[1px] border-solid border-pink-600 bg-pink-600 px-4 py-2 text-white shadow">
+								<p class="m-0 p-0 leading-none">TBD</p>
+							</div>
+						)}
+					</div>
+					<div class="flex flex-1 flex-col items-start justify-start lg:flex-row lg:flex-wrap lg:items-end lg:justify-between">
+						<div class="flex flex-1 flex-col items-start justify-center gap-2 lg:max-w-[70%]">
+							<h2 class="text-4xl font-bold">{event.title}</h2>
+							{event.speaker && (
+								<p class="text-xl">{event.speaker.name}</p>
+							)}
+						</div>
+						{event.category && event.category != 'Break' && (
+							<div class="flex w-fit shrink-0 flex-row items-center justify-end gap-2 pt-4 lg:pt-0">
+								<AddToCalendar
+									id={event.id}
+									title={event.title}
+									description={event.calendarDescription}
+									location={
+										event.location.onCampus ?
+											`${UBCOBuildings[event.location.buildingCode]}, ${event.location.room}`
+										:	`${event.location.street}, Kelowna, BC, ${event.location.postalCode}`
+									}
+									startDate={event.startTime}
+									endDate={event.endTime}
+								>
+									<i class="ri-calendar-fill text-white" />
+								</AddToCalendar>
+								<CategoryPill
+									name={
+										event.category.trim() as
+											| 'Keynote'
+											| 'Bureaucracy'
+											| 'Plenary'
+											| 'Exploration'
+											| 'Leisure'
+											| 'Break'
+											| 'Presentations'
+											| 'Workshop'
+									}
+								/>
+							</div>
+						)}
+					</div>
+				</div>
+			);
+		})
+	}
+</section>

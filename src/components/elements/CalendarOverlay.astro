@@ -1,0 +1,189 @@
+---
+import 'remixicon/fonts/remixicon.css';
+
+type Props = {
+	id: string;
+	eventDetails: {
+		title: string;
+		description: string;
+		location: string;
+		startDate: Date;
+		endDate: Date;
+	};
+};
+
+const { id, eventDetails }: Props = Astro.props;
+---
+
+<div
+	id={`calendar-overlay-${id}`}
+	class="hidden-el fixed left-0 top-0 z-[100] flex h-screen max-h-screen w-screen flex-col items-center justify-center bg-black bg-opacity-60 p-5"
+>
+	<div
+		class="flex h-fit max-h-[96vh] w-[25rem] flex-col gap-4 overflow-hidden rounded-lg bg-white p-5 transition-all duration-300 ease-in-out"
+	>
+		<div class="flex flex-col items-start justify-center gap-2 py-2">
+			<h2 class="m-0 text-4xl font-bold leading-none">Add to Calendar</h2>
+			<p class="m-0 text-lg font-light leading-none">
+				Select the calendar you want to add the event to.
+			</p>
+		</div>
+		<div class="flex w-full flex-col items-center justify-center gap-4">
+			<a
+				id={`googleCalendar-${id}`}
+				class="flex w-full cursor-pointer flex-row items-center justify-center gap-4 rounded-md border-[1px] border-solid border-black p-2 transition-colors hover:bg-gray-100"
+				style="text-decoration: none;"
+			>
+				<i
+					class="ri-google-fill text-xl"
+					style={{
+						background:
+							'conic-gradient(from 45deg at 50% 50%, #4285F4, #EA4335, #FBBC05, #34A853)',
+						WebkitBackgroundClip: 'text',
+						WebkitTextFillColor: 'transparent',
+						backgroundClip: 'text',
+						color: 'transparent',
+					}}></i>
+				<p class="m-0 text-center text-lg">Google Calendar</p>
+			</a>
+			<a
+				id={`outlookCalendar-${id}`}
+				class="flex w-full cursor-pointer flex-row items-center justify-center gap-4 rounded-md border-[1px] border-solid border-black p-2 transition-colors hover:bg-gray-100"
+				style="text-decoration: none;"
+			>
+				<i
+					class="ri-microsoft-fill text-xl"
+					style={{
+						background:
+							'conic-gradient(from 45deg at 50% 50%, #0078D4, #106EBE, #2B88D8, #0063B1)',
+						WebkitBackgroundClip: 'text',
+						WebkitTextFillColor: 'transparent',
+						backgroundClip: 'text',
+						color: 'transparent',
+					}}></i>
+				<p class="m-0 text-center text-lg">Outlook</p>
+			</a>
+			<a
+				id={`yahooCalendar-${id}`}
+				class="flex w-full cursor-pointer flex-row items-center justify-center gap-4 rounded-md border-[1px] border-solid border-black p-2 transition-colors hover:bg-gray-100"
+				style="text-decoration: none;"
+			>
+				<i
+					class="ri-calendar-fill text-xl"
+					style={{
+						background:
+							'conic-gradient(from 45deg at 50% 50%, #6001D2, #760DDF, #5701C2, #4A02A0)',
+						WebkitBackgroundClip: 'text',
+						WebkitTextFillColor: 'transparent',
+						backgroundClip: 'text',
+						color: 'transparent',
+					}}></i>
+				<p class="m-0 text-center text-lg">Yahoo</p>
+			</a>
+			<a
+				id={`icalCalendar-${id}`}
+				class="flex w-full cursor-pointer flex-row items-center justify-center gap-4 rounded-md border-[1px] border-solid border-black p-2 no-underline transition-colors hover:bg-gray-100"
+				style="text-decoration: none;"
+			>
+				<i
+					class="ri-apple-fill text-xl"
+					style={{
+						background:
+							'conic-gradient(from 45deg at 50% 50%, #A2AAAD, #888888, #666666, #2F2F2F)',
+						WebkitBackgroundClip: 'text',
+						WebkitTextFillColor: 'transparent',
+						backgroundClip: 'text',
+						color: 'transparent',
+					}}></i>
+				<p class="m-0 text-center text-lg">iCal (Apple / Outlook)</p>
+			</a>
+		</div>
+	</div>
+</div>
+
+<style>
+	.hidden-el {
+		display: none;
+	}
+</style>
+
+<script is:inline define:vars={{ id, eventDetails }}>
+	function formatDateForCalendar(date) {
+		return new Date(date).toISOString().replace(/-|:|\.\d+/g, '');
+	}
+
+	function createCalendarLinks(event) {
+		const title = encodeURIComponent(event.title);
+		const description = encodeURIComponent(event.description);
+		const location = encodeURIComponent(event.location);
+		const startTime = formatDateForCalendar(event.startDate);
+		const endTime = formatDateForCalendar(event.endDate);
+
+		const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startTime}/${endTime}&details=${description}&location=${location}`;
+
+		const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${new Date(event.startDate).toISOString()}&enddt=${new Date(event.endDate).toISOString()}&body=${description}&location=${location}`;
+
+		const yahooUrl = `https://calendar.yahoo.com/?v=60&title=${title}&st=${startTime}&et=${endTime}&desc=${description}&in_loc=${location}`;
+
+		const icalContent = `BEGIN:VCALENDAR
+							 VERSION:2.0
+							 BEGIN:VEVENT
+							 URL:${location}
+							 DTSTART:${startTime}
+							 DTEND:${endTime}
+							 SUMMARY:${event.title}
+							 DESCRIPTION:${event.description}
+							 LOCATION:${event.location}
+							 END:VEVENT
+							 END:VCALENDAR`;
+		return { googleUrl, outlookUrl, yahooUrl, icalContent };
+	}
+
+	const overlay = document.getElementById(`calendar-overlay-${id}`);
+	const links = createCalendarLinks(eventDetails);
+
+	document
+		.getElementById(`googleCalendar-${id}`)
+		.addEventListener('click', e => {
+			e.preventDefault();
+			window.open(links.googleUrl, '_blank');
+		});
+
+	document
+		.getElementById(`outlookCalendar-${id}`)
+		.addEventListener('click', e => {
+			e.preventDefault();
+			window.open(links.outlookUrl, '_blank');
+		});
+
+	document
+		.getElementById(`yahooCalendar-${id}`)
+		.addEventListener('click', e => {
+			e.preventDefault();
+			window.open(links.yahooUrl, '_blank');
+		});
+
+	document
+		.getElementById(`icalCalendar-${id}`)
+		.addEventListener('click', e => {
+			e.preventDefault();
+			const blob = new Blob([links.icalContent], {
+				type: 'text/calendar;charset=utf-8',
+			});
+			const url = window.URL.createObjectURL(blob);
+			const link = document.createElement('a');
+			link.href = url;
+			link.download = 'event.ics';
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+			window.URL.revokeObjectURL(url);
+		});
+
+	overlay.addEventListener('click', e => {
+		e.stopPropagation();
+		if (e.target === overlay) {
+			overlay.classList.add('hidden-el');
+		}
+	});
+</script>

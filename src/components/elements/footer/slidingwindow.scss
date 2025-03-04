@@ -1,0 +1,32 @@
+@use "sass:math";
+
+$n: 6;
+
+.gallery {
+    --d: 20s;
+    display: grid;
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask: linear-gradient(90deg, #0000, #000 0% 100%, #0000);
+}
+.gallery > img {
+    grid-area: 1/1;
+    width: 100%;
+    aspect-ratio: 5;
+    object-fit: contain;
+    animation: r var(--d) linear infinite;
+}
+@for $i from 2 to ($n + 1) {
+    .gallery > img:nth-child(#{$i}) {
+        animation-delay: calc(#{math.div(1 - $i, $n)} * var(--d));
+    }
+}
+@keyframes r {
+    #{math.div(100 * ($n - 1), $n)}% {
+        transform: translate((1 - $n) * 100%);
+    }
+    #{math.div(100 * ($n - 1), $n) + .01}% {
+        transform: translate(100%);
+    }
+}
+

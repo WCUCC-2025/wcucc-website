@@ -1,0 +1,18 @@
+category: 'Exploration'
+id: 'event_downtown-kelowna-social-night_10-05-2025'
+title: 'Downtown Kelowna Social Night'
+startTime: '2025-05-10T18:00:00'
+endTime: '2025-05-10T22:00:00'
+location:
+    {
+        onCampus: false,
+        isTBD: false,
+        street: '450 Knox Mountain Dr',
+        postalCode: 'V1Y 9X3',
+        map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2569.6760145446433!2d-119.4925015!3d49.9048856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537df36d499bbeb3%3A0x16e75f71d8abee54!2sKnox%20Mountain%20Park!5e0!3m2!1sen!2sca!4v1740021010035!5m2!1sen!2sca',
+    }
+calendarDescription:
+    'Join us for a leisurely hike at Knox Mountain Park, followed by free time
+    to explore downtown Kelowna!'
+websiteDescription: "Free transportation from the university to downtown Kelowna will be provided at 6:00 PM. Join one of our guided groups for a scenic hike or nature walk at Knox Mountain Park before heading to the heart of downtown Kelowna. There, you'll have the opportunity to explore the city's vibrant selection of local breweries and restaurants. Not sure where to start? Our guides will happily share their favourite spots!"
+isColored: false

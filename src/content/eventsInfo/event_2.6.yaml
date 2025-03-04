@@ -1,0 +1,16 @@
+category: "Presentations"
+id: 'event_poster-presentations_10-05-2025'
+title: "Poster Presentations"
+startTime: "2025-05-10T15:00:00"
+endTime: "2025-05-10T18:00:00"
+location: {
+  onCampus: true,
+  isTBD: false,
+  street: "1256 International Mews",
+  postalCode: "V1V 1V7",
+  buildingCode: "NCH",
+  room: "221 - Gathering"
+}
+calendarDescription: 'Poster presentations for (disciplines TBD).'
+websiteDescription: 'Poster presentations for (disciplines TBD) will be held in the Nechako Gathering Room from 3:00–6:00pm.'
+isColored: false

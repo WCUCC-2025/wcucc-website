@@ -1,0 +1,18 @@
+category: 'Bureaucracy '
+id: 'event_registration_09-05-2025'
+title: 'Registration '
+startTime: '2025-05-09T08:00:00'
+endTime: '2025-05-09T12:00:00'
+location:
+    {
+        onCampus: true,
+        isTBD: false,
+        street: '1137 Alumni Ave',
+        postalCode: 'V1V 1V8',
+        buildingCode: 'EME',
+        room: 'Foyer',
+    }
+calendarDescription: 'Conference Registration. **Important notice: check in for attendee accommodations will NOT be available until 4 pm. However, a secure bag drop service will be available for all luggage, prior to check in.**'
+websiteDescription: >
+    Registration for the 2025 WCUCC will be open from 8:00 AM to 12:00 PM in the UBCO Engineering, Management and Education (EME) building lower level foyer. Attendees will have the opportunity to check in, collect their attendee welcome package, and drop their luggage with our secure bag drop. **Important notice: check in for attendee accommodations will NOT be available until 4 pm. However, a secure bag drop service will be available for all luggage, prior to check in.** Please take this opportunity to connect with fellow attendees before the festivities begin. Light refreshments will be available, and lunch will be served at noon!
+isColored: false

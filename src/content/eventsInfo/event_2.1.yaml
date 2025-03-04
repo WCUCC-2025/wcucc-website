@@ -1,0 +1,17 @@
+category: 'Leisure'
+id: 'event_breakfast_10-05-2025'
+title: 'Breakfast/ Daily Overview'
+startTime: '2025-05-10T08:00:00'
+endTime: '2025-05-10T09:00:00'
+location:
+    {
+        onCampus: true,
+        isTBD: false,
+        street: '1147 Research Rd',
+        postalCode: 'V1V 1V7',
+        buildingCode: 'ART',
+        room: '214',
+    }
+calendarDescription: "Breakfast and overview of the day's itinerary"
+websiteDescription: "Breakfast will be served from 8:00–9:00am in ART 214. An overview of the day's itinerary will be provided."
+isColored: false

@@ -1,0 +1,15 @@
+---
+
+---
+
+<section class="flex h-screen w-screen flex-row items-center justify-evenly p-6 gap-4">
+	<h1 class="text-7xl">
+		"<br />
+		Uniting Elements of Innovation<br />
+		"
+	</h1>
+	<div class="bg-wcucc-coral-400 bg-opacity-20 text-xl w-[50%] p-4">
+		Join hundreds of others from around the country to celebrate innovation
+		and discoveries beyond your wildest imagination.
+	</div>
+</section>

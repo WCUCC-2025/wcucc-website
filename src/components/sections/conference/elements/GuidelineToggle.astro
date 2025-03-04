@@ -1,0 +1,36 @@
+---
+import 'remixicon/fonts/remixicon.css';
+
+const { icon = '', title = '', Content, bgColor = 'bg-white' } = Astro.props;
+---
+
+<div class="w-full">
+	<details
+		class={`group border-b border-black transition-all duration-300 w-full m-0 p-0`}
+	>
+		<summary
+			class={`flex cursor-pointer items-center justify-between py-4 px-4 text-2xl font-medium text-black`}
+			style={`background-color: ${bgColor};`}
+			}
+		>
+			<span class="flex flex-row gap-2"><i class={icon}></i>{title}</span>
+			<svg
+				class="ml-2 h-5 w-5 transition-transform duration-300 group-open:rotate-180"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M19 9l-7 7-7-7"></path>
+			</svg>
+		</summary>
+		<div class="prose my-4 max-w-none pl-8 text-xl text-gray-700">
+			<Content />
+		</div>
+	</details>
+	<hr class={`border-b border-black w-full m-0 p-0 leading-none`} />
+</div>

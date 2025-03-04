@@ -1,0 +1,39 @@
+---
+import 'remixicon/fonts/remixicon.css';
+const { identifier } = Astro.props;
+---
+
+<div
+	id={identifier}
+	class="overlay-base hide fixed top-0 z-[100] flex h-screen max-h-screen w-screen flex-col items-end justify-start bg-black bg-opacity-60 p-5"
+>
+	<div
+		class="overlay-close-btn mb-2 mt-0 cursor-pointer rounded-lg bg-red-600 px-3 py-2 indent-0 text-white outline-none hover:bg-red-700"
+	>
+		<i class="ri-close-large-fill"></i>
+	</div>
+	<slot />
+</div>
+
+<style>
+	.hide {
+		display: none !important;
+	}
+</style>
+
+<script>
+	document.querySelectorAll('.overlay-base').forEach(overlay => {
+		overlay.addEventListener('click', event => {
+			event.stopPropagation();
+			if (event.target === event.currentTarget) {
+				overlay.classList.add('hide');
+			}
+		});
+	});
+
+	document
+		.querySelector('.overlay-close-btn')
+		?.addEventListener('click', () => {
+			document.querySelector('.overlay-base')?.classList.add('hide');
+		});
+</script>

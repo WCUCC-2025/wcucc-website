@@ -1,0 +1,14 @@
+category: "Break"
+id: 'event_break_10-05-2025'
+title: "Break"
+startTime: "2025-05-10T17:30:00"
+endTime: "2025-05-10T18:00:00"
+location: {
+  onCampus: false,
+  isTBD: true,
+  street: "",
+  postalCode: "",
+}
+calendarDescription: '--- Break Calendar Description ---'
+websiteDescription: '--- Break Website Description ---'
+isColored: true

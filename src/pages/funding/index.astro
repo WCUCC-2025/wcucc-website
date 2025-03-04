@@ -1,0 +1,41 @@
+---
+import Base from '@src/layouts/Base.astro';
+import Sponsors from '@src/components/sections/funding/Sponsors.astro';
+import FAQs from '@src/components/sections/funding/FAQs.astro';
+import WhySponsor from '@src/components/sections/funding/WhySponsor.astro';
+import SponsorForm from '@src/components/sections/funding/SponsorForm.astro';
+import SponsorshipTiers from '@src/components/sections/funding/SponsorshipTiers.astro';
+import HeaderBase from '@src/components/elements/HeaderBase.astro';
+---
+
+<Base title="Funding & Sponsors">
+	<HeaderBase
+		title="Sponsors & Funding"
+		description="Learn about the amazing people that made this conference a reality."
+		image="/backgrounds/BgA.jpg"
+	>
+		<a
+			class="animate-slot my-10 hidden w-fit rounded-md bg-[#e23f59] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#9F2C40] hover:shadow sm:inline-block sm:w-auto"
+			href="#sponsor-form-section"
+			style="text-decoration: none;">I want to Become a Sponsor</a
+		>
+	</HeaderBase>
+
+	<Sponsors />
+
+	<div class="full-width-line"></div>
+
+	<SponsorshipTiers />
+
+	<div class="full-width-line"></div>
+
+	<WhySponsor />
+
+	<div class="full-width-line"></div>
+
+	<FAQs />
+
+	<div class="full-width-line"></div>
+
+	<SponsorForm />
+</Base>

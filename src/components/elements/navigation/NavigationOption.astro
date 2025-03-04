@@ -1,0 +1,41 @@
+---
+type Props = {
+	title: string;
+	description: string;
+	href: string;
+	forceNextColumn?: boolean;
+};
+
+const {
+	title,
+	description,
+	href,
+	forceNextColumn = false,
+}: Props = Astro.props;
+---
+
+{
+	forceNextColumn && (
+		<div
+			class="mb-4 w-full break-inside-avoid"
+			style="break-before: column;"
+		/>
+	)
+}
+<a
+	class={`${href == '#' && 'hover:cursor-not-allowed'} w-full break-inside-avoid`}
+	{href}
+	style="text-decoration: none;"
+>
+	<div
+		class="flex w-full break-inside-avoid flex-col gap-1 rounded-md p-4 transition-all duration-200 ease-in-out hover:bg-gray-100"
+	>
+		<h6 class="m-0 p-0 text-[1.05rem] font-bold uppercase text-black">
+			{title}
+		</h6>
+		<p class="m-0 p-0 text-[1.05rem] font-normal uppercase text-black">
+			{description}
+		</p>
+		<slot />
+	</div>
+</a>

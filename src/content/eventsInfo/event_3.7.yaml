@@ -1,0 +1,16 @@
+category: "Leisure"
+id: 'event_closing-ceremonies_11-05-2025'
+title: "Closing ceremonies"
+startTime: "2025-05-11T19:00:00"
+endTime: "2025-05-11T22:00:00"
+location: {
+  onCampus: true,
+  isTBD: false,
+  street: "1138 Alumni Ave",
+  postalCode: "V1V 1V7",
+  buildingCode: "ADM",
+  room: "121 - Sunroom"
+}
+calendarDescription: 'Closing ceremonies and awards banquet for the 2025 WCUCC!'
+websiteDescription: 'Our closing ceremonies and awards banquet will be held in the Sunroom of the Administrative Building (ADM), starting at 7:00pm. Meal preferences will be recorded during initial registration.'
+isColored: false

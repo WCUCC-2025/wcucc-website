@@ -1,0 +1,15 @@
+type: 'E'
+title: 'Abstract Submission'
+startTime: &startTime '2025-02-03T00:00:00'
+endTime: &endTime '2025-02-23T00:00:00'
+calendarObject:
+    {
+        id: 'deadline_abstract-submission_early-bird',
+        title: 'Early-Bird Abstract Submission',
+        description: '--- Abstract Submission Calendar Description ---',
+        startTime: *startTime,
+        endTime: *endTime,
+        location: 'Online',
+    }
+description: '--- Abstract Submission Website Description ---'
+detailsLink: '#'

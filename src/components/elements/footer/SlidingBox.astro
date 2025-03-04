@@ -1,0 +1,27 @@
+---
+import './slidingwindow.scss';
+---
+
+<div class="lg:w-full flex flex-wrap justify-evenly h-48">
+	<section class="flex w-3/4 lg:w-full min-w-[20rem] flex-wrap p-8">
+		<div class="gallery w-full h-full max-h-[150px] p-4 rounded bg-gray-50">
+			<img class="h-full" src="/sponsors/CIC.jpg" alt="" />
+			<img class="h-full" src="/sponsors/CIC_MSED_div.jpg" alt="" />
+			<img class="h-full" src="/sponsors/CIC_chemistry_education_div.jpg" alt="" />
+			<img class="h-full" src="/sponsors/CIC_inorganic_chemistry_div.jpg" alt="" />
+			<img class="h-full" src="/sponsors/CIC_organic_chemistry_div.jpeg" alt="" />
+			<img class="h-full" src="/sponsors/Tuum_est.jpg" alt="" />
+		</div>
+	</section>
+</div>
+
+<style>
+	a {
+		@apply underline decoration-yellow-400 decoration-2 underline-offset-2;
+	}
+
+	small a {
+		@apply underline decoration-blue-400 decoration-2 underline-offset-2;
+		text-decoration-skip-ink: none;
+	}
+</style>

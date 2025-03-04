@@ -1,0 +1,16 @@
+category: "Break"
+id: 'event_lunch_10-05-2025'
+title: "Lunch"
+startTime: "2025-05-10T13:00:00"
+endTime: "2025-05-10T14:00:00"
+location: {
+  onCampus: true,
+  isTBD: false,
+  street: "1256 International Mews",
+  postalCode: "V1V 1V7",
+  buildingCode: "Nechako Housing Commons",
+  room: "221 - Gathering"
+}
+calendarDescription: 'Lunch time!'
+websiteDescription: 'Catered lunch will be served from 1:00–2:00pm in the Nechako Gathering Room.'
+isColored: false

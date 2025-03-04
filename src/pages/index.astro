@@ -1,8 +1,30 @@
 ---
-import BaseInterest from '@src/layouts/Base-Interest.astro';
-import WCUCC from '@src/components/elements/WCUCC.astro';
+import Base from '@src/layouts/Base.astro';
+import Theme from '@src/components/sections/landing/Theme.astro';
+import MissonNPrinciples from '@src/components/sections/landing/MissonNPrinciples.astro';
+import Deadlines from '@src/components/sections/landing/Deadlines.astro';
+import Speakers from '@src/components/sections/landing/Speakers.astro';
+import Landing from '@src/components/sections/landing/Landing.astro';
 ---
 
-<BaseInterest title="Home">
-	<WCUCC />
-</BaseInterest>
+<style is:global>
+	html {
+		scroll-behavior: smooth;
+		height: 100%;
+		overflow-x: hidden;
+	}
+
+	body {
+		min-height: 100%;
+		overflow-x: hidden;
+	}
+</style>
+
+<Base title="Home">
+	<Landing />
+	<Theme />
+	<MissonNPrinciples />
+	<Deadlines />
+	<Speakers />
+</Base>
+

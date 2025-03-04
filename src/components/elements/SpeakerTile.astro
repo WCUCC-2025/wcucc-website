@@ -1,0 +1,35 @@
+---
+const { image, name, title, university, data, talkTitle, learnMore } =
+	Astro.props;
+---
+
+<div
+	class="xs:w-[20rem] flex h-full w-full flex-col justify-start rounded bg-white shadow shadow-black"
+	data-speaker={JSON.stringify(data)}
+>
+	<div class="mb-2 rounded-t bg-white pb-0">
+		<img
+			class="m-0 -mb-[0.375rem] h-auto max-h-60 w-full rounded-b-none object-cover object-top"
+			src={`speakers/${image}`}
+			alt={name}
+		/>
+	</div>
+	<div class="flex h-full flex-col justify-between p-4">
+		<div>
+			<p class="m-0 text-lg font-bold">{name}</p>
+			<p class="m-0 text-lg font-semibold">{title}</p>
+			{
+				university !== 'undefined, undefined' && (
+					<p class="m-0 py-2 text-lg font-light">{university}</p>
+				)
+			}
+		</div>
+		<div
+			id="trigger-overlay"
+			class="my-2 w-fit rounded-md bg-blue-600 px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-blue-800 hover:shadow"
+		>
+			Learn More
+		</div>
+	</div>
+</div>
+
