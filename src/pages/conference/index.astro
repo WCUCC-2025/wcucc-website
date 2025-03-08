@@ -1,6 +1,8 @@
 ---
 import Base from '@src/layouts/Base.astro';
 import HeaderBase from '@src/components/elements/HeaderBase.astro';
+import Tickets from `@src/components/sections/conference/Tickets.astro`;
+import RegistrationInstructions from '@src/components/sections/conference/RegistrationInstructions.astro';
 import FormatGuidelines from '@src/components/sections/conference/FormatGuidelines.astro';
 import GetInTouch from '@src/components/sections/conference/GetInTouch.astro';
 ---
@@ -10,7 +12,9 @@ import GetInTouch from '@src/components/sections/conference/GetInTouch.astro';
 		title="Conference Details"
 		description="Learn about the finer details of our conference."
 		image="/backgrounds/BgD.jpg"
-	/>
+		/>
+		<Tickets />
+	<RegistrationInstructions />
 	<FormatGuidelines />
 	<GetInTouch />
 </Base>
