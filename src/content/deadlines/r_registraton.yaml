@@ -1,0 +1,15 @@
+type: 'R'
+title: 'Registation & Abstract Submission'
+startTime: &startTime '2025-03-24T00:00:00'
+endTime: &endTime '2025-04-15T23:59:59'
+calendarObject:
+    {
+        id: 'deadline_registration-abstract-submission_early-bird',
+        title: 'Early-Bird Registration & Abstract Submission',
+        description: 'Please ensure you have registered and submitted your abstract by midnight on April 15th in order to guarentee early bird pricing.',
+        startTime: *startTime,
+        endTime: *endTime,
+        location: 'Online',
+    }
+description: 'Please ensure you have registered and submitted your abstract by midnight on April 15th in order to guarentee early bird pricing.'
+detailsLink: '#'
