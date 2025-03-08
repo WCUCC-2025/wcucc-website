@@ -1,0 +1,164 @@
+---
+import SectionTitle from '@src/components/elements/ui/SectionTitle.astro';
+---
+
+<section
+	class="flex w-full flex-col gap-5 p-5 transition-all duration-300 ease-in-out sm:p-10 md:gap-10 md:p-14 lg:p-20"
+>
+	<SectionTitle color="black"> Tickets </SectionTitle>
+	<section>
+		<section class="grid grid-cols-1 lg:grid-cols-2">
+			<img
+				class="h-auto w-full"
+				src="/tickets/e-local.svg"
+				alt="Early Bird Local Tickets"
+			/>
+			<img
+				class="h-auto w-full"
+				src="/tickets/e-non-local.svg"
+				alt="Early Bird Non-Local Tickets"
+			/>
+			<img
+				class="h-auto w-full"
+				src="/tickets/r-local.svg"
+				alt="Regular Local Tickets"
+			/>
+			<img
+				class="h-auto w-full"
+				src="/tickets/r-non-local.svg"
+				alt="Regular Non-Local Tickets"
+			/>
+		</section>
+		<section class="py-10">
+			<h3 class="mb-10 text-7xl">What's Included in your Tickets?</h3>
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+				<div
+					class="h-full rounded-lg border-[1px] border-solid border-blue-600 bg-white px-6 py-0 pb-4 shadow-lg"
+				>
+					<h4 class="mb-6 text-4xl font-bold text-blue-600">
+						Local Tickets
+					</h4>
+					<div class="space-y-6">
+						<div>
+							<h5 class="mb-3 text-2xl font-medium">
+								Food & Beverages
+							</h5>
+							<ul class="space-y-2 pl-6 text-xl">
+								<li>
+									Locally catered meals throughout the
+									conference
+								</li>
+								<li>
+									Three-course gala dinner with alcoholic
+									beverage
+								</li>
+								<li>
+									Casual pizza dinner after opening ceremonies
+								</li>
+								<li>
+									Snacks and beverages throughout the
+									conference
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h5 class="mb-3 text-2xl font-medium">
+								Exploration & Fun Activities
+							</h5>
+							<ul class="space-y-2 pl-6 text-xl">
+								<li>
+									Opening ceremonies with beer garden and live
+									music
+								</li>
+								<li>
+									Wine tour at two premier Kelowna wineries
+								</li>
+								<li>Closing gala with live jazz ensemble</li>
+								<li>Guided hike of Knox Mountain</li>
+							</ul>
+						</div>
+						<div>
+							<h5 class="mb-3 text-2xl font-medium">
+								Academic Activities
+							</h5>
+							<ul class="space-y-2 pl-6 text-xl">
+								<li>
+									Presenter slot (poster and oral sessions)
+								</li>
+								<li>Five distinguished speaker sessions</li>
+								<li>
+									"What's Next" workshop with industry panel
+								</li>
+								<li>Exclusive WCUCC 2025 swag!</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex h-full flex-col gap-8">
+					<div
+						class="flex flex-col rounded-lg border-[1px] border-solid border-purple-600 bg-white px-6 py-0 pb-4 shadow-lg"
+					>
+						<h4 class="mb-6 text-4xl font-bold text-purple-600">
+							Non-Local Tickets
+						</h4>
+						<p class="mb-0 text-2xl">
+							<span class="font-bold"
+								  >Everything in the <span class="text-blue-600">Local Ticket</span></span
+							>, plus:
+						</p>
+						<div class="mb-6 border-t border-gray-200 pt-2">
+							<ul class="space-y-2 pl-6 text-xl">
+								<li>Two breakfasts and three lunches</li>
+								<li>
+									Transportation for Wine tour and Knox
+									Mountain hike
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div
+						class="flex flex-col rounded-lg border-[1px] border-solid border-[#c02a3d] bg-white px-6 py-0 pb-4 shadow-lg"
+					>
+						<h4 class="my-6 p-0 text-4xl font-bold text-[#c02a3d]">
+							Awards
+						</h4>
+						<div>
+							<h5 class="m-0 mb-3 p-0 text-2xl font-medium">
+								Poster Presentations
+							</h5>
+							<ul class="space-y-2 pl-6 text-xl">
+								<li>First place: $500</li>
+								<li>Second place: $250</li>
+								<li>Third place: $100</li>
+							</ul>
+						</div>
+						<div class="">
+							<h5 class="m-0 mb-3 p-0 text-2xl font-medium">
+								Oral Presentations
+							</h5>
+							<ul class="space-y-2 pl-6 text-xl">
+								<li>First place: $500</li>
+								<li>Second place: $250</li>
+								<li>Third place: $100</li>
+							</ul>
+						</div>
+						<div class="">
+							<h5 class="m-0 mb-3 p-0 text-2xl font-medium">
+								Special Recognition
+							</h5>
+							<ul class="space-y-2 pl-6 text-xl">
+								<li>Overall people's choice: $350</li>
+							</ul>
+						</div>
+						<p class="m-0 p-0 text-2xl font-light leading-normal">
+							Winners for all awards except "Overall people's
+							choice" will be picked by our panel of judges
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</section>
+</section>

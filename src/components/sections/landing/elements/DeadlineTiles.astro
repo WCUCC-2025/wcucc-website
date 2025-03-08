@@ -58,7 +58,10 @@ const types: {
 			<i class={`ri-${types[deadlineType].icon}`}></i>
 			<p class="m-0 p-0 leading-none">{types[deadlineType].label}</p>
 		</div>
-		<a href={types[deadlineType].helpLink} style="text-decoration: none;"
+		<a
+			href={types[deadlineType].helpLink}
+			class="cursor-not-allowed"
+			style="text-decoration: none;"
 			><i class="ri-question-fill text-3xl text-black"></i></a
 		>
 	</div>
@@ -77,10 +80,10 @@ const types: {
 			startDate={calendarObject.startTime}
 			endDate={calendarObject.endTime}>Add to Calendar</AddToCalendar
 		>
-		<a
-			href={detailsLink}
-			class="w-fit rounded-md bg-[#D10838] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#871c2a] hover:shadow sm:inline-block sm:w-auto"
-			style="text-decoration: none;">See Details</a
-		>
+		<!-- <a -->
+		<!-- 	href={detailsLink} -->
+		<!-- 	class="w-fit rounded-md bg-[#D10838] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#871c2a] hover:shadow sm:inline-block sm:w-auto" -->
+		<!-- 	style="text-decoration: none;">See Details</a -->
+		<!-- > -->
 	</div>
 </div>
