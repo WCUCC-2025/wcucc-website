@@ -1,13 +1,18 @@
 ---
 import 'remixicon/fonts/remixicon.css';
-import MobileOverlay from "@src/components/elements/navigation/mobile/Overlay.astro";
+import MobileOverlay from '@src/components/elements/navigation/mobile/Overlay.astro';
 ---
 
-<nav class="md:hidden fixed flex flex-row w-full justify-between items-center p-4 z-50">
-	<a class="flex flex-row items-center justify-center" href="/feature">
+<nav
+	class="fixed z-50 flex w-full flex-row items-center justify-between p-4 md:hidden"
+>
+	<a class="flex flex-row items-center justify-center" href="/">
 		<img src="/WCUCC-Logo.svg" alt="WCUCC Logo" width="100" height="100" />
 	</a>
-	<div id="burger" class="px-2 py-1 bg-white rounded-md shadow shadow-black hover:cursor-pointer">
+	<div
+		id="burger"
+		class="rounded-md bg-white px-2 py-1 shadow shadow-black hover:cursor-pointer"
+	>
 		<i class="ri-menu-3-line text-3xl"></i>
 	</div>
 </nav>
