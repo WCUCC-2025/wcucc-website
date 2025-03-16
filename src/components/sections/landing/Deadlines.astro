@@ -28,12 +28,11 @@ function formatDate(dateString: string) {
 }
 ---
 
-<section class="relative z-30 bg-gray-900 p-5 sm:p-10 md:p-14 lg:p-20">
+<section class="bg-forest-green relative z-30 p-5 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle> Upcoming Deadlines </SectionTitle>
 	<div
-		class="mb-10 flex flex-col items-center justify-start gap-4 overflow-auto md:flex-row"
+		class="mb-10 flex flex-col items-center justify-start gap-4 overflow-auto py-2 md:flex-row"
 	>
-		<!-- <DeadlineTiles -->
 		{
 			filteredDeadlines.map(deadline => {
 				return (
@@ -51,13 +50,6 @@ function formatDate(dateString: string) {
 			})
 		}
 	</div>
-	<!-- <div class="flex flex-col items-center justify-center gap-4"> -->
-	<!-- 	<p -->
-	<!-- 		class="m-0 p-0 text-4xl font-normal leading-none text-white underline hover:cursor-pointer hover:no-underline" -->
-	<!-- 	> -->
-	<!-- 		See all the important deadlines for the conference! -->
-	<!-- 	</p> -->
-	<!-- </div> -->
 </section>
 
 <style>
@@ -67,12 +59,12 @@ function formatDate(dateString: string) {
 	}
 
 	::-webkit-scrollbar-track {
-		background: #ffffff;
+		background: transparent;
 		border-radius: 5px;
 	}
 
 	::-webkit-scrollbar-thumb {
-		background: #0368ff;
+		background: #ffffff;
 		border-radius: 10px;
 		border: 10px solid #f0f0f0;
 	}
@@ -84,7 +76,7 @@ function formatDate(dateString: string) {
 	/* Firefox */
 	html {
 		overflow: auto;
-		scrollbar-color: #0368ff white;
+		scrollbar-color: #ffffff transparent;
 		scrollbar-width: thick;
 	}
 </style>

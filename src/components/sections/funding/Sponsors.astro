@@ -8,83 +8,97 @@ const sponsors = await getCollection('sponsors');
 <section class="px-8 py-10 sm:p-10 md:p-14 lg:p-20">
 	<SectionTitle color="black">Our Sponsors</SectionTitle>
 	<section class="grid gap-5">
-		<div>
-			<h2 class="mb-8 text-left text-5xl" style="color: #98D8D6;">
-				Platinum
-			</h2>
-			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-				{
-					sponsors.map(
-						sponsor =>
-							sponsor.data.tier == 'platinum' && (
-								<SponsorCard
-									name={sponsor.data.name}
-									logo={sponsor.data.logo}
-									href={sponsor.data.link}
-								/>
-							)
-					)
-				}
-			</div>
-		</div>
-		<div>
-			<h2 class="mb-8 text-left text-5xl" style="color: #F4C430">Gold</h2>
-			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-				{
-					sponsors.map(
-						sponsor =>
-							sponsor.data.tier == 'gold' && (
-								<SponsorCard
-									name={sponsor.data.name}
-									logo={sponsor.data.logo}
-									href={sponsor.data.link}
-								/>
-							)
-					)
-				}
-			</div>
-		</div>
-		<div>
-			<h2 class="mb-8 text-left text-5xl" style="color: #C0C0C0">
-				Silver
-			</h2>
-			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-				{
-					sponsors.map(
-						sponsor =>
-							sponsor.data.tier == 'silver' && (
-								<SponsorCard
-									name={sponsor.data.name}
-									logo={sponsor.data.logo}
-									href={sponsor.data.link}
-								/>
-							)
-					)
-				}
-			</div>
-		</div>
-		<div>
-			<h2
-				class="mb-8 text-left text-5xl text-black"
-				style="color: #CD7F32"
-			>
-				Bronze
-			</h2>
-			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-				{
-					sponsors.map(
-						sponsor =>
-							sponsor.data.tier == 'bronze' && (
-								<SponsorCard
-									name={sponsor.data.name}
-									logo={sponsor.data.logo}
-									href={sponsor.data.link}
-								/>
-							)
-					)
-				}
-			</div>
-		</div>
+		{
+			sponsors.filter(sponsor => sponsor.data.tier == 'platinum').length >
+				0 && (
+				<div>
+					<h2 class="mb-8 text-left text-5xl" style="color: #98D8D6;">
+						Platinum
+					</h2>
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+						{sponsors.map(
+							sponsor =>
+								sponsor.data.tier == 'platinum' && (
+									<SponsorCard
+										name={sponsor.data.name}
+										logo={sponsor.data.logo}
+										href={sponsor.data.link}
+									/>
+								)
+						)}
+					</div>
+				</div>
+			)
+		}
+		{
+			sponsors.filter(sponsor => sponsor.data.tier == 'gold').length >
+				0 && (
+				<div>
+					<h2 class="mb-8 text-left text-5xl" style="color: #F4C430">
+						Gold
+					</h2>
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+						{sponsors.map(
+							sponsor =>
+								sponsor.data.tier == 'gold' && (
+									<SponsorCard
+										name={sponsor.data.name}
+										logo={sponsor.data.logo}
+										href={sponsor.data.link}
+									/>
+								)
+						)}
+					</div>
+				</div>
+			)
+		}
+		{
+			sponsors.filter(sponsor => sponsor.data.tier == 'silver').length >
+				0 && (
+				<div>
+					<h2 class="mb-8 text-left text-5xl" style="color: #C0C0C0">
+						Silver
+					</h2>
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+						{sponsors.map(
+							sponsor =>
+								sponsor.data.tier == 'silver' && (
+									<SponsorCard
+										name={sponsor.data.name}
+										logo={sponsor.data.logo}
+										href={sponsor.data.link}
+									/>
+								)
+						)}
+					</div>
+				</div>
+			)
+		}
+		{
+			sponsors.filter(sponsor => sponsor.data.tier == 'bronze').length >
+				0 && (
+				<div>
+					<h2
+						class="mb-8 text-left text-5xl text-black"
+						style="color: #CD7F32"
+					>
+						Bronze
+					</h2>
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+						{sponsors.map(
+							sponsor =>
+								sponsor.data.tier == 'bronze' && (
+									<SponsorCard
+										name={sponsor.data.name}
+										logo={sponsor.data.logo}
+										href={sponsor.data.link}
+									/>
+								)
+						)}
+					</div>
+				</div>
+			)
+		}
 	</section>
 </section>
 

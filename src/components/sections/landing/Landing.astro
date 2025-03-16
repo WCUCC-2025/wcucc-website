@@ -57,30 +57,34 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 		/>
 	</div>
 
-	<div class="parallax-text fixed inset-0 z-30">
+	<div class="parallax-text fixed inset-0 z-30 py-24 md:py-0">
 		<section
-			class="flex h-screen w-screen flex-col items-start justify-center gap-4 p-5 sm:p-10 md:p-14 lg:p-20"
+			class="flex h-screen w-screen flex-col items-start justify-start gap-4 p-5 sm:justify-center sm:p-10 md:p-14 lg:p-20"
 		>
 			<div class="mb-0 flex flex-col gap-2">
 				<div
-					class="mb-0 flex flex-row items-center justify-start gap-4"
+					class="mb-0 flex flex-col items-start justify-start gap-4 md:flex-row md:items-center"
 				>
 					<p class="mb-0 text-xl font-bold text-white lg:text-2xl">
 						May 9 - 11, 2025
 					</p>
-					<AddToCalendar
-						id="playground-conference-dates"
-						title="Western Canadian Undergraduate Chemistry Conference"
-						description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!"
-						location="The University of British Columbia"
-						startDate="2025-05-07T08:00:00"
-						endDate="2025-05-12T20:00:00"
-					>
-						Add to Calendar
-					</AddToCalendar>
+					<div class="hidden sm:inline">
+						<AddToCalendar
+							id="playground-conference-dates"
+							title="Western Canadian Undergraduate Chemistry Conference"
+							description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!"
+							location="The University of British Columbia"
+							startDate="2025-05-07T08:00:00"
+							endDate="2025-05-12T20:00:00"
+						>
+							Add to Calendar
+						</AddToCalendar>
+					</div>
 				</div>
-				<p class="mb-0 text-2xl font-normal text-white lg:text-3xl">
-					Western Canada Undergraduate Chemistry Conference
+				<p
+					class="mb-0 hidden p-0 text-2xl font-medium text-white md:inline-block lg:text-3xl"
+				>
+					Western Canadian Undergraduate Chemistry Conference
 				</p>
 			</div>
 			<div class="flex flex-col gap-2">
@@ -93,7 +97,9 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 					Discover how we<br class="sm:hidden" />
 					<span id="typer" class="mb-0 text-white"></span>
 				</h1>
-				<div class="between flex flex-row items-center gap-4">
+				<div
+					class="between flex flex-col items-start gap-4 md:flex-row md:items-center"
+				>
 					<h4
 						class="my-0 text-2xl font-medium text-white lg:text-3xl"
 					>
@@ -105,6 +111,26 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 						style="text-decoration: none; z-index: 100;"
 						>Get Directions</a
 					>
+					<div
+						class="flex flex-row items-start justify-start sm:hidden gap-4"
+					>
+						<AddToCalendar
+							id="playground-conference-dates"
+							title="Western Canadian Undergraduate Chemistry Conference"
+							description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!"
+							location="The University of British Columbia"
+							startDate="2025-05-07T08:00:00"
+							endDate="2025-05-12T20:00:00"
+						>
+							Add to Calendar
+						</AddToCalendar>
+						<a
+								class="w-fit rounded-md bg-[#0058E5] px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#173d9b] hover:shadow sm:w-auto"
+								href="https://www.google.ca/maps/place/The+University+of+British+Columbia+-+Okanagan+Campus/@49.9398234,-119.3989527,17z/data=!3m1!4b1!4m5!3m4!1s0x537ded7da291f011:0x7ca879b9058df1a4!8m2!3d49.93982!4d-119.396764"
+								style="text-decoration: none; z-index: 100;"
+								>Directions</a
+							>
+					</div>
 				</div>
 			</div>
 			<CountDownTimer targetDate="2025-05-07T08:00:00" />
@@ -112,69 +138,70 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 
 		<div class="h-screen"></div>
 	</div>
-</div>
 
-<script is:inline>
-	const layers = document.querySelectorAll('.parallax-layer');
-	let transitionSpeed = window.innerWidth < 1380 ? 0.55 : 1;
+	<script is:inline>
+		const layers = document.querySelectorAll('.parallax-layer');
+		let transitionSpeed = window.innerWidth < 1380 ? 0.55 : 1;
 
-	//				[e,  d,   d,    c,   b]
-	let speeds = [0.2, 0.24, 0.28, 0.35, 0.4, transitionSpeed];
+		//				[e,  d,   d,    c,   b]
+		let speeds = [0.2, 0.24, 0.28, 0.35, 0.4, transitionSpeed];
 
-	window.addEventListener('resize', () => {
-		speeds[speeds.length - 1] = window.innerWidth < 1400 ? 0.55 : 1;
-	});
-
-	const parallaxText = document.querySelector('.parallax-text');
-
-	window.addEventListener('scroll', () => {
-		const scrolled = window.pageYOffset || window.scrollY; // pageYOffset || scrollY is used to ensure compatability with legacy browsers.
-
-		layers.forEach((layer, index) => {
-			layer.classList == 'parallax-layer layer-a' && console.log(layer);
-			const yPos = -(scrolled * speeds[index]);
-			layer.style.transform = `translateY(${yPos}px)`;
+		window.addEventListener('resize', () => {
+			speeds[speeds.length - 1] = window.innerWidth < 1400 ? 0.55 : 1;
 		});
 
-		const yPosTxt = -(scrolled * 0.6);
-		parallaxText.style.transform = `translateY(${yPosTxt}px)`;
-	});
-</script>
+		const parallaxText = document.querySelector('.parallax-text');
 
-<script>
-	import Typed from 'typed.js';
+		window.addEventListener('scroll', () => {
+			const scrolled = window.pageYOffset || window.scrollY; // pageYOffset || scrollY is used to ensure compatability with legacy browsers.
 
-	let idx = 0;
-	const colors = [
-		'#e0ff4f',
-		'#ff6663',
-		'#a51080',
-		'#70E6D2',
-		'#8F192D',
-		'#CBE5C8',
-		'#E393BA',
-		'#C54640',
-		'#1740B1',
-		'#9E86C7',
-		'#DF948A',
-	];
+			layers.forEach((layer, index) => {
+				layer.classList == 'parallax-layer layer-a' &&
+					console.log(layer);
+				const yPos = -(scrolled * speeds[index]);
+				layer.style.transform = `translateY(${yPos}px)`;
+			});
 
-	new Typed('#typer', {
-		strings:
-			'innovate, create, design, synthesize, pipette, analyze, experiment, teach, learn'.split(
-				', '
-			),
-		typeSpeed: 100,
-		backSpeed: 50,
-		backDelay: 1000,
-		smartBackspace: true,
-		loop: true,
-		shuffle: false,
-		preStringTyped: (_, self) => {
-			if (idx == colors.length) idx = 0;
-			// @ts-ignore
-			self.el.style.color = colors[idx];
-			idx++;
-		},
-	});
-</script>
+			const yPosTxt = -(scrolled * 0.6);
+			parallaxText.style.transform = `translateY(${yPosTxt}px)`;
+		});
+	</script>
+
+	<script>
+		import Typed from 'typed.js';
+
+		let idx = 0;
+		const colors = [
+			'#e0ff4f',
+			'#ff6663',
+			'#a51080',
+			'#70E6D2',
+			'#8F192D',
+			'#CBE5C8',
+			'#E393BA',
+			'#C54640',
+			'#1740B1',
+			'#9E86C7',
+			'#DF948A',
+		];
+
+		new Typed('#typer', {
+			strings:
+				'innovate, create, design, synthesize, pipette, analyze, experiment, teach, learn'.split(
+					', '
+				),
+			typeSpeed: 100,
+			backSpeed: 50,
+			backDelay: 1000,
+			smartBackspace: true,
+			loop: true,
+			shuffle: false,
+			preStringTyped: (_, self) => {
+				if (idx == colors.length) idx = 0;
+				// @ts-ignore
+				self.el.style.color = colors[idx];
+				idx++;
+			},
+		});
+	</script>
+</div>

@@ -8,11 +8,11 @@ const { principle, description, color }: Props = Astro.props;
 ---
 
 <div
-	class="h-fit bg-white p-8 transition-all duration-200 ease-in-out hover:shadow-2xl"
-	style="border: 2px #000000 solid; border-radius: 0.5rem;"
+	class="flex h-full flex-col items-center justify-center bg-white p-8 transition-all duration-200 ease-in-out hover:shadow-2xl"
+	style={`border: 2px ${color} solid; border-radius: 0.5rem;`}
 >
 	<p
-		class="w-fit rounded-lg py-2 px-4 text-2xl font-bold"
+		class="w-fit rounded-lg px-4 py-2 text-2xl font-bold"
 		style={`border: 2px ${color} solid; border-radius: 1rem; color: ${color}`}
 	>
 		{principle}
