@@ -10,7 +10,7 @@ const categories = {
 	Workshop: '#D10838',
 };
 
-const textColors = {
+const textColors: Partial<Record<keyof typeof categories, string>> = {
 	Leisure: '#FFFFFF',
 	Workshop: '#FFFFFF',
 };
@@ -20,11 +20,16 @@ type Props = {
 };
 
 const { name }: Props = Astro.props;
+
+function getTextColor(categoryName: keyof typeof categories): string {
+	return textColors[categoryName] || 'black';
+}
 ---
 
 <p
 	class="leading-0 m-0 rounded-lg px-4 py-2"
-	style={`background-color: ${categories[name]}; color: ${textColors[name] || 'black'}`}
+	style={`background-color: ${categories[name]}; color: ${getTextColor(name)}`}
 >
 	{name}
 </p>
+
