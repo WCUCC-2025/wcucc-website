@@ -36,7 +36,7 @@ const speakers = await getCollection('speakers');
 	>
 		<section class="flex flex-col justify-between md:flex-row">
 			<img
-				class="p-speaker-photograph h-auto max-h-[12rem] w-[12rem] rounded-lg bg-[#00BBFF] object-cover"
+				class="p-speaker-photograph h-auto max-h-[12rem] w-full rounded-lg bg-[#00BBFF] object-cover sm:w-[12rem]"
 				src=""
 				alt="profile-picture"
 			/>
@@ -138,8 +138,11 @@ const speakers = await getCollection('speakers');
 		speakerPhotograph.src = `/speakers/${speakerInfo.photograph}`;
 		speakerPhotograph.alt = speakerInfo.lastName;
 		speakerName.textContent = `${speakerInfo.firstName} ${speakerInfo.lastName}`;
-		speakerPosition.textContent = speakerInfo.position;
-		speakerInstitution.textContent = `${speakerInfo.department}, ${speakerInfo.institution}`;
+		speakerPosition.textContent = speakerInfo.position || '';
+		const speakerDepartment = speakerInfo.department || '';
+		const speakerInstitution =
+			speakerInfo.institution ? `, ${speakerInfo.institution}` : '';
+		speakerInstitution.textContent = speakerDepartment + speakerInstitution;
 		speakerAbstract.textContent = `${speakerInfo.abstract}`;
 		speakerBio.textContent = speakerInfo.biography;
 	};

@@ -6,10 +6,10 @@ const { icon = '', title = '', Content, bgColor = 'bg-white' } = Astro.props;
 
 <div class="w-full">
 	<details
-		class={`group border-b border-black transition-all duration-300 w-full m-0 p-0`}
+		class={`group border-b border-transparent transition-all duration-300 w-full m-0 p-0`}
 	>
 		<summary
-			class={`flex cursor-pointer items-center justify-between py-4 px-4 text-2xl font-medium text-black`}
+			class={`flex cursor-pointer items-center justify-between py-4 px-4 text-2xl font-medium text-white`}
 			style={`background-color: ${bgColor};`}
 			}
 		>
@@ -32,5 +32,5 @@ const { icon = '', title = '', Content, bgColor = 'bg-white' } = Astro.props;
 			<Content />
 		</div>
 	</details>
-	<hr class={`border-b border-black w-full m-0 p-0 leading-none`} />
+	<hr class={`border-b border-transparent w-full m-0 p-0 leading-none`} />
 </div>
