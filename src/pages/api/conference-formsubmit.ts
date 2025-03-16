@@ -1,5 +1,4 @@
 import type { APIRoute } from 'astro';
-// import sanitizeHtml from 'sanitize-html';
 
 export const prerender = false;
 const debug = !true;
@@ -26,18 +25,7 @@ export const POST: APIRoute = async context => {
 	const fromAddr = import.meta.env.MAIL_FROM_ADDR;
 	const toAddr = import.meta.env.MAIL_TO_ADDR;
 
-	console.log(
-		form.keys().toArray(),
-		JSON.stringify(form.entries().toArray())
-	);
-
-	// const mailBody = `
-	// NEW GENERAL INQUIRY
-	// Name: ${fullName}
-	// Organization: ${organization}
-	// Respond to: ${email} (${phone})
-	// Message: ${message}
-	// `;
+	console.log(form.keys(), JSON.stringify(form.entries()));
 
 	const mailBody = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -151,7 +139,7 @@ export const POST: APIRoute = async context => {
 		html: mailBody,
 		replyTo: email,
 		headers: {
-			'Content-Type': 'text/html', // Add this header
+			'Content-Type': 'text/html',
 		},
 	};
 	const info = await tptr.sendMail(opts);
@@ -160,7 +148,5 @@ export const POST: APIRoute = async context => {
 		'Email sent for [WEB FORM]: general-formsubmit.ts ---' + info.messageId
 	);
 
-	//  WARN: REMOVE
-	//        REDIRECT TO A THANK YOU PAGE
 	return context.redirect('/conference/thankyou');
 };

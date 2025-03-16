@@ -48,7 +48,7 @@ type OffCampusLocation = {
 export default interface Event {
 	category:
 	| 'Keynote'
-	| 'Bureaucracy'
+	| 'Admin'
 	| 'Plenary'
 	| 'Exploration'
 	| 'Leisure'

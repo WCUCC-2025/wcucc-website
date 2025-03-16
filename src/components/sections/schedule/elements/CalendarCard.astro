@@ -2,12 +2,7 @@
 import CategoryPill from '@src/components/sections/schedule/elements/CategoryPill.astro';
 
 type Props = {
-	category?:
-		| 'Keynote'
-		| 'Bureaucracy'
-		| 'Plenary'
-		| 'Exploration'
-		| 'Leisure';
+	category?: 'Keynote' | 'Admin' | 'Plenary' | 'Exploration' | 'Leisure';
 	title: string;
 	startTime: string;
 	endTime: string;
@@ -32,7 +27,7 @@ const {
 	location,
 	color,
 	description,
-	data
+	data,
 }: Props = Astro.props;
 ---
 
