@@ -4,7 +4,8 @@ import NavigationOption from '@src/components/elements/navigation/NavigationOpti
 
 <div
 	id="mobile-overlay"
-	class="hide fixed z-[100] h-screen w-screen overflow-hidden font-sans"
+	class="hide fixed z-[100] w-screen overflow-hidden font-sans"
+	style="height: 100dvh;"
 >
 	<div
 		class="flex h-full w-full flex-col justify-between gap-2 overflow-x-hidden overflow-y-scroll rounded-md bg-white shadow shadow-black"
@@ -58,6 +59,12 @@ import NavigationOption from '@src/components/elements/navigation/NavigationOpti
 <style>
 	.hide {
 		display: none;
+	}
+	@supports not (height: 100dvh) {
+		#mobile-overlay {
+			height: 100vh;
+			height: -webkit-fill-available;
+		}
 	}
 </style>
 

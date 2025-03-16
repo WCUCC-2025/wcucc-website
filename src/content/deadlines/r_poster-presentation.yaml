@@ -1,5 +1,5 @@
 type: 'R'
-title: 'Poster/Presentation Submission'
+title: 'Poster / Presentation Submission'
 startTime: &startTime '2025-04-16T00:00:00'
 endTime: &endTime '2025-05-01T23:59:59'
 calendarObject:

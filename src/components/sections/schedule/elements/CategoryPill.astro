@@ -1,13 +1,18 @@
 ---
 const categories = {
-	Keynote: '#56bcf8',
-	Bureaucracy: '#FF6600',
-	Plenary: '#E31DFD',
-	Exploration: '#E5E100', // #FFFB00
-	Leisure: '#08E500',
+	Keynote: '#499FD4',
+	Admin: '#FF6600',
+	Plenary: '#F67795',
+	Exploration: '#F7BF4B', // #FFFB00
+	Leisure: '#077364',
 	Break: '',
-	Presentations: '#006FFF',
-	Workshop: '#D10838'
+	Presentations: '#CA90CE',
+	Workshop: '#D10838',
+};
+
+const textColors = {
+	Leisure: '#FFFFFF',
+	Workshop: '#FFFFFF',
 };
 
 type Props = {
@@ -18,8 +23,8 @@ const { name }: Props = Astro.props;
 ---
 
 <p
-	class="leading-0 m-0 rounded-lg px-4 py-2 text-black"
-	style=`background-color: ${categories[name]}`
+	class="leading-0 m-0 rounded-lg px-4 py-2"
+	style={`background-color: ${categories[name]}; color: ${textColors[name] || 'black'}`}
 >
 	{name}
 </p>
