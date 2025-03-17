@@ -1,5 +1,5 @@
 type: 'R'
-title: 'Registation & Abstract Submission'
+title: 'Registration & Abstract Submission'
 startTime: &startTime '2025-03-24T00:00:00'
 endTime: &endTime '2025-04-15T23:59:59'
 calendarObject:
