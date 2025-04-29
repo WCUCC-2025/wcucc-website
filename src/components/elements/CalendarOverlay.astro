@@ -119,23 +119,37 @@ const { id, eventDetails }: Props = Astro.props;
 		const startTime = formatDateForCalendar(event.startDate);
 		const endTime = formatDateForCalendar(event.endDate);
 
-		const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startTime}/${endTime}&details=${description}&location=${location}`;
+		// Google Calendar with Kelowna timezone (America/Vancouver)
+		const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startTime}/${endTime}&details=${description}&location=${location}&ctz=America/Vancouver`;
 
+		// Outlook URL
 		const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${new Date(event.startDate).toISOString()}&enddt=${new Date(event.endDate).toISOString()}&body=${description}&location=${location}`;
 
+		// Yahoo URL
 		const yahooUrl = `https://calendar.yahoo.com/?v=60&title=${title}&st=${startTime}&et=${endTime}&desc=${description}&in_loc=${location}`;
 
+		// Format for iCal (YYYYMMDDTHHMMSS)
+		const formatForICal = dateStr => {
+			const date = new Date(dateStr);
+			return date.toISOString().replace(/[-:]/g, '').slice(0, 15); // Remove the Z suffix
+		};
+
+		const startTimeICAL = formatForICal(event.startDate);
+		const endTimeICAL = formatForICal(event.endDate);
+
+		// iCal with Kelowna timezone
 		const icalContent = `BEGIN:VCALENDAR
-							 VERSION:2.0
-							 BEGIN:VEVENT
-							 URL:${location}
-							 DTSTART:${startTime}
-							 DTEND:${endTime}
-							 SUMMARY:${event.title}
-							 DESCRIPTION:${event.description}
-							 LOCATION:${event.location}
-							 END:VEVENT
-							 END:VCALENDAR`;
+VERSION:2.0
+BEGIN:VEVENT
+URL:${location}
+DTSTART;TZID=America/Vancouver:${startTimeICAL}
+DTEND;TZID=America/Vancouver:${endTimeICAL}
+SUMMARY:${event.title}
+DESCRIPTION:${event.description}
+LOCATION:${event.location}
+END:VEVENT
+END:VCALENDAR`;
+
 		return { googleUrl, outlookUrl, yahooUrl, icalContent };
 	}
 
