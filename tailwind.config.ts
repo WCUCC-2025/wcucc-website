@@ -34,7 +34,8 @@ const config: Config = {
 				},
 				'wcucc-pine': '#077364',
 				'wcucc-sky': '#1B98F2',
-				'forest-green': '#003300'
+				'purple-lavender': '#CC6300',
+				'forest-green': '#052900'
 			},
 		},
 	},

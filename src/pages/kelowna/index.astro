@@ -1,14 +1,14 @@
 ---
 import Base from '@src/layouts/Base.astro';
-import PointsOfInterest from "@src/components/sections/kelowna/PointsOfInterest.astro";
+import PointsOfInterest from '@src/components/sections/kelowna/PointsOfInterest.astro';
 import Transportation from '@src/components/sections/kelowna/Transportation.astro';
 import UsefulApps from '@src/components/sections/kelowna/UsefulApps.astro';
-import PlacesToEat from '@src/components/sections/kelowna/PlacesToEat.astro'; 
+import PlacesToEat from '@src/components/sections/kelowna/PlacesToEat.astro';
 ---
 
 <Base title="Home">
 	<section
-		class="flex flex-col justify-center items-start h-screen w-full  gap-2 bg-[url('/kelowna-bg.jpg')] bg-cover p-5 sm:p-10 md:p-14 lg:p-20"
+		class="flex h-screen w-full flex-col items-start justify-center gap-2 bg-[url('/kelowna-bg.jpg')] bg-cover p-5 sm:p-10 md:p-14 lg:p-20"
 	>
 		<h1
 			class="border-[1px] text-7xl font-bold text-white outline-black sm:text-[5rem] lg:text-[7.8rem]"
@@ -16,7 +16,7 @@ import PlacesToEat from '@src/components/sections/kelowna/PlacesToEat.astro';
 			Kelowna
 		</h1>
 		<h4 class="my-0 text-2xl font-light text-white lg:text-3xl">
-			Learn more about the beautiful city hosting our conference.
+			Learn more about the beautiful city hosting our conference
 		</h4>
 	</section>
 	<PointsOfInterest />
