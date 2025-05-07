@@ -106,6 +106,7 @@ const faqsCollection = defineCollection({
 const speakersCollection = defineCollection({
 	type: 'data',
 	schema: z.object({
+		learnMoreColor: z.string(),
 		firstName: z.string(),
 		lastName: z.string(),
 		institution: z.optional(z.string()),

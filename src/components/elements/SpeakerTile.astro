@@ -1,6 +1,14 @@
 ---
-const { image, name, title, university, data, talkTitle, learnMore } =
-	Astro.props;
+const {
+	image,
+	name,
+	title,
+	university,
+	data,
+	talkTitle,
+	learnMore,
+	learnMoreColor,
+} = Astro.props;
 ---
 
 <div
@@ -26,10 +34,10 @@ const { image, name, title, university, data, talkTitle, learnMore } =
 		</div>
 		<div
 			id="trigger-overlay"
-			class="my-2 w-fit rounded-md bg-blue-600 px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-blue-800 hover:shadow"
+			class="my-2 w-fit rounded-md px-4 py-1.5 text-[1.1rem] font-semibold text-white shadow-black transition-all duration-200 hover:cursor-pointer hover:shadow"
+			style={`background-color: ${learnMoreColor}`}
 		>
 			Learn More
 		</div>
 	</div>
 </div>
-

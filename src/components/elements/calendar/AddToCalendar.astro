@@ -30,16 +30,16 @@ const eventDetails: {
 
 <div
 	id={`calendar-toggle-${id}`}
-	class="relative z-0 w-fit rounded-md bg-[#5CC75B] px-4 py-1.5 text-[1.1rem] font-semibold text-black shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#5CC75B] hover:shadow"
+	class="relative z-0 w-fit rounded-md bg-[#5CC75B] px-4 py-1.5 text-[1.1rem] font-semibold text-black shadow-black transition-all duration-200 hover:cursor-pointer hover:bg-[#387737] hover:text-white hover:shadow"
 >
 	<slot />
 </div>
 
-	<CalendarOverlay id={id} eventDetails={eventDetails} />
+<CalendarOverlay id={id} eventDetails={eventDetails} />
 
 <script is:inline define:vars={{ id }}>
 	let btnCal = document.querySelector(`#calendar-toggle-${id}`);
-	btnCal.addEventListener('click', (event) => {
+	btnCal.addEventListener('click', event => {
 		event.stopPropagation();
 		console.log('Clicked Cal', btnCal);
 		const overlay = document.querySelector(`#calendar-overlay-${id}`);

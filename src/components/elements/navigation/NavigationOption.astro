@@ -14,14 +14,6 @@ const {
 }: Props = Astro.props;
 ---
 
-{
-	forceNextColumn && (
-		<div
-			class="mb-4 w-full break-inside-avoid"
-			style="break-before: column;"
-		/>
-	)
-}
 <a
 	class={`${href == '#' && 'hover:cursor-not-allowed'} w-full break-inside-avoid`}
 	{href}
