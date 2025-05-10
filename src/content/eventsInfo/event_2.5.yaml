@@ -1,6 +1,6 @@
 category: "Plenary"
-id: 'event_plenary-title-coming-soon_10-05-2025'
-title: "Title coming soon!"
+id: 'event_plenary-natures-pharmacy-dang_10-05-2025'
+title: "Nature’s Pharmacy: The Making of Plant-Based Anticancer Agents"
 startTime: "2025-05-10T14:00:00"
 endTime: "2025-05-10T15:00:00"
 speaker: {
@@ -15,6 +15,26 @@ location: {
   buildingCode: "ART",
   room: "214"
 }
-calendarDescription: 'More info coming soon!'
-websiteDescription: 'More info coming soon!'
+calendarDescription: 'Plants produce myriads nitrogen-containing heterocyclic metabolites
+called alkaloids. These chemicals serve numerous eco-physiological functions in
+the plants as well as medicines for humans for thousands of years, such as
+anticancer agent vinblastine and the painkiller morphine. Semi-synthetic
+derivatives of camptothecin, an alkaloid from happy tree (Camptotheca
+acuminata), are potent anticancer agents such as topotecan (Hycamtin) and
+irinotecan (Camptosar). Research in Dang/’s lab aims at discovering and
+engineering enzymes from happy tree that facilitate the production of topotecan, irinotecan and
+new camptothecin-derived analogues. The talk will focus on recent discoveries of new enzymes
+and how these allow for further understanding and harnessing of plant biosynthetic pathways
+and the production of plant-derived drugs.'
+websiteDescription: 'Plants produce myriads nitrogen-containing heterocyclic metabolites
+called alkaloids. These chemicals serve numerous eco-physiological functions in
+the plants as well as medicines for humans for thousands of years, such as
+anticancer agent vinblastine and the painkiller morphine. Semi-synthetic
+derivatives of camptothecin, an alkaloid from happy tree (Camptotheca
+acuminata), are potent anticancer agents such as topotecan (Hycamtin) and
+irinotecan (Camptosar). Research in Dang/’s lab aims at discovering and
+engineering enzymes from happy tree that facilitate the production of topotecan, irinotecan and
+new camptothecin-derived analogues. The talk will focus on recent discoveries of new enzymes
+and how these allow for further understanding and harnessing of plant biosynthetic pathways
+and the production of plant-derived drugs.'
 isColored: false
