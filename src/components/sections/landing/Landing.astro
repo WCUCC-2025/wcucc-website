@@ -11,13 +11,13 @@ const currentYear = today.getFullYear();
 const conferenceYear = 2025;
 const conferenceMonth = 4;
 
-function formatDateString(day) {
+function formatDateString(day: number) {
 	const date = new Date(conferenceYear, conferenceMonth, day);
 	const month = date.toLocaleString('default', { month: 'long' });
 	return `${month} ${day}${getOrdinalSuffix(day)}, ${conferenceYear}`;
 }
 
-function getOrdinalSuffix(day) {
+function getOrdinalSuffix(day: number) {
 	if (day > 3 && day < 21) return 'th';
 	switch (day % 10) {
 		case 1:
