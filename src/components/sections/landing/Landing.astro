@@ -1,6 +1,59 @@
 ---
 import CountDownTimer from '@src/components/elements/CountDownTimer.astro';
 import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
+
+const today = new Date();
+
+const currentDay = today.getDate();
+const currentMonth = today.getMonth();
+const currentYear = today.getFullYear();
+
+const conferenceYear = 2025;
+const conferenceMonth = 4;
+
+function formatDateString(day: number) {
+	const date = new Date(conferenceYear, conferenceMonth, day);
+	const month = date.toLocaleString('default', { month: 'long' });
+	return `${month} ${day}${getOrdinalSuffix(day)}, ${conferenceYear}`;
+}
+
+function getOrdinalSuffix(day: number) {
+	if (day > 3 && day < 21) return 'th';
+	switch (day % 10) {
+		case 1:
+			return 'st';
+		case 2:
+			return 'nd';
+		case 3:
+			return 'rd';
+		default:
+			return 'th';
+	}
+}
+
+let heading = 'Happening Now!';
+let subtext = '';
+
+const isAfterConference =
+	currentYear > conferenceYear ||
+	(currentYear === conferenceYear && currentMonth > conferenceMonth) ||
+	(currentYear === conferenceYear &&
+		currentMonth === conferenceMonth &&
+		currentDay > 11);
+
+if (isAfterConference) {
+	heading = 'Conference Concluded!';
+	subtext =
+		'Thank you to everyone who attended and made this conference possible!';
+} else if (
+	currentYear === conferenceYear &&
+	currentMonth === conferenceMonth &&
+	currentDay === 11
+) {
+	subtext = `<b>Day 3:</b> ${formatDateString(12)}`;
+} else {
+	subtext = `<b>Day 2:</b> ${formatDateString(11)}`;
+}
 ---
 
 <div class="relative h-[120vh] overflow-hidden md:h-[140vh]">
@@ -133,7 +186,20 @@ import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro
 					</div>
 				</div>
 			</div>
-			<CountDownTimer targetDate="2025-05-09T08:00:00" />
+			<!-- <CountDownTimer targetDate="2025-05-09T08:00:00" /> -->
+			<div class="flex flex-col gap-4 pt-6">
+				<p
+					class="mb-0 font-bold text-[#FFFFFF] lg:text-3xl"
+					style="font-size: 3rem;"
+				>
+					{heading}
+				</p>
+				<p
+					class="mb-0 font-normal text-white lg:text-2xl"
+					style="font-size: 1.6rem;"
+					set:html={subtext}
+				/>
+			</div>
 		</section>
 
 		<div class="h-screen"></div>
