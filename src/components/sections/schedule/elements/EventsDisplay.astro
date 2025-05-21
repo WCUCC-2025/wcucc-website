@@ -110,20 +110,20 @@ const { eventsInfo }: Props = Astro.props;
 						</div>
 						{event.category && event.category != 'Break' && (
 							<div class="flex w-fit shrink-0 flex-row items-center justify-end gap-2 pt-4 lg:pt-0">
-								<AddToCalendar
-									id={event.id}
-									title={event.title}
-									description={event.calendarDescription}
-									location={
-										event.location.onCampus ?
-											`${UBCOBuildings[event.location.buildingCode]}, ${event.location.room}`
-										:	`${event.location.street}, Kelowna, BC, ${event.location.postalCode}`
-									}
-									startDate={event.startTime}
-									endDate={event.endTime}
-								>
-									<i class="ri-calendar-fill text-white" />
-								</AddToCalendar>
+								<!-- <AddToCalendar -->
+								<!-- 	id={event.id} -->
+								<!-- 	title={event.title} -->
+								<!-- 	description={event.calendarDescription} -->
+								<!-- 	location={ -->
+								<!-- 		event.location.onCampus ? -->
+								<!-- 			`${UBCOBuildings[event.location.buildingCode]}, ${event.location.room}` -->
+								<!-- 		:	`${event.location.street}, Kelowna, BC, ${event.location.postalCode}` -->
+								<!-- 	} -->
+								<!-- 	startDate={event.startTime} -->
+								<!-- 	endDate={event.endTime} -->
+								<!-- > -->
+								<!-- 	<i class="ri-calendar-fill text-white" /> -->
+								<!-- </AddToCalendar> -->
 								<CategoryPill
 									name={
 										event.category.trim() as

@@ -2,58 +2,9 @@
 import CountDownTimer from '@src/components/elements/CountDownTimer.astro';
 import AddToCalendar from '@src/components/elements/calendar/AddToCalendar.astro';
 
-const today = new Date();
-
-const currentDay = today.getDate();
-const currentMonth = today.getMonth();
-const currentYear = today.getFullYear();
-
-const conferenceYear = 2025;
-const conferenceMonth = 4;
-
-function formatDateString(day: number) {
-	const date = new Date(conferenceYear, conferenceMonth, day);
-	const month = date.toLocaleString('default', { month: 'long' });
-	return `${month} ${day}${getOrdinalSuffix(day)}, ${conferenceYear}`;
-}
-
-function getOrdinalSuffix(day: number) {
-	if (day > 3 && day < 21) return 'th';
-	switch (day % 10) {
-		case 1:
-			return 'st';
-		case 2:
-			return 'nd';
-		case 3:
-			return 'rd';
-		default:
-			return 'th';
-	}
-}
-
-let heading = 'Happening Now!';
-let subtext = '';
-
-const isAfterConference =
-	currentYear > conferenceYear ||
-	(currentYear === conferenceYear && currentMonth > conferenceMonth) ||
-	(currentYear === conferenceYear &&
-		currentMonth === conferenceMonth &&
-		currentDay > 11);
-
-if (isAfterConference) {
-	heading = 'Conference Concluded!';
-	subtext =
-		'Thank you to everyone who attended and made this conference possible!';
-} else if (
-	currentYear === conferenceYear &&
-	currentMonth === conferenceMonth &&
-	currentDay === 11
-) {
-	subtext = `<b>Day 3:</b> ${formatDateString(11)}`;
-} else {
-	subtext = `<b>Day 2:</b> ${formatDateString(10)}`;
-}
+const heading = 'Conference Concluded!';
+const subtext =
+	'Thank you to everyone who attended and made this conference possible!';
 ---
 
 <div class="relative h-[120vh] overflow-hidden md:h-[140vh]">
@@ -122,16 +73,16 @@ if (isAfterConference) {
 						May 9 - 11, 2025
 					</p>
 					<div class="hidden sm:inline">
-						<AddToCalendar
-							id="playground-conference-dates"
-							title="Western Canadian Undergraduate Chemistry Conference"
-							description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!"
-							location="The University of British Columbia"
-							startDate="2025-05-07T08:00:00"
-							endDate="2025-05-12T20:00:00"
-						>
-							Add to Calendar
-						</AddToCalendar>
+						<!-- <AddToCalendar -->
+						<!-- 	id="playground-conference-dates" -->
+						<!-- 	title="Western Canadian Undergraduate Chemistry Conference" -->
+						<!-- 	description="Come join us for the western canadian undergraduate chemistry conference for 2025. This year, we have some amazing speakers and networking opportunities for you to explore!" -->
+						<!-- 	location="The University of British Columbia" -->
+						<!-- 	startDate="2025-05-07T08:00:00" -->
+						<!-- 	endDate="2025-05-12T20:00:00" -->
+						<!-- > -->
+						<!-- 	Add to Calendar -->
+						<!-- </AddToCalendar> -->
 					</div>
 				</div>
 				<p
